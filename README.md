@@ -1,6 +1,6 @@
 # Jobby
 
-Este é o Repositório do Website do Projeto FaturaPlus.
+Este é o Repositório do Projeto Jobby.
 
 ## Git (WINDOWS)
 
