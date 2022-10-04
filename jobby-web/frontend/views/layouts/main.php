@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -71,10 +72,56 @@ AppAsset::register($this);
     </div>
 </main>
 
+<!--<footer class="footer mt-auto py-3 text-muted">
+    <section class="container">
+        <section class="row">
+            <section class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 d-flex" id="footer-info-wrap">
+                <div class="footer-info-wrapper d-flex align-items-center">
+                    <div class="footer-name-app">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
+                    <img class="footer-margin-right footer-info-dots" id="footer-info-dot-jobby" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                    <a href="<?=Url::to(['site/privacidade']);?>" class="footer-space text-decoration-none blue-effect">Privacidade</a>
+                    <img class="footer-margin-right footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                    <a href="<?=Url::to(['site/termo']);?>" class="footer-space text-decoration-none blue-effect">Termos</a>
+                    <img class="footer-margin-right footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                    <a href="<?=Url::to(['site/support']);?>" class="footer-space text-decoration-none blue-effect">Suporte</a>
+                </div>
+            </section>
+            <section class="footer-items-wrap col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12 d-flex">
+                <div class="d-flex">
+                    <p class="float-end">JOBBY</p>
+                </div>
+            </section>
+        </section>
+    </section>
+</footer>-->
+
 <footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-start">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="float-end"><?= Yii::powered() ?></p>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Copyright &COPY; Jobby <?= date('Y') ?>, All Right Reserved</span>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright-menu">
+                        <ul>
+                            <li>
+                                <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                                <a href="<?=Url::to(['site/termo']);?>">Termos de Uso</a>
+                            </li>
+                            <li>
+                                <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                                <a href="<?=Url::to(['site/privacidade']);?>">Política de Privacidade</a>
+                            </li>
+                            <li>
+                                <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
+                                <a href="<?=Url::to(['site/support']);?>">Suporte</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 
