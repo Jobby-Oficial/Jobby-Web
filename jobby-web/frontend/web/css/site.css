@@ -71,6 +71,8 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+/*---------- NavBar ----------*/
+
 /* align the logout "link" (button in form) of the navbar */
 .navbar form > button.logout {
     padding-top: 7px;
@@ -94,6 +96,29 @@ a.desc:after {
 
 .navbar form > button.logout:focus {
     outline: none;
+}
+
+.navbar-brand img {
+    display: inline;
+    vertical-align: top;
+    width: 100px;
+}
+
+.nav-link {
+    color: #21cecc;
+}
+
+.navbar {
+    background-color: #002A32;
+}
+
+.navbar-item-jobby:hover {
+    color: #ecf0f1;
+    text-shadow: 0 0 5px #21cecc,
+    0 0 10px #21cecc,
+    0 0 20px #21cecc,
+    0 0 40px #21cecc;
+    transition: text-shadow .15s ease-in-out;
 }
 
 /* style breadcrumb widget as in previous bootstrap versions */
