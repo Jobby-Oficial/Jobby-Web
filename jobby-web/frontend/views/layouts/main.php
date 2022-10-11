@@ -12,6 +12,7 @@ use yii\bootstrap5\NavBar;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+$this->title = "Jobby - Home";
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,13 +30,44 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        //'brandLabel' => '<img src="/assets/img/jobby_oficial.svg" style="display:inline"; vertical-align: top; width="100">',
+        'brandLabel' => Html::img('@web/assets/img/jobby_oficial_box_white.svg'),
+        //'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'navbar navbar-expand-md navbar-dark fixed-top',
         ],
     ]);
-    $menuItems = [
+    $menuItemsLeft = [
+        ['label' => 'Explorar Serviços', 'url' => ['/service/index'], 'options' => ['class' => 'navbar-item-jobby']],
+        ['label' => 'Favoritos', 'url' => ['/favorite/index'], 'options' => ['class' => 'navbar-item-jobby']],
+        /* ['label' => 'Dropdown','items' => [
+                ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+            ]
+        ] */
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItemsRight[] = ['label' => 'Entrar', 'url' => ['/site/login'], 'options' => ['class' => 'navbar-item-jobby']];
+        $menuItemsRight[] = ['label' => 'Registrar', 'url' => ['/site/signup'], 'options' => ['class' => 'navbar-item-jobby']];
+    } else {
+        $menuItemsRight[] = ['label' => \Yii::$app->user->identity->username, 'options' => ['class' => 'navbar-item-jobby'], 'items' => [
+            ['label' => 'Perfil', 'url' => '/profile' . '/' . \Yii::$app->user->identity->id],
+            ['label' => 'Planos', 'url' => '/plan'],
+            ['label' => 'Logout', 'url' => '/home/logout', 'linkOptions' => ['data-method' => 'post']]
+        ]
+        ];
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav mr-auto me-auto mb-2 mb-md-0'],
+        'items' => $menuItemsLeft,
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav ml-auto'],
+        'items' => $menuItemsRight,
+    ]);
+    NavBar::end();
+    ?>
+    /*$menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -59,7 +91,7 @@ AppAsset::register($this);
             . Html::endForm();
     }
     NavBar::end();
-    ?>
+    ?>*/
 </header>
 
 <main role="main" class="flex-shrink-0">
