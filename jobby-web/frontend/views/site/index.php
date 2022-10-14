@@ -1,9 +1,43 @@
 <?php
 
+use yii\bootstrap5\Html;
+
 /** @var yii\web\View $this */
 
 $this->title = 'My Yii Application';
 ?>
+
+<div class="header">
+    <div class="inner-header flex">
+        <div class="intro-text">
+            <div class="intro-lead-in"><?= Html::img('@web/assets/img/jobby_oficial_white_box_v4.svg', ['alt' => 'Logo', 'class' => 'img-fit']);?></div>
+            <div class="intro-heading">Encontra o serviço que procuras</div>
+            <div class="flex-grid-center">
+                <a href="#" class="fuller-button white">Explorar Serviços</a>
+            </div>
+        </div>
+    </div>
+
+    <!--Waves Container-->
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
+</div>
+
+<div class="container">
+
 <div class="site-index">
     <div class="p-5 mb-4 bg-transparent rounded-3">
         <div class="container-fluid py-5 text-center">
@@ -49,4 +83,6 @@ $this->title = 'My Yii Application';
         </div>
 
     </div>
+</div>
+
 </div>
