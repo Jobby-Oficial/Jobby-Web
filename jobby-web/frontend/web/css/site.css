@@ -9,6 +9,7 @@ main > .container, main > .container-fluid
     background-color: #002A32;
     font-size: .9em;
     height: 60px;
+    font-weight: bold;
 }
 
 .footer > .container, .footer > .container-fluid {
@@ -115,6 +116,7 @@ a.desc:after {
 
 .navbar {
     background-color: #002A32;
+    font-weight: bold;
 }
 
 .navbar-item-jobby:hover {
@@ -206,7 +208,7 @@ a.desc:after {
 }
 
 .inner-header {
-    height:60vh;
+    height:65vh;
     width:100%;
     margin: 0;
     padding: 0;
@@ -386,6 +388,32 @@ img {
 /* ***** End of Section ***** */
 
 
+/* ╔══════════════════════════════╗ */
+/* ║     Presentation Section     ║ */
+/* ╚══════════════════════════════╝ */
+
+.presentation-section {
+    margin-top: 50px;
+}
+
+.presentation-box {
+    padding: 60px;
+//background-color: #f36958;
+//background-color: #038583;
+    background: linear-gradient(60deg, rgba(3, 133, 131) 25%, rgba(33, 206, 204) 100%);
+    border-radius: 20px 50px;
+    color: white;
+}
+
+.presentation-radius {
+    width: 75%;
+    border-radius: 10%;
+    float: right;
+}
+
+/* ***** End of Section ***** */
+
+
 /* ╔════════════════╗ */
 /* ║     Colors     ║ */
 /* ╚════════════════╝ */
@@ -416,3 +444,8 @@ img {
 }
 
 /* ***** End of Section ***** */
+
+
+.test{
+    width: 100%;
+}
