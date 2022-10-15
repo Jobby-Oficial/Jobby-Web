@@ -182,6 +182,10 @@ a.desc:after {
     transition: text-shadow .15s ease-in-out;
 }
 
+.copyright span:hover {
+    cursor: default;
+}
+
 .copyright-menu ul {
     text-align: right;
     margin: 0;

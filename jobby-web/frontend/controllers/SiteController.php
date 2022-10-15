@@ -89,6 +89,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays terms.
+     *
+     * @return mixed
+     */
+    public function actionTerms()
+    {
+        return $this->render('terms');
+    }
+
+    /**
      * Logs in a user.
      *
      * @return mixed
