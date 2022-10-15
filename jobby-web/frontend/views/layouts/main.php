@@ -118,7 +118,7 @@ $this->title = "Jobby - Home";
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/privacidade']);?>">Política de Privacidade</a>
+                                <a href="<?=Url::to(['site/privacy']);?>">Política de Privacidade</a>
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">

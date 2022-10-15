@@ -79,6 +79,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays privacy.
+     *
+     * @return mixed
+     */
+    public function actionPrivacy()
+    {
+        return $this->render('privacy');
+    }
+
+    /**
      * Logs in a user.
      *
      * @return mixed
