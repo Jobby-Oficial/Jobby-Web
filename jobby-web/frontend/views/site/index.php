@@ -50,7 +50,7 @@ $this->title = 'My Yii Application';
                         e tenha sucesso com a JOBBY!</h4>
                 </div>
                 <div class="col-sm-5">
-                    <span class=""><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
+                    <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
                 </div>
             </div>
         </div>
