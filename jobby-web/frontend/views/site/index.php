@@ -37,24 +37,69 @@ $this->title = 'My Yii Application';
     <!--Waves end-->
 </div>
 
-<div class="container">
+<section class="presentation-section">
+    <div class="container">
+        <br>
+        <a name="presentation" id="presentation"><h1 class="text-center">Melhor Site de Serviços do Mundo!</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="col-sm-7 presentation-box">
+                <h4>O melhor site de fornecimento de serviços do mercado! Tenha tudo na ponta dos dedos para
+                    criar o seu anúncio. <br><br>Publici-te e usufrua com segurança todos os serviços disponíveis
+                    e tenha sucesso com a JOBBY!</h4>
+            </div>
+            <div class="col-sm-5">
+                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <section class="presentation-section">
-        <div class="container">
-            <br>
-            <a name="presentation" id="presentation"><h1 class="text-center">Melhor Site de Serviços do Mundo!</h1></a><br><hr><br><br>
-            <div class="row">
-                <div class="col-sm-7 presentation-box">
-                    <h4>O melhor site de fornecimento de serviços do mercado! Tenha tudo na ponta dos dedos para
-                        criar o seu anúncio. <br><br>Publici-te e usufrua com segurança todos os serviços disponíveis
-                        e tenha sucesso com a JOBBY!</h4>
+<section class="card-section">
+    <div class="container">
+        <a name="steps" id="steps"><h1 class="text-center">Descomplique em 3 passos</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="grid">
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= Url::to('@web/assets/img/card1.svg', true) ?>" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Crie uma conta grátis</h4>
+                    </div>
+                    <div class="card__desc">
+                        Crie uma conta grátis e procure ou crie serviços sem compromissos.
+                    </div>
                 </div>
-                <div class="col-sm-5">
-                    <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
+
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= Url::to('@web/assets/img/card2.svg', true) ?>" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Procure serviços</h4>
+                    </div>
+                    <div class="card__desc">
+                        Procure o serviço que precise e resolva os seus problemas em um click.
+                    </div>
+                </div>
+
+                <div class="card__box card__one">
+                    <figure class="card__img">
+                        <img src="<?= Url::to('@web/assets/img/card3.svg', true) ?>" width="340" height="280" />
+                    </figure>
+                    <div class="card__title">
+                        <h4>Agende o serviço</h4>
+                    </div>
+                    <div class="card__desc">
+                        Agende o serviço, e o assunto está tratado. Fácil, rápido e simples. Como deve ser.
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<div class="container">
 
     <div class="site-index">
         <div class="p-5 mb-4 bg-transparent rounded-3">
