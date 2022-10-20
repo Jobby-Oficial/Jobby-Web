@@ -48,7 +48,7 @@ $this->title = 'My Yii Application';
                     e tenha sucesso com a JOBBY!</h4>
             </div>
             <div class="col-sm-5">
-                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
+                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" height="280" /></span>
             </div>
         </div>
     </div>
@@ -142,6 +142,21 @@ $this->title = 'My Yii Application';
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="software-section">
+    <div class="container">
+        <a name="software" id="software"><h1 class="text-center">Software de Faturação</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="col-sm-5">
+                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_1.png', true) ?>" class="software-radius" height="300" /></span>
+            </div>
+            <div class="col-sm-7 software-box">
+                <h4>Quer poupar tempo e dinheiro, mantendo ao mesmo tempo uma gestão eficiente do seu negócio? Conheça o software de
+                    faturação da Fatura Plus, a solução ideal para negócios de todas as dimensões:<br><br> Restaurantes, Lojas, Startups, Serviços e muito mais...</h4>
             </div>
         </div>
     </div>
