@@ -48,7 +48,7 @@ $this->title = 'My Yii Application';
                     e tenha sucesso com a JOBBY!</h4>
             </div>
             <div class="col-sm-5">
-                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" width="340" height="280" /></span>
+                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_2.png', true) ?>" class="presentation-radius" height="280" /></span>
             </div>
         </div>
     </div>
@@ -147,6 +147,59 @@ $this->title = 'My Yii Application';
     </div>
 </section>
 
+<section class="software-section">
+    <div class="container">
+        <a name="software" id="software"><h1 class="text-center">Plataforma JOBBY</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="col-sm-5">
+                <span class="slideanim"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_1.png', true) ?>" class="software-radius" height="360" /></span>
+            </div>
+            <div class="col-sm-7 software-box">
+                <h4>Quer poupar tempo e dinheiro, mantendo ao mesmo tempo um serviço eficiente e realizado por profissionais? Conheça a plataforma de fornecimento de
+                    serviços do JOBBY, a solução ideal para quem procura serviços de todas as dimensões:<br><br> Marketing Digital, Personal Trainers, Contabilistas, Web Designer e muito mais...</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <a name="about" id="about"><h1 class="text-center">Sobre Nós</h1></a><br><hr><br><br>
+        <div class="row">
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                <div class="inner-column">
+                    <div class="sec-title">
+                        <span class="title">------------------------</span>
+                        <h2>Somos Líderes no <br> Mercado de Serviços <br> Desde 2022</h2>
+                    </div>
+                    <div class="text">Apesar de só existir no mercado desde 2022, conhecida como JOBBY,
+                        a qualidade, caraterísticas inovadoras e os elevados padrões de performance fazem
+                        com que atualmente a nossa plataforma seja conhecida e reconhecida por clientes, parceiros
+                        e concorrentes como líder no segmento de Serviços online em Portugal.</div>
+                    <ul class="list-style-one">
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Simples</span></li>
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Seguro</span></li>
+                        <li><i class='bx bxs-chevrons-right bx-tada' ></i><span>Acessível</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column wow fadeInLeft">
+                    <figure class="image-1"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_3.png', true) ?>" alt=""></figure>
+                    <figure class="image-2"><img src="<?= Url::to('@web/assets/img/Jobby_Mockup_4.png', true) ?>" alt=""></figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!--
 <div class="container">
 
     <div class="site-index">
@@ -199,3 +252,5 @@ $this->title = 'My Yii Application';
     </div>
 
 </div>
+
+-->
