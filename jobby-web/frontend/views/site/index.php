@@ -99,6 +99,54 @@ $this->title = 'My Yii Application';
     </div>
 </section>
 
+<section class="testimonials-section">
+    <div class="testimonials text-center">
+        <div class="container">
+            <a name="testimonials" id="testimonials"><h1 class="text-center">Testemunhos</h1></a><br><hr><br><br>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">Tínhamos um grande problema com a remodelação da nossa casa e graças à plataforma,
+                                JOBBY, conseguimos arrnajar um profissional em menos de uma hora! A plataforma é bastante
+                                direta e bem organizada o que nos facilita o acesso à procura de serviços!</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Leonardo Ferreira</cite></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">Os serviços que aparecem na plataforma são bastante recomendados, para mais que
+                                estão muito explícitos e organizados, com isto consegui arranjar um ótimo profissional para me arrnjar
+                                a construir a minha piscina no meu quintal de casa. JOBBY sem dúvida que facilita a vida das pessoas!</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Daniela Ribeiro</cite></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-light bg-light text-center">
+                        <i class='bx bxs-quote-alt-right bx-tada card-img-top rounded-circle' aria-hidden="true"></i>
+                        <div class="card-body blockquote">
+                            <p class="card-text">Com a plataforma JOBBY, a minha vida tornou-se mais fácil. Consigo arranjar
+                                qualquer tipo de serviço em muito pouco tempo! Recomendo a todos esta plataforma,
+                                vão ver que irão poupar bastante tempo. É muito útil e eficaz!</p>
+                            <br>
+                            <footer class="blockquote-footer"><cite title="Source Title">Luís Soares</cite></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div class="container">
 
     <div class="site-index">
