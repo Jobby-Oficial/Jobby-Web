@@ -54,7 +54,7 @@ $this->title = "Jobby - Home";
         $menuItemsRight[] = ['label' => \Yii::$app->user->identity->username, 'options' => ['class' => 'navbar-item-jobby'], 'items' => [
             ['label' => 'Perfil', 'url' => '/profile' . '/' . \Yii::$app->user->identity->id],
             ['label' => 'Planos', 'url' => '/plan'],
-            ['label' => 'Logout', 'url' => '/home/logout', 'linkOptions' => ['data-method' => 'post']]
+            ['label' => 'Logout', 'url' => 'site/logout', 'linkOptions' => ['data-method' => 'post']]
         ]
         ];
     }

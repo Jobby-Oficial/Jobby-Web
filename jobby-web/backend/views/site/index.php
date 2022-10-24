@@ -2,8 +2,12 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+use \yii\helpers\Html;
+$this->title = 'Página Principal';
+//$this->params['breadcrumbs'] = [['label' => $this->title]];
+
 ?>
+<!--
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
@@ -50,4 +54,45 @@ $this->title = 'My Yii Application';
         </div>
 
     </div>
+</div>
+-->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <h3 class="text-center">Bem-vindo ao Backoffice JOBBY</h3>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="col-md-4 col-sm-6 col-12">
+            <?/*= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Utilizadores',
+                'number' => Html::encode($users),
+                'icon' => 'fas fa-users',
+            ]) */?>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+            <?/*= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Utilizadores Ativos',
+                'number' => Html::encode($usersActive),
+                'icon' => 'fas fa-users',
+            ]) */?>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+            <?/*= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Utilizadores Inativos',
+                'number' => Html::encode($usersInactive),
+                'icon' => 'fas fa-users',
+            ]) */?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-12">
+            <?/*= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Serviços',
+                'number' => Html::encode($services),
+                'icon' => 'fa fa-book',
+            ]) */?>
+        </div>
+    </div>-->
 </div>
