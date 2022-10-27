@@ -1,0 +1,133 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,300,700');
+
+html {
+    height: 100%;
+}
+
+body {
+    /* Remember to use the other versions for IE 10 and older browsers! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    font-family: 'lato', sans-serif;
+    color: #fff;
+    background: #222222;
+    background: #16222A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #16222A , #3A6073); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #16222A , #3A6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+main > .container {
+    padding: 20px 15px 20px !important;
+}
+
+.container {
+    background:rgba(58,63,68,0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+    width:450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    font-family: "museo-slab";
+    font-size:20px;
+    text-align: center;
+    //padding: 20px 20px 0;
+    margin-top: 2em;
+}
+
+.login-item {
+    color: #ffff;
+    padding:25px 25px 0;
+    margin: 20px 20px 0;
+    border-radius: 3px;
+}
+
+.form-login input[type="text"],
+.form-login input[type="password"],
+.form-login input[type="submit"] {
+    border-radius: 0.25rem;
+    padding: 1rem;
+    color: #3A3F44;
+}
+
+
+
+.form-field {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+
+
+.text--center {
+    text-align: center;
+}
+
+
+
+/* ╔════════════════════════════╗ */
+/* ║     Buttons Components     ║ */
+/* ╚════════════════════════════╝ */
+
+.flex-grid-center {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+}
+.fuller-button {
+    color: rgba(255, 255, 255, 1);
+    background: none;
+    border-radius: 0;
+    padding: 1.2em 5em;
+    letter-spacing: 0.35em;
+    font-size: 0.8em;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+    //margin: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.fuller-button.blue {
+    box-shadow: inset 0 0 1em rgba(0, 170, 170, 0.5), 0 0 1em rgba(0, 170, 170, 0.5);
+    border: #0dd solid 2px;
+}
+.fuller-button.blue:hover {
+    background-color: #0dd;
+    box-shadow: inset 0 0 0 rgba(0, 170, 170, 0.5), 0 0 1.5em rgba(0, 170, 170, 0.7);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+.fuller-button.red {
+    box-shadow: inset 0 0 1em rgba(251, 81, 81, 0.4), 0 0 1em rgba(251, 81, 81, 0.4);
+    border: #fb5454 solid 2px;
+}
+.fuller-button.red:hover {
+    background-color: #fb5454;
+    box-shadow: inset 0 0 0 rgba(251, 81, 81, 0.4), 0 0 1.5em rgba(251, 81, 81, 0.6);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+.fuller-button.white {
+    box-shadow: inset 0 0 0.8em rgba(255, 255, 255, 0.3), 0 0 0.8em rgba(255, 255, 255, 0.3);
+    border: #fff solid 2px;
+}
+.fuller-button.white:hover {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #fff;
+    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.3), 0 0 1.2em rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+/* ***** End of Section ***** */
+
+
+.login-btn {
+    width: 100%;
+}
