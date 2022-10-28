@@ -1,0 +1,108 @@
+.background-signup {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 94vh;
+    background: linear-gradient(125deg, #21CECC 0%, #29D9D5 33%, #01a3a4 66%, #038583 100%);
+//background: #12121A;
+//background: linear-gradient(125deg, rgba(130, 204, 221, 1) 0%, #94bbe9 33%, #eeaeca 66%, rgba(243, 105, 88, 1) 100%);
+//background: linear-gradient(-45deg, #eeaeca, #94bbe9);
+//background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+//background-image: linear-gradient(125deg, rgba(130, 204, 221, 1) 0%, rgba(96,78,177,1) 33%, rgba(201,85,169,1) 66%, rgba(243, 105, 88,1) 100%);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.signup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.signup-box h1 {
+    margin: 0 0 20px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.signup-box .user-box {
+    position: relative;
+}
+
+.signup-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.signup-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.signup-box .user-box input:focus ~ label,
+.signup-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.signup-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-label {
+    left: 0;
+    color: #03e9f4;
+    font-size: 15px;
+}
+
+.fuller-button {
+    margin: 0em !important;
+}
+
+p {
+    color: ghostwhite;
+}
+
+.textarea {
+    resize: none;
+    width: 100%; height: 117px;
+    border-radius: 7px;
+}

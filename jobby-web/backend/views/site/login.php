@@ -35,9 +35,6 @@ $this->registerCssFile('@web/css/login.css');
 </div>-->
 
 
-<script src="https://use.typekit.net/rjb4unc.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
-
 <div class="container">
     <div class="logo"><img src="<?= Url::to('@web/assets/img/jobby_oficial_box_white.svg', true) ?>" width="340"/></div>
     <div class="login-item">
