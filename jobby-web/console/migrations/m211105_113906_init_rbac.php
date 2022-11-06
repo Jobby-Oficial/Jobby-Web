@@ -28,7 +28,7 @@ class m211105_113906_init_rbac extends Migration
 
         $updateServiceBackoffice = $auth->createPermission('updateServiceBackoffice');
         $updateServiceBackoffice->description = 'Atualizar Serviço no Backoffice';
-        $auth->add($createServiceBackoffice);
+        $auth->add($updateServiceBackoffice);
 
         $deleteServiceBackoffice = $auth->createPermission('deleteServiceBackoffice');
         $deleteServiceBackoffice->description = 'Apagar Serviço no Backoffice';
