@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m211202_095755_create_plan
+ * Class m211116_113107_init_service
  */
-class m211202_095755_create_plan extends Migration
+class m221116_113107_create_service extends Migration
 {
     /**
      * {@inheritdoc}
@@ -18,26 +18,19 @@ class m211202_095755_create_plan extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%plan}}', [
+        $this->createTable('{{%service}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string()->notNull()->unique(),
+            'category' => $this->string()->notNull(),
+            'name' => $this->string()->notNull(),
             'description' => $this->text()->notNull(),
             'price' => $this->decimal(11,2)->notNull(),
-            'num_service' => $this->integer()->notNull(),
-            'num_highlight' => $this->integer()->notNull(),
+            'rating_average' => $this->decimal(11,2)->null(),
+            'user_id' => $this->integer()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->insert('{{%plan}}',array(
-            'name' => 'basic',
-            'description' => 'teste plan',
-            'price' => '2.00',
-            'num_service' => '2',
-            'num_highlight' => '1',
-            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
-            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
-        ));
+        $this->addForeignKey('FK_service_user', 'service', 'user_id', 'user', 'id');
     }
 
     /**
@@ -45,7 +38,8 @@ class m211202_095755_create_plan extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%plan}}');
+        $this->dropForeignKey('FK_service_user', 'service');
+        $this->dropTable('{{%service}}');
     }
 
     /*
@@ -57,7 +51,7 @@ class m211202_095755_create_plan extends Migration
 
     public function down()
     {
-        echo "m211202_095755_create_plan cannot be reverted.\n";
+        echo "m211116_113107_init_service cannot be reverted.\n";
 
         return false;
     }

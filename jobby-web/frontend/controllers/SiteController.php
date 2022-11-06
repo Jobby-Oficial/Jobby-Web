@@ -177,7 +177,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Obrigado por se ter Registado!!!');
-            return $this->redirect(['/login']);
+            return $this->redirect(['site/login']);
         }
 
         return $this->render('signup', [
