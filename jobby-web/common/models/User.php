@@ -7,12 +7,24 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use frontend\models\Favorite;
+use common\models\Schedule;
 
 /**
  * User model
  *
  * @property integer $id
+ * @property string $image
  * @property string $username
+ * @property string $name
+ * @property integer $phone
+ * @property string $genre
+ * @property string $country
+ * @property string $city
+ * @property string $morada
+ * @property string $biography
+ * @property string $password_repeat
+ * @property integer $typeUser
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
@@ -29,6 +41,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    public $typeUser;
+    public $password;
+    public $password_repeat;
 
     /**
      * {@inheritdoc}
@@ -44,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::class,
+            TimestampBehavior::className(),
         ];
     }
 
@@ -54,7 +69,33 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+//            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            [['username', 'email', 'name', 'phone', 'genre', 'birth', 'country', 'city', 'morada', 'biography', 'status', 'typeUser', 'password', 'password_repeat', 'plan_start_date' , 'plan_id'], 'required'],
+            [['username', 'email'], 'trim'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este username já existe.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+
+            ['email', 'email'],
+            [['email'], 'string', 'max' => 255],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já existe.'],
+
+            [['typeUser'], 'safe'],
+
+            // [['image'],'file'],
+
+            [['password'], 'safe'],
+
+            [['password_repeat'], 'safe'],
+
+            ['phone', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este Número já existe.'],
+
+            [['birth', 'plan_start_date'], 'date', 'format' => 'php:Y-m-d'],
+
+            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"As Palavras-passe não Combinam" ],
+
+            [['plan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Plan::className(), 'targetAttribute' => ['plan_id' => 'id']],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
@@ -72,8 +113,12 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['auth_key' => $token]);
     }
+    /*public static function findIdentityByAccessToken($token, $type = null)
+    {
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }*/
 
     /**
      * Finds user by username
@@ -209,5 +254,104 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            // 'image' => Yii::t('app', 'Imagem'),
+            'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'Email'),
+            'name' => Yii::t('app', 'Nome'),
+            'phone' => Yii::t('app', 'Telefone'),
+            'genre' => Yii::t('app', 'Género'),
+            'birth' => Yii::t('app', 'Data de Nascimento'),
+            'country' => Yii::t('app', 'País'),
+            'city' => Yii::t('app', 'Cidade'),
+            'morada' => Yii::t('app', 'Morada'),
+            'biography' => Yii::t('app', 'Biografia'),
+            'status' => Yii::t('app', 'Status'),
+            'password' => Yii::t('app', 'Password'),
+            'plan_start_date' => Yii::t('app', 'Começo do Plano'),
+            'plan_end_date' => Yii::t('app', 'Final do Plano'),
+            'highlight_date_end' => Yii::t('app', 'Fim do Destaque'),
+            'plan_id' => Yii::t('app', 'Plano'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * Gets query for [[Avaliations]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvaliations()
+    {
+        return $this->hasMany(Avaliation::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Plan]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlan()
+    {
+        return $this->hasOne(Plan::className(), ['id' => 'plan_id']);
+    }
+
+    /**
+     * Gets query for [[Reports]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReports()
+    {
+        return $this->hasMany(Report::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Services]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getServices()
+    {
+        return $this->hasMany(Service::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Favorites]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFavorites()
+    {
+        return $this->hasMany(Favorite::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[SchedulesClient]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSchedulesClient()
+    {
+        return $this->hasMany(Schedule::className(), ['client_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[SchedulesProfessional]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSchedulesProfessional()
+    {
+        return $this->hasMany(Schedule::className(), ['professional_id' => 'id']);
     }
 }
