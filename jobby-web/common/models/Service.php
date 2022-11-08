@@ -2,7 +2,13 @@
 
 namespace common\models;
 
+use Bluerhinos\phpMQTT;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use frontend\models\Favorite;
+use common\models\ServiceGallery;
+use common\models\Schedule;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "service".
@@ -36,15 +42,25 @@ class Service extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         return [
             [['category', 'name', 'description', 'price', 'user_id', 'created_at', 'updated_at'], 'required'],
             [['description'], 'string'],
-            [['price', 'rating_average'], 'number'],
+            //[['price', 'rating_average'], 'number'],
             [['user_id', 'created_at', 'updated_at'], 'integer'],
             [['category', 'name'], 'string', 'max' => 255],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            //[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -55,25 +71,25 @@ class Service extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category' => 'Category',
-            'name' => 'Name',
-            'description' => 'Description',
-            'price' => 'Price',
-            'rating_average' => 'Rating Average',
-            'user_id' => 'User ID',
+            'category' => 'Categoria',
+            'name' => 'Nome',
+            'description' => 'Descrição',
+            'price' => 'Preço',
+            'rating_average' => 'Classificação',
+            'user_id' => 'Utilizador',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
     /**
-     * Gets query for [[Avaliations]].
+     * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getAvaliations()
+    public function getUser()
     {
-        return $this->hasMany(Avaliation::class, ['service_id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     /**
@@ -87,16 +103,6 @@ class Service extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Schedules]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSchedules()
-    {
-        return $this->hasMany(Schedule::class, ['service_id' => 'id']);
-    }
-
-    /**
      * Gets query for [[ServiceGalleries]].
      *
      * @return \yii\db\ActiveQuery
@@ -107,12 +113,22 @@ class Service extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[User]].
+     * Gets query for [[Schedules]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
+    public function getSchedules()
     {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
+        return $this->hasMany(Schedule::class, ['service_id' => 'id']);
     }
+
+    /**
+     * Gets query for [[Avaliations]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    /*public function getAvaliations()
+    {
+        return $this->hasMany(Avaliation::class, ['service_id' => 'id']);
+    }*/
 }

@@ -6,27 +6,27 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "plan".
+ * This is the model class for table "report".
  *
  * @property int $id
  * @property string $name
  * @property string $description
- * @property float $price
- * @property int $num_service
- * @property int $num_highlight
+ * @property int $service_id
+ * @property int $user_id
  * @property int $created_at
  * @property int $updated_at
  *
- * @property User[] $users
+ * @property Service $service
+ * @property User $user
  */
-class Plan extends \yii\db\ActiveRecord
+class Report extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'plan';
+        return 'report';
     }
 
     /**
@@ -45,19 +45,17 @@ class Plan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            /*[['name', 'description', 'price', 'num_service', 'num_highlight', 'created_at', 'updated_at'], 'required'],
+            /*[['name', 'description', 'user_id', 'created_at', 'updated_at'], 'required'],
             [['description'], 'string'],
-            [['price'], 'number'],
-            [['num_service', 'num_highlight', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['name'], 'unique'],*/
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],*/
 
-            [['name', 'description', 'price', 'num_service', 'num_highlight'], 'required'],
+            [['name', 'description', 'user_id'], 'required'],
             [['description'], 'string'],
-            [['price'], 'double'],
-            [['num_service', 'num_highlight', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -70,30 +68,26 @@ class Plan extends \yii\db\ActiveRecord
             /*'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'price' => 'Price',
-            'num_service' => 'Num Service',
-            'num_highlight' => 'Num Highlight',
+            'user_id' => 'User ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',*/
 
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Nome'),
             'description' => Yii::t('app', 'Descrição'),
-            'price' => Yii::t('app', 'Preço'),
-            'num_service' => Yii::t('app', 'Número de Serviços'),
-            'num_highlight' => Yii::t('app', 'Número de Destaques'),
+            'user_id' => Yii::t('app', 'Utilizador'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 
     /**
-     * Gets query for [[Users]].
+     * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->hasMany(User::class, ['plan_id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }
