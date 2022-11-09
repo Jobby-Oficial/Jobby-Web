@@ -2,16 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Avaliation;
-use common\models\AvaliationSearch;
+use common\models\JobStatus;
+use common\models\JobStatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * AvaliationController implements the CRUD actions for Avaliation model.
+ * JobStatusController implements the CRUD actions for JobStatus model.
  */
-class AvaliationController extends Controller
+class JobStatusController extends Controller
 {
     /**
      * @inheritDoc
@@ -21,6 +22,21 @@ class AvaliationController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'rules' => [
+                        [
+                            'actions' => ['create', 'update', 'delete'],
+                            'allow' => true,
+                            'roles' => ['admin', 'developer'],
+                        ],
+                        [
+                            'actions' => ['index', 'view'],
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -32,13 +48,13 @@ class AvaliationController extends Controller
     }
 
     /**
-     * Lists all Avaliation models.
+     * Lists all JobStatus models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new AvaliationSearch();
+        $searchModel = new JobStatusSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +64,7 @@ class AvaliationController extends Controller
     }
 
     /**
-     * Displays a single Avaliation model.
+     * Displays a single JobStatus model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,16 +77,17 @@ class AvaliationController extends Controller
     }
 
     /**
-     * Creates a new Avaliation model.
+     * Creates a new JobStatus model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Avaliation();
+        $model = new JobStatus();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Criado com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -83,7 +100,7 @@ class AvaliationController extends Controller
     }
 
     /**
-     * Updates an existing Avaliation model.
+     * Updates an existing JobStatus model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -94,6 +111,7 @@ class AvaliationController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Atualizado com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -103,7 +121,7 @@ class AvaliationController extends Controller
     }
 
     /**
-     * Deletes an existing Avaliation model.
+     * Deletes an existing JobStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -113,19 +131,21 @@ class AvaliationController extends Controller
     {
         $this->findModel($id)->delete();
 
+        \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Eliminado com Sucesso!');
+
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Avaliation model based on its primary key value.
+     * Finds the JobStatus model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Avaliation the loaded model
+     * @return JobStatus the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Avaliation::findOne(['id' => $id])) !== null) {
+        if (($model = JobStatus::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

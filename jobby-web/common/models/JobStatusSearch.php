@@ -4,12 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Avaliation;
+use common\models\JobStatus;
 
 /**
- * AvaliationSearch represents the model behind the search form of `common\models\Avaliation`.
+ * JobStatusSearch represents the model behind the search form of `common\models\JobStatus`.
  */
-class AvaliationSearch extends Avaliation
+class JobStatusSearch extends JobStatus
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class AvaliationSearch extends Avaliation
     public function rules()
     {
         return [
-            [['id', 'service_id', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['avaliation'], 'number'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class AvaliationSearch extends Avaliation
      */
     public function search($params)
     {
-        $query = Avaliation::find();
+        $query = JobStatus::find();
 
         // add conditions that should always apply here
 
@@ -59,12 +59,11 @@ class AvaliationSearch extends Avaliation
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'avaliation' => $this->avaliation,
-            'service_id' => $this->service_id,
-            'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
