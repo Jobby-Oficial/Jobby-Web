@@ -1,19 +1,19 @@
 <?php
 
-use common\models\Plan;
+use common\models\Avaliation;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var common\models\PlanSearch $searchModel */
+/** @var common\models\AvaliationSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Reclamações');
+$this->title = Yii::t('app', 'Avaliações');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="plan-index">
+<div class="avaliation-index">
 
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Criar Plano'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Criar Avaliação'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -40,11 +40,26 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
-            //'description:ntext',
-            'price',
-            //'num_service',
-            //'num_highlight',
+            'avaliation',
+
+            [
+                //'label' => 'Utilizador',
+                'attribute' => 'service_id',
+                'value' => function($model, $index, $dataColumn) {
+                    return $model->service->name;
+                },
+
+            ],
+            [
+                //'label' => 'Utilizador',
+                'attribute' => 'user_id',
+                'value' => function($model, $index, $dataColumn) {
+                    return $model->user->username;
+                },
+
+            ],
+            //'service_id',
+            //'user_id',
             //'created_at',
             //'updated_at',
 
@@ -59,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!--[
 'class' => ActionColumn::className(),
-'urlCreator' => function ($action, Plan $model, $key, $index, $column) {
+'urlCreator' => function ($action, Avaliation $model, $key, $index, $column) {
 return Url::toRoute([$action, 'id' => $model->id]);
 }
 ],-->

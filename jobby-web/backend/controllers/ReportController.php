@@ -2,17 +2,19 @@
 
 namespace backend\controllers;
 
-use common\models\Plan;
-use common\models\PlanSearch;
-use yii\filters\AccessControl;
+use common\models\Report;
+use common\models\User;
+use common\models\ReportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use yii\filters\AccessControl;
 
 /**
- * PlanController implements the CRUD actions for Plan model.
+ * ReportController implements the CRUD actions for Report model.
  */
-class PlanController extends Controller
+class ReportController extends Controller
 {
     /**
      * @inheritDoc
@@ -28,11 +30,11 @@ class PlanController extends Controller
                         [
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
-                            'roles' => ['marketeer', 'developer'],
+                            'roles' => ['developer'],
                         ],
                         [
-                            'actions' => ['index', 'view'],
                             'allow' => true,
+                            'actions' => ['index', 'view'],
                             'roles' => ['@'],
                         ],
                     ],
@@ -48,13 +50,13 @@ class PlanController extends Controller
     }
 
     /**
-     * Lists all Plan models.
+     * Lists all Report models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PlanSearch();
+        $searchModel = new ReportSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +66,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Displays a single Plan model.
+     * Displays a single Report model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -77,17 +79,18 @@ class PlanController extends Controller
     }
 
     /**
-     * Creates a new Plan model.
+     * Creates a new Report model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Plan();
+        $model = new Report();
+
+        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                \Yii::$app->session->setFlash('success', 'O Plano foi Criado com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -96,11 +99,12 @@ class PlanController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'users' => $users,
         ]);
     }
 
     /**
-     * Updates an existing Plan model.
+     * Updates an existing Report model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -110,18 +114,20 @@ class PlanController extends Controller
     {
         $model = $this->findModel($id);
 
+        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'O Plano foi Atualizado com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'users' => $users,
         ]);
     }
 
     /**
-     * Deletes an existing Plan model.
+     * Deletes an existing Report model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -131,21 +137,19 @@ class PlanController extends Controller
     {
         $this->findModel($id)->delete();
 
-        \Yii::$app->session->setFlash('success', 'O Plano foi Eliminado com Sucesso!');
-
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Plan model based on its primary key value.
+     * Finds the Report model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Plan the loaded model
+     * @return Report the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Plan::findOne(['id' => $id])) !== null) {
+        if (($model = Report::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

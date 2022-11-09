@@ -2,17 +2,16 @@
 
 namespace backend\controllers;
 
-use common\models\Plan;
-use common\models\PlanSearch;
-use yii\filters\AccessControl;
+use common\models\Avaliation;
+use common\models\AvaliationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlanController implements the CRUD actions for Plan model.
+ * AvaliationController implements the CRUD actions for Avaliation model.
  */
-class PlanController extends Controller
+class AvaliationController extends Controller
 {
     /**
      * @inheritDoc
@@ -22,21 +21,6 @@ class PlanController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'access' => [
-                    'class' => AccessControl::className(),
-                    'rules' => [
-                        [
-                            'actions' => ['create', 'update', 'delete'],
-                            'allow' => true,
-                            'roles' => ['marketeer', 'developer'],
-                        ],
-                        [
-                            'actions' => ['index', 'view'],
-                            'allow' => true,
-                            'roles' => ['@'],
-                        ],
-                    ],
-                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -48,13 +32,13 @@ class PlanController extends Controller
     }
 
     /**
-     * Lists all Plan models.
+     * Lists all Avaliation models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PlanSearch();
+        $searchModel = new AvaliationSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +48,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Displays a single Plan model.
+     * Displays a single Avaliation model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -77,17 +61,16 @@ class PlanController extends Controller
     }
 
     /**
-     * Creates a new Plan model.
+     * Creates a new Avaliation model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Plan();
+        $model = new Avaliation();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                \Yii::$app->session->setFlash('success', 'O Plano foi Criado com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -100,7 +83,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Updates an existing Plan model.
+     * Updates an existing Avaliation model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -111,7 +94,6 @@ class PlanController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'O Plano foi Atualizado com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -121,7 +103,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Deletes an existing Plan model.
+     * Deletes an existing Avaliation model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -131,21 +113,19 @@ class PlanController extends Controller
     {
         $this->findModel($id)->delete();
 
-        \Yii::$app->session->setFlash('success', 'O Plano foi Eliminado com Sucesso!');
-
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Plan model based on its primary key value.
+     * Finds the Avaliation model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Plan the loaded model
+     * @return Avaliation the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Plan::findOne(['id' => $id])) !== null) {
+        if (($model = Avaliation::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

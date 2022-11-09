@@ -1,19 +1,19 @@
 <?php
 
-use common\models\Plan;
+use common\models\Service;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+
 /** @var yii\web\View $this */
-/** @var common\models\PlanSearch $searchModel */
+/** @var common\models\ServiceSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Reclamações');
+$this->title = Yii::t('app', 'Serviços');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="plan-index">
+<div class="service-index">
 
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,10 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Criar Plano'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Criar Serviço'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -40,11 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'category',
             'name',
             //'description:ntext',
             'price',
-            //'num_service',
-            //'num_highlight',
+            //'rating_average',
+            //'user_id',
             //'created_at',
             //'updated_at',
 
@@ -52,14 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
 
 </div>
 
 
 <!--[
 'class' => ActionColumn::className(),
-'urlCreator' => function ($action, Plan $model, $key, $index, $column) {
+'urlCreator' => function ($action, Service $model, $key, $index, $column) {
 return Url::toRoute([$action, 'id' => $model->id]);
 }
 ],-->

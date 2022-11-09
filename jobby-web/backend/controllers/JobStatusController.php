@@ -2,17 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Plan;
-use common\models\PlanSearch;
-use yii\filters\AccessControl;
+use common\models\JobStatus;
+use common\models\JobStatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * PlanController implements the CRUD actions for Plan model.
+ * JobStatusController implements the CRUD actions for JobStatus model.
  */
-class PlanController extends Controller
+class JobStatusController extends Controller
 {
     /**
      * @inheritDoc
@@ -28,7 +28,7 @@ class PlanController extends Controller
                         [
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
-                            'roles' => ['marketeer', 'developer'],
+                            'roles' => ['admin', 'developer'],
                         ],
                         [
                             'actions' => ['index', 'view'],
@@ -48,13 +48,13 @@ class PlanController extends Controller
     }
 
     /**
-     * Lists all Plan models.
+     * Lists all JobStatus models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PlanSearch();
+        $searchModel = new JobStatusSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +64,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Displays a single Plan model.
+     * Displays a single JobStatus model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -77,17 +77,17 @@ class PlanController extends Controller
     }
 
     /**
-     * Creates a new Plan model.
+     * Creates a new JobStatus model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Plan();
+        $model = new JobStatus();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                \Yii::$app->session->setFlash('success', 'O Plano foi Criado com Sucesso!');
+                \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Criado com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -100,7 +100,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Updates an existing Plan model.
+     * Updates an existing JobStatus model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -111,7 +111,7 @@ class PlanController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'O Plano foi Atualizado com Sucesso!');
+            \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Atualizado com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -121,7 +121,7 @@ class PlanController extends Controller
     }
 
     /**
-     * Deletes an existing Plan model.
+     * Deletes an existing JobStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -131,21 +131,21 @@ class PlanController extends Controller
     {
         $this->findModel($id)->delete();
 
-        \Yii::$app->session->setFlash('success', 'O Plano foi Eliminado com Sucesso!');
+        \Yii::$app->session->setFlash('success', 'O Status do Serviço foi Eliminado com Sucesso!');
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Plan model based on its primary key value.
+     * Finds the JobStatus model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Plan the loaded model
+     * @return JobStatus the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Plan::findOne(['id' => $id])) !== null) {
+        if (($model = JobStatus::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
