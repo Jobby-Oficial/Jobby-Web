@@ -1,0 +1,181 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
+/*@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');*/
+
+@import 'site.css';
+@import 'home.css';
+/*@import 'profile.css';*/
+@import 'service.css';
+@import 'support.css';
+@import 'schedule.css';
+
+
+main > .container, main > .container-fluid
+{
+//padding: 70px 15px 20px;
+  max-width: 100%;
+  padding: 0px;
+}
+body{margin-top: 60px;}
+
+.footer {
+  background-color: #002A32;
+  font-size: .9em;
+  height: 60px;
+  font-weight: bold;
+}
+
+.footer > .container, .footer > .container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  color: white;
+}
+
+.footer-info-dots {
+  width: 5px;
+  margin-right: 10px;
+}
+
+/* ╔═══════════════════════════╗ */
+/* ║     NavBar Components     ║ */
+/* ╚═══════════════════════════╝ */
+
+/* align the logout "link" (button in form) of the navbar */
+.navbar form > button.logout {
+  padding-top: 7px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media(max-width:767px) {
+  .navbar form > button.logout {
+    display:block;
+    text-align: left;
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+.navbar form > button.logout:focus,
+.navbar form > button.logout:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar form > button.logout:focus {
+  outline: none;
+}
+
+.navbar-brand img {
+  display: inline;
+  vertical-align: top;
+  width: 100px;
+}
+
+.nav-link {
+  color: #21CECC;
+}
+
+.navbar {
+  background-color: #002A32;
+  font-weight: bold;
+}
+
+.navbar-item-jobby:hover {
+  color: #ecf0f1;
+  text-shadow: 0 0 5px #21CECC,
+  0 0 10px #21CECC,
+  0 0 20px #21CECC,
+  0 0 40px #21CECC;
+  transition: text-shadow .15s ease-in-out;
+}
+
+/* ***** End of Section ***** */
+
+
+/* ╔═══════════════════╗ */
+/* ║     Copyright     ║ */
+/* ╚═══════════════════╝ */
+
+.copyright span,
+.copyright a {
+  /*color: #878787;*/
+  color: #21CECC;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.copyright span:hover,
+.copyright a:hover {
+  color: #ecf0f1;
+  text-shadow: 0 0 5px #21cecc,
+  0 0 10px #21CECC,
+  0 0 20px #21CECC,
+  0 0 40px #21CECC;
+  transition: text-shadow .15s ease-in-out;
+}
+
+.copyright span:hover {
+  cursor: default;
+}
+
+.copyright-menu ul {
+  text-align: right;
+  margin: 0;
+}
+
+.copyright-menu li {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+/* ***** End of Section ***** */
+
+/* ***** End of Section ***** */
+
+/*body{
+  margin-top: 56px;
+  font-family: 'Quicksand', sans-serif;
+}*/
+
+/*.navbar{
+  background: linear-gradient(45deg, #21CECC, #12CBC4, #01a3a4);
+}*/
+
+/*.navbar-item-jobby a{
+  color: #ecf0f1 !important;
+}*/
+
+/*.navbar-item-jobby .dropdown-menu .dropdown-item{
+  color: black !important;
+}
+
+.footer{
+  margin-top: 56px;
+  height: auto;
+}
+
+.footer #footer-info-wrap{
+  justify-content: left !important;
+}
+
+.footer .footer-items-wrap{
+  justify-content: right;
+}*/
+
+/*
+@media(max-width: 768px){
+
+  .footer #footer-info-wrap{
+    margin-top: 10px;
+    justify-content: center !important;
+  }
+
+  .footer .footer-items-wrap{
+    margin-top: 15px;
+    justify-content: center;
+  }
+}*/

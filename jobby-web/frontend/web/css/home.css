@@ -1,0 +1,146 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+ 
+ .home-header-wrap{
+   margin-top: -56px;
+ }
+
+/*****************************************************/
+/*******************Home Header***********************/
+/*****************************************************/
+
+.home-header-wrapper{
+  margin-bottom: 100px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  margin-top: 55px;
+}
+
+.home-header-links{
+  border: 2px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/*****************************************************/
+/******************Home Categories********************/
+/*****************************************************/
+
+.home-categories-wrapper{
+  margin-bottom: 100px;
+}
+
+.home-categories-wrap{
+  flex-flow: wrap;
+}
+
+.home-categories-image{
+  width: 80px;
+  vertical-align: middle;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.home-categories-adverts{
+  font-size: 10px;
+}
+
+@media (max-width: 767px) {
+  .home-categories{
+    display: initial !important;
+  }
+  .home-categories-item-wrap{
+    margin-right: 0 !important;
+    margin-bottom: 30px;
+  }
+}
+
+/*****************************************************/
+/*******************Home Services*********************/
+/*****************************************************/
+
+.home-services-wrapper{
+  margin-bottom: 100px;
+}
+
+.home-services-body-wrap{
+  border-bottom: 1px solid gray;
+}
+
+.home-services-star-svg{
+  width: 25px;
+}
+
+.home-service-avaliation{
+  font-size: 10px;
+}
+
+.home-services-favorite-heart-svg, .home-services-favorite-heart-favorite-svg{
+  width: 20px;
+}
+
+.home-services-favorite-heart-svg:hover, .home-services-favorite-heart-favorite-svg:hover{
+  cursor: pointer;
+}
+
+.home-services-description{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.home-services-paid-wrap{
+  border: 1px solid gray;
+  border-radius: 30px;
+}
+
+.home-services-paid{
+  font-size: 12px;
+}
+
+.home-services-more-wrap{
+  border: 1px solid gray;
+  border-radius: 30px;
+}
+
+.home-services-more{
+  font-size: 13px;
+}
+
+/*****************************************************/
+/*********************Home Plans**********************/
+/*****************************************************/
+
+.home-plans-wrapper{
+  margin-bottom: 80px;
+  margin-top: 100px;
+}
+
+.home-plans-description{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.home-plans-more-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.home-plans-more{
+  font-size: 13px;
+  border: 1px solid gray;
+  border-radius: 30px;
+}
+
+.home-plans-image{
+  width: 400px;
+}

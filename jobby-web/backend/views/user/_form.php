@@ -51,6 +51,12 @@ $this->registerJsFile('@web/js/registerForm.js', ['depends' => [JqueryAsset::cla
 
     <?= $form->field($model, 'biography')->textarea() ?>
 
+    <?php /*if ($model->password_hash != null){ */?><!--
+
+        <?/*= $form->field($model, 'password')->checkbox([],false)->label('Atualizar Password') */?>
+
+    --><?php /*} */?>
+
     <?= $form->field($model, 'password')->passwordInput()->label('Palavra-passe') ?>
 
     <?= $form->field($model, 'password_repeat')->passwordInput()->label('Confirmar Palavra-passe') ?>
