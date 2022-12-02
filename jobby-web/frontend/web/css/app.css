@@ -19,7 +19,10 @@ main > .container, main > .container-fluid
   max-width: 100%;
   padding: 0px;
 }
-body{margin-top: 60px;}
+body {
+  //background: #f2f7fd;
+  margin-top: 60px;
+}
 
 .footer {
   background-color: #002A32;
