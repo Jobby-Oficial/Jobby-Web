@@ -1,0 +1,298 @@
+/*
+ *   Copyright (c) 2021 Leonardo Ferreira
+ *   All rights reserved.
+ */
+
+/* --------------------------------------------------
+                   DEFAULT CLASS
+-------------------------------------------------- */
+body{
+    background-color: #f6f6f6;
+}
+
+/* ---- ---- ---- ---- ---- ---- */
+/* ----  Header of profile  ---- */
+/* ---- ---- ---- ---- ---- ---- */
+.profile-banner {
+    width: 100%;
+    background-color: #00bb00;
+    background-image: url('https://1.bp.blogspot.com/-cs0-8i65ivk/XlFUsfgWofI/AAAAAAAAJLU/LqTyGw8T504M8KgNvFSHSt30WG6NKSRiwCLcBGAsYHQ/s640/Wallpaper%2Bde%2Bmontanhas.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 150px;
+}
+
+.profile-img{
+    width: 250px;
+    height: 250px;
+}
+
+.profile-bg-header{
+    width: 100%;
+    background-color: #0000FF;
+}
+.profile-name{
+    font-weight: bold;
+}
+.profile-username{
+    color: #939393;
+}
+.profile-div-info>p{
+    display: inline;
+}
+.profile-first-svg{
+    margin-left: 0px !important;
+}
+.profile-div-info>img{
+    width: 16px;
+    margin-top: 2px;
+    margin-right: 5px;
+    margin-left: 4px;
+}
+.profile-div-report>p{
+    font-size: 14px;
+    color: #b6b6b6;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.profile-div-report>div{
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.profile-dropdown-menu-item, .profile-dropdown-menu-item:hover{
+    color: black;
+    text-decoration: none;
+}
+
+/* ---- ---- ---- ---- ---- ---- */
+/* ----   Body of profile   ---- */
+/* ---- ---- ---- ---- ---- ---- */
+.profile-contact{
+    padding-top: 30px;
+}
+.profile-contact>div>div>div>h5{
+    font-weight: bold;
+}
+.profile-body-section{
+    background-color: white;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    height: auto;
+}
+.profile-body-service{
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 20px;
+}
+.profile-body-service>div>h4{
+    font-weight: bold;
+}
+
+/* ---- ---- ---- ---- ---- ---- */
+
+@media (max-width: 1199px){
+    .profile-img{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 992px){
+    .profile-img{
+        width: 170px;
+        height: 170px;
+    }
+}
+
+
+
+/* --------------------------------------------------
+                    WIDTH < 767
+-------------------------------------------------- */
+@media (max-width: 767px) {
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----  Header of profile  ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    .profile-bg-header{
+        padding-bottom: 40px;
+    }
+    .profile-img{
+        margin-top: -80px;
+        width: 240px;
+        height: 240px;
+    }
+    .profile-div-img{
+        display: flex;
+        justify-content: center;
+    }
+    .profile-div-infos{
+        text-align: center;
+    }
+    .profile-name{
+        font-size: 28px;
+        padding-top: 30px;
+    }
+    .profile-username{
+        font-size: 16px;
+    }
+    .profile-div-info{
+        text-align: center;
+        padding-top: 20px;
+    }
+    .profile-div-info>p{
+        font-size: 14px;
+    }
+    .profile-div-report>div{
+        display: none;
+    }
+    .profile-div-report>p{
+        display: block;
+    }
+
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----   Body of profile   ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    .profile-contact{
+        padding-bottom: 25px;
+    }
+    .profile-contact>div>div>p{
+        display: inline;
+    }
+    #mytabpc{
+        display: none;
+    }
+
+    /* ---- ---- ---- ---- ---- ---- */
+}
+
+
+
+/* --------------------------------------------------
+                    WIDTH > 768
+-------------------------------------------------- */
+@media (min-width: 768px) {
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----  Header of profile  ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    .profile-bg-header{
+        padding-bottom: 30px;
+    }
+    .profile-img{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .profile-name{
+        font-size: 24px;
+        padding-top: 14px;
+    }
+    .profile-username{
+        font-size: 12px;
+    }
+    .profile-div-info{
+        padding-top: 10px;
+    }
+    .profile-div-info>p{
+        font-size: 10px;
+    }
+    .profile-div-report>div{
+        display: block;
+    }
+    .profile-div-report>p{
+        display: none;
+    }
+    .profile-div-report>div{
+        margin-top: 0px;
+        width: 20px;
+        height: 20px;
+    }
+
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----   Body of profile   ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    #myTab{
+        display: none;
+    }
+    #myTabContent{
+        display: none;
+    }
+    #home{
+        display: none;
+    }
+
+    /* ---- ---- ---- ---- ---- ---- */
+}
+
+
+
+/* --------------------------------------------------
+                    WIDTH > 992
+-------------------------------------------------- */
+@media (min-width: 992px) {
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----  Header of profile  ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    .profile-bg-header{
+        padding-bottom: 40px;
+    }
+    .profile-img{
+        margin-top: -70px;
+    }
+    .profile-name{
+        font-size: 28px;
+        padding-top: 28px;
+    }
+    .profile-username{
+        font-size: 16px;
+    }
+    .profile-div-info{
+        padding-top: 28px;
+    }
+    .profile-div-info>p{
+        font-size: 14px;
+    }
+    .profile-div-report>div{
+        margin-top: 6px;
+        width: 23px;
+        height: 23px;
+    }
+
+    /* ---- ---- ---- ---- ---- ---- */
+}
+
+
+
+/* --------------------------------------------------
+                    WIDTH > 1200
+-------------------------------------------------- */
+@media (min-width: 1200px) {
+    /* ---- ---- ---- ---- ---- ---- */
+    /* ----  Header of profile  ---- */
+    /* ---- ---- ---- ---- ---- ---- */
+    .profile-bg-header{
+        padding-bottom: 48px;
+    }
+    .profile-img{
+        margin-top: -90px;
+    }
+    .profile-name{
+        font-size: 32px;
+        padding-top: 30px;
+    }
+    .profile-username{
+        font-size: 18px;
+    }
+    .profile-div-info{
+        padding-top: 30px;
+    }
+    .profile-div-info>p{
+        font-size: 16px;
+    }
+    .profile-div-report>div{
+        margin-top: 8px;
+        width: 25px;
+        height: 25px;
+    }
+}

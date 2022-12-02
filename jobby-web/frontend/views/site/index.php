@@ -8,13 +8,13 @@ use yii\helpers\Url;
 $this->title = 'My Yii Application';
 ?>
 
-<div class="header">
+<section class="header">
     <div class="inner-header flex">
         <div class="intro-text">
             <div class="intro-lead-in"><?= Html::img('@web/assets/img/jobby_oficial_white_box_v4.svg', ['alt' => 'Logo', 'class' => 'img-fit']);?></div>
             <div class="intro-heading">Encontra o serviço que procuras</div>
             <div class="flex-grid-center">
-                <a href="#" class="fuller-button white">Explorar Serviços</a>
+                <a href="<?=Url::to(['service/index']);?>" class="fuller-button white">Explorar Serviços</a>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@ $this->title = 'My Yii Application';
         </svg>
     </div>
     <!--Waves end-->
-</div>
+</section>
 
 <section class="presentation-section">
     <div class="container">

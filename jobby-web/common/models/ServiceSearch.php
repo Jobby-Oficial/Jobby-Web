@@ -17,10 +17,6 @@ class ServiceSearch extends Service
     public function rules()
     {
         return [
-            /*[['id', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['category', 'name', 'description'], 'safe'],
-            [['price', 'rating_average'], 'number'],*/
-
             [['id', 'price', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['category', 'name', 'description'], 'safe'],
             [['rating_average'], 'number'],

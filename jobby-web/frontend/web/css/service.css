@@ -1,0 +1,102 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
+.service-info a, .service-professional-username{
+  color: black;
+}
+
+.service-info a:hover, .service-professional-username:hover{
+  text-decoration: none;
+  color: black;
+}
+
+.professional-img-profile-service-page{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.service-rating-star img{
+  width: 15px;
+}
+
+.professional-service-order-box{
+  border: 2px solid grey;
+  padding: 20px;
+}
+
+.professional-service-order-box-warning{
+  font-size: 10px;
+}
+
+.professional-service-order-box-button a{
+  color: black;
+  text-decoration: none;
+  border: 2px solid grey;
+  border-radius: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.service-gallery-images{
+  width: 150px;
+  margin-right: 10px;
+}
+
+#service-gallery-id-wrap{
+  width: 100%;
+  display: flex;
+}
+
+#service-gallery-form-id{
+  width: 100%;
+  margin-top: 50px;
+}
+
+#schedule-service_date-kvdate .datepicker{
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 576px){
+  .professional-service-carousel-wrap {
+      padding-left: 0;
+      padding-right: 0;
+  }
+}
+
+@media (max-width: 414px){
+  .professional-service-page-wrap{
+      display: block !important;
+  }
+  
+  .professional-divisor-service-page{
+      display: none;
+  }
+
+  .professional-service-page-item{
+      margin-bottom: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background: #f2f7fd;
+}*/

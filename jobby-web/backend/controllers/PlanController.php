@@ -28,7 +28,7 @@ class PlanController extends Controller
                         [
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
-                            'roles' => ['marketeer', 'developer'],
+                            'roles' => ['admin', 'marketeer', 'developer'],
                         ],
                         [
                             'actions' => ['index', 'view'],
