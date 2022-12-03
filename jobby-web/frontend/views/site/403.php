@@ -32,6 +32,6 @@ $this->registerJsFile('@web/js/403.js');
             <use xlink:href="#tornillo" y="60"></use>
         </g>
     </svg>
-    <h1>You are not allowed to enter here</h1>
-    <h2>Go <a href="<?= Url::to(['/']); ?>" class="return-home-button-forbidden">Home!</a></h2>
+    <h1>Não tens permissão para entrar aqui</h1>
+    <h2>Págna <a href="<?= Url::to(['/']); ?>" class="return-home-button-forbidden">Inicial!</a></h2>
 </section>

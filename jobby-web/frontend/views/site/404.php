@@ -215,12 +215,12 @@ $this->registerJsFile('@web/js/404.js');
             </div>
             <div class="col-md-6 align-self-center">
                 <h1>404</h1>
-                <h2>UH OH! You're lost.</h2>
-                <p>The page you are looking for does not exist.
-                    How you got here is a mystery. But you can click the button below
-                    to go back to the homepage.
+                <h2>UH OH! Estás Perdido.</h2>
+                <p>A página que está a tentar aceder não existe.
+                    Como chegaste aqui é um mistério.
+                    Mas podes clicar no botão abaixo para voltar à página inicial.
                 </p>
-                <a href="<?= Url::to(['/']); ?>" class="return-home-button btn green">HOME</a>
+                <a href="<?= Url::to(['/']); ?>" class="return-home-button btn green">Página Inicial</a>
             </div>
         </div>
     </div>
