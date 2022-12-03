@@ -10,7 +10,7 @@ $(document).ready(function() {
         success: function(result) {
             $(result.data).each(function( index, item ) {
                 $(item).each(function( indice, value ) {
-                    $("#usersearch-country").append("<option value='" + value.country + "'>" + value.country + "</option>");
+                    $("#user-country").append("<option value='" + value.country + "'>" + value.country + "</option>");
                 });
             });
         },
@@ -20,15 +20,15 @@ $(document).ready(function() {
     });
 });
 
-$("#usersearch-country").change(function() {
-    $('#usersearch-city').empty();
+$("#user-country").change(function() {
+    $('#user-city').empty();
     $.ajax({
         url: "https://countriesnow.space/api/v0.1/countries/cities",
         type: 'POST',
-        data: {country: $("#usersearch-country").val()},
+        data: {country: $("#user-country").val()},
         success: function(result) {
             $(result.data).each(function( index, item ) {
-                $("#usersearch-city").append("<option value='" + item + "'>" + item + "</option>");
+                $("#user-city").append("<option value='" + item + "'>" + item + "</option>");
             });
         },
         error: function() {

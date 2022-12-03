@@ -1,7 +1,8 @@
 /*
- *   Copyright (c) 2021 Leonardo Ferreira
+ *   Copyright (c) 2022 Guilherme Cruz
  *   All rights reserved.
  */
+
 $(document).ready(function() {
     $.ajax({
         url: "https://619787935953f10017d23dce.mockapi.io/api/v1/categories",

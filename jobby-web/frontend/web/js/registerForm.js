@@ -2,6 +2,7 @@
  *   Copyright (c) 2022 Guilherme Cruz
  *   All rights reserved.
  */
+
 $(document).ready(function() {
     $.ajax({
         url: "https://countriesnow.space/api/v0.1/countries",
