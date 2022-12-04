@@ -6,8 +6,56 @@ use yii\helpers\Url;
 
 /* @var $service common\models\Service */
 
+$this->registerCssFile('@web/css/serviceList.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 ?>
+
+<div class="eventWrapper">
+    <div class="event">
+        <div class="event--img">
+            <a href="" onclick="if (!lightboxLoaded) return false" class="w-fancybox">
+                <img src="" title="" alt="">
+            </a>
+        </div>
+        <div class="event--date"><span>Classificação</span><span>4.1</span><span>126 Avaliações</span><span>Portugal</span></div>
+        <div class="event--content">
+            <h2><a href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>"><?= Html::encode($service->name) ?></a></h2>
+            <p class="event--content-hall"><strong>Profissional: </strong><span class=""><a href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span></p>
+            <p class="event--content-ensemble"><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="eventWrapper">
+    <div class="event">
+        <div class="event--img">
+            <a href="https://www.eklipsis.gr/files/theme/concert-img/20190420-Eklipsis-Ave-Verum-Corpus-min.jpg" onclick="if (!lightboxLoaded) return false" class="w-fancybox">
+                <img src="https://www.eklipsis.gr/files/theme/concert-img/20190420-Eklipsis-Ave-Verum-Corpus-min.jpg" title="Eklipsis | Ave Verum Corpus" alt="Eklipsis | Ave Verum Corpus">
+            </a>
+        </div>
+        <div class="event--date"><span>Classificação</span><span>4.9</span><span>126 Avaliações</span><span>Portugal</span></div>
+        <div class="event--content">
+            <h2><a href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>"><?= Html::encode($service->name) ?></a></h2>
+            <p class="event--content-hall"><strong>Profissional: </strong><span class=""><a href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span></p>
+            <div class="event--content-info">
+                <div><time>20:00 - 22:00</time></div>
+                <div class="event--content-price">12</div>
+                <div class="event--content-tickets"><a href="#" target="" title="">Agendar</a></div>
+            </div>
+            <p class="event--content-ensemble">Lhsjhbjhds dhjhdfhfhd udihiudhiuhdf uihuihidusfhf</p>
+            <p class="event--content-program"><a href="" target="" title="">Concert Program</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 <section class="home-services-body-wrap row mt-4 pb-3">
     <section class="col-lg-2 d-flex align-items-center">
@@ -54,3 +102,5 @@ $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]
         </section>
     </section>
 </section>
+
+<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>
