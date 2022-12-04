@@ -58,14 +58,34 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
+            /*'error' => [
                 'class' => \yii\web\ErrorAction::class,
-            ],
+            ],*/
             'captcha' => [
                 'class' => \yii\captcha\CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+
+            $name = $exception->getName() . " (#" . $exception->statusCode . ")";
+            $message = $exception->getMessage();
+
+            if($exception->statusCode == 404){
+                return $this->render('404', ['exception' => $exception, 'message' => $message, 'name' => $name]);
+            }
+            else if($exception->statusCode == 403){
+                return $this->render('403', ['exception' => $exception, 'message' => $message, 'name' => $name]);
+            }
+            else{
+                return $this->render('error', ['exception' => $exception, 'message' => $message, 'name' => $name]);
+            }
+        }
     }
 
     /**
@@ -76,26 +96,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
-    }
-
-    /**
-     * Displays privacy.
-     *
-     * @return mixed
-     */
-    public function actionPrivacy()
-    {
-        return $this->render('privacy');
-    }
-
-    /**
-     * Displays terms.
-     *
-     * @return mixed
-     */
-    public function actionTerms()
-    {
-        return $this->render('terms');
     }
 
     /**
@@ -177,7 +177,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Obrigado por se ter Registado!!!');
-            return $this->redirect(['site/login']);
+            return $this->redirect(['/login']);
         }
 
         return $this->render('signup', [
@@ -276,5 +276,25 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    /**
+     * Displays privacy.
+     *
+     * @return mixed
+     */
+    public function actionPrivacy()
+    {
+        return $this->render('privacy');
+    }
+
+    /**
+     * Displays terms.
+     *
+     * @return mixed
+     */
+    public function actionTerms()
+    {
+        return $this->render('terms');
     }
 }

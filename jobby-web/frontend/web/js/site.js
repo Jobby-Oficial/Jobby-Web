@@ -1,3 +1,8 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
 $(document).ready(function(){
     $(window).scroll(function() {
         $(".slideanim").each(function(){

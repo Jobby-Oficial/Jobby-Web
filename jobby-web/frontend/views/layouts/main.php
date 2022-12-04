@@ -52,7 +52,7 @@ $this->title = "Jobby - Home";
         $menuItemsRight[] = ['label' => 'Registrar', 'url' => ['/site/signup'], 'options' => ['class' => 'navbar-item-jobby']];
     } else {
         $menuItemsRight[] = ['label' => \Yii::$app->user->identity->username, 'options' => ['class' => 'navbar-item-jobby'], 'items' => [
-            ['label' => 'Perfil', 'url' => '/profile' . '/' . \Yii::$app->user->identity->id],
+            ['label' => 'Perfil', 'url' => ['/profile' . '/' . \Yii::$app->user->identity->id]],
             ['label' => 'Planos', 'url' => '/plan'],
             ['label' => 'Logout', 'url' => 'site/logout', 'linkOptions' => ['data-method' => 'post']]
         ]
