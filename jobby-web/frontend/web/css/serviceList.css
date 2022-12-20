@@ -1,5 +1,7 @@
-/* general structure
-==============================*/
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
 
 :root {
     --bg-clr: #ebebeb;
@@ -14,6 +16,8 @@
     --gray-clr: #b3b3b3;
     --lgh-gray-clr: #cccccc;
     --v-lgh-gray-clr: #d9d9d9;
+    --list-gray-clr: #ecf0f1;
+    --dark-green-clr: #006266;
 }
 
 /**, *::before, *::after {
@@ -113,7 +117,8 @@ img {max-width: 100%;}
 }
 .event:hover .event--content-program a,
 .event:hover .event--content-social a {
-    background: var(--bg-clr);
+    background: var(--list-gray-clr);
+    //background: var(--bg-clr);
 }
 .event:hover .event--content-social a:hover {
     background: var(--primary-clr);
@@ -188,7 +193,7 @@ img {max-width: 100%;}
 .event--content {
     padding: 15px;
     text-align: left;
-    background: var(--bg-clr);
+    background: var(--list-gray-clr);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -207,7 +212,7 @@ img {max-width: 100%;}
     color: inherit;
 }
 .event--content a:hover {
-    color: var(--primary-clr);
+    color: var(--dark-green-clr);
 }
 .event--content h2 > a[href]::after {
     content: "\f08e";
@@ -229,13 +234,16 @@ img {max-width: 100%;}
     margin-right: 16px;
 }
 .event--content-tickets a {
-    background: var(--primary-clr);
+    background: var(--dark-green-clr);
+    //background: var(--primary-clr);
     color: var(--light-clr);
     padding: 3px 11px;
     border-radius: 3px;
 }
 .event--content-tickets a:hover {
-    background: var(--bg-clr);
+    background: var(--list-gray-clr);
+    //background: var(--bg-clr);
+    color: var(--dark-green-clr);
 }
 .event--content-ensemble {
     font-weight: 500;

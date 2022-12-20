@@ -47,8 +47,8 @@ $this->registerJsFile('@web/js/getCountrySearch.js', ['depends' => [JqueryAsset:
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <section class="form-group col-xl-3 d-flex align-items-center mb-0 mt-3 justify-content-center">
-        <?= Html::submitButton(Yii::t('app', 'Procurar'), ['class' => 'btn btn-primary mr-3']) ?>
-        <?= Html::a(Yii::t('app', 'Reiniciar'), ['/services'], ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Procurar'), ['class' => 'btns-list search']) ?>
+        <?= Html::a(Yii::t('app', 'Reiniciar'), ['/services'], ['class' => 'btns-list reset']) ?>
     </section>
 
     <?php ActiveForm::end(); ?>

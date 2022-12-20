@@ -13,8 +13,8 @@ $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]
 <div class="eventWrapper">
     <div class="event">
         <div class="event--img">
-            <a href="https://www.eklipsis.gr/files/theme/concert-img/20190420-Eklipsis-Ave-Verum-Corpus-min.jpg" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
-                <img src="https://www.eklipsis.gr/files/theme/concert-img/20190420-Eklipsis-Ave-Verum-Corpus-min.jpg" title="Eklipsis | Ave Verum Corpus" alt="Eklipsis | Ave Verum Corpus">
+            <a href="" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
+                <img src="https://explicacoesdobairro.pt/wp-content/uploads/2019/07/logo-EB.png" title="" alt="">
             </a>
         </div>
         <div class="event--date">
