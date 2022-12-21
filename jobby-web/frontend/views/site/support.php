@@ -66,7 +66,7 @@ $this->registerJsFile('@web/js/submit.js');
                 <?= Html::textarea('mensagem', null, ['class' => 'form-control', 'placeholder' => 'Mensagem', 'rows' => 6]) ?>
 
                 <section class="form-group">
-                    <button class="bubbly-button" name="contact-button" type="submit">Enviar!</button>
+                    <button class="bubbly-button" name="contact-button" type="submit">Enviar Menssagem!</button>
                     <?php //<?= Html::submitButton('Enviar!', ['class' => 'btn btn-block', 'name' => 'contact-button']); ?>
                 </section>
 

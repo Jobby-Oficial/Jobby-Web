@@ -16,9 +16,15 @@ $this->registerJsFile('@web/js/deleteService.js', ['depends' => [JqueryAsset::cl
 $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 ?>
+<!--<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>-->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <section>
-    <div class="profile-banner"></div>
+    <div class="profile-banner align-items-center d-flex h-100 justify-content-center">
+        <span class="profile-banner-title">Perfil de Utilizador</span>
+    </div>
     <div class="profile-bg-header shadow-sm bg-white">
         <div class="container">
             <div class="row">
@@ -105,7 +111,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
     </div>
 </section>
 
-<section class="container">
+<section class="container section-three">
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= \Yii::$app->session->getFlash('success') ?>

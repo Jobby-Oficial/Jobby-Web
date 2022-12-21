@@ -6,19 +6,18 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 
 body {
-    margin-top: -54px !important;
-
+    //margin-top: -54px !important;
 }
 
 .footer{
-    margin-top: 0 !important;
+    //margin-top: 0 !important;
 }
 
 main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    //height: 100%;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
 }
 
 ul {

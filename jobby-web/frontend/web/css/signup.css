@@ -10,7 +10,8 @@
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 94vh;
+    //height: 94vh;
+    min-height: 100%;
     background: linear-gradient(125deg, #21CECC 0%, #29D9D5 33%, #01a3a4 66%, #038583 100%);
 //background: #12121A;
 //background: linear-gradient(125deg, rgba(130, 204, 221, 1) 0%, #94bbe9 33%, #eeaeca 66%, rgba(243, 105, 88, 1) 100%);
