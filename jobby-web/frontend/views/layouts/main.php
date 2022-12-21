@@ -71,7 +71,7 @@ $this->title = "Jobby - Home";
 </header>
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
+    <div class="container h-100">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -92,15 +92,15 @@ $this->title = "Jobby - Home";
                         <ul>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/terms']);?>">Termos de Uso</a>
+                                <a href="<?=Url::to(['/terms']);?>">Termos de Uso</a>
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/privacy']);?>">Política de Privacidade</a>
+                                <a href="<?=Url::to(['/privacy']);?>">Política de Privacidade</a>
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/support']);?>">Suporte</a>
+                                <a href="<?=Url::to(['/support']);?>">Suporte</a>
                             </li>
                         </ul>
                     </div>

@@ -297,4 +297,25 @@ class SiteController extends Controller
     {
         return $this->render('terms');
     }
+
+    /**
+     * Displays Suporte.
+     *
+     * @return mixed
+     */
+    public function actionSupport()
+    {
+        if ($this->request->isPost) {
+            Yii::$app->mailer->compose()
+                ->setFrom([$this->request->post()['email']])
+                ->setTo(['jobby.info@gmail.com'])
+                ->setSubject($this->request->post()['assunto'])
+                ->setTextBody($this->request->post()['mensagem'])
+                ->send();
+
+            \Yii::$app->session->setFlash('success', 'Mensagem enviada com sucesso!');
+        }
+
+        return $this->render('support');
+    }
 }

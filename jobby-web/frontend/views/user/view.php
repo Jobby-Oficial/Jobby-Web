@@ -10,6 +10,7 @@ use kartik\money\MaskMoney;
 
 use yii\widgets\DetailView;
 
+$this->registerCssFile('@web/css/profile.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/deleteService.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]);

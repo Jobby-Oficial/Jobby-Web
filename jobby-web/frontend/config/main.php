@@ -36,6 +36,18 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.mailtrap.io',
+                'username' => 'c526b0bf8b16a6',
+                'password' => '858d9b024841ba',
+                'port' => '2525',
+                'encryption' => 'tls',
+            ],
+            'useFileTransport' => false,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -43,8 +55,8 @@ return [
                 '/login' => 'site/login',
                 '/logout' => 'site/logout',
                 '/services' => 'service/index',
-                '/privacidade' => 'site/privacidade',
-                '/termos' => 'site/termo',
+                '/privacy' => 'site/privacy',
+                '/terms' => 'site/terms',
                 '/profile/<id:\d+>' => 'user/view',
                 '/service/<id:\d+>' => 'service/view',
                 '/support' => 'site/support',

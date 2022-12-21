@@ -1,7 +1,12 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <section class="container mt-5">
-    <br><br>
     <h2 style="box-sizing: border-box; margin: 0px; line-height: 1.2; font-size: 20px; letter-spacing: -0.05em; color: #576d96; padding-bottom: 20px; font-family: Montserrat, sans-serif; background-color: #ffffff;"><span style="color: #576d96;">1. Termos de Uso</span></h2>
-    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; font-weight: 400; letter-spacing: normal;"><span style="color: #576d96;">Ao acessar ao site <a href="index">Jobby</a>, concorda em cumprir estes termos de servi&ccedil;o, todas as leis e regulamentos aplic&aacute;veis ​​e concorda que &eacute; respons&aacute;vel pelo cumprimento de todas as leis locais aplic&aacute;veis. Se voc&ecirc; n&atilde;o concordar com algum desses termos, est&aacute; proibido de usar ou acessar este site. Os materiais contidos neste site s&atilde;o protegidos pelas leis de direitos autorais e marcas comerciais aplic&aacute;veis.</span></p>
+    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; font-weight: 400; letter-spacing: normal;"><span style="color: #576d96;">Ao acessar ao site <a href="<?=Url::toRoute(['/']);?>">Jobby</a>, concorda em cumprir estes termos de servi&ccedil;o, todas as leis e regulamentos aplic&aacute;veis ​​e concorda que &eacute; respons&aacute;vel pelo cumprimento de todas as leis locais aplic&aacute;veis. Se voc&ecirc; n&atilde;o concordar com algum desses termos, est&aacute; proibido de usar ou acessar este site. Os materiais contidos neste site s&atilde;o protegidos pelas leis de direitos autorais e marcas comerciais aplic&aacute;veis.</span></p>
     <h2 style="box-sizing: border-box; margin: 0px; line-height: 1.2; font-size: 20px; letter-spacing: -0.05em; color: #576d96; padding-bottom: 20px; font-family: Montserrat, sans-serif; background-color: #ffffff;"><span style="color: #576d96;">2. Uso de Licen&ccedil;a</span></h2>
     <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; font-weight: 400; letter-spacing: normal;"><span style="color: #576d96;">&Eacute; concedida permiss&atilde;o para baixar temporariamente uma c&oacute;pia dos materiais (informa&ccedil;&otilde;es ou software) no site Jobby, apenas para visualiza&ccedil;&atilde;o transit&oacute;ria pessoal e n&atilde;o comercial. Esta &eacute; a concess&atilde;o de uma licen&ccedil;a, n&atilde;o uma transfer&ecirc;ncia de t&iacute;tulo e, sob esta licen&ccedil;a, voc&ecirc; n&atilde;o pode:&nbsp;</span></p>
     <ol style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; font-weight: 400; letter-spacing: normal;">
