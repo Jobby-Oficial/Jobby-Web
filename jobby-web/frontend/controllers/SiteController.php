@@ -15,6 +15,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Favorite;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -317,5 +319,31 @@ class SiteController extends Controller
         }
 
         return $this->render('support');
+    }
+
+    /**
+     * Displays Favorite.
+     *
+     * @return mixed
+     */
+    public function actionCreateFavorite()
+    {
+        $model = new Favorite();
+
+        $model->service_id = $this->request->post()['service_id'];
+        $model->user_id = $this->request->post()['user_id'];
+        $model->validate();
+        $model->save();
+    }
+
+    /**
+     * Displays Favorite.
+     *
+     * @return mixed
+     */
+    public function actionDeleteFavorite($id)
+    {
+        $model = Favorite::find()->where(['id' => $id])->one();
+        $model->delete();
     }
 }

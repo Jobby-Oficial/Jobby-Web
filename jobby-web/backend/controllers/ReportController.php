@@ -3,13 +3,10 @@
 namespace backend\controllers;
 
 use common\models\Report;
-use common\models\User;
 use common\models\ReportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
-use yii\filters\AccessControl;
 
 /**
  * ReportController implements the CRUD actions for Report model.
@@ -24,21 +21,6 @@ class ReportController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'access' => [
-                    'class' => AccessControl::className(),
-                    'rules' => [
-                        [
-                            'actions' => ['create', 'update', 'delete'],
-                            'allow' => true,
-                            'roles' => ['admin', 'developer'],
-                        ],
-                        [
-                            'allow' => true,
-                            'actions' => ['index', 'view'],
-                            'roles' => ['@'],
-                        ],
-                    ],
-                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -87,8 +69,6 @@ class ReportController extends Controller
     {
         $model = new Report();
 
-        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
-
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -99,7 +79,6 @@ class ReportController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'users' => $users,
         ]);
     }
 
@@ -114,15 +93,12 @@ class ReportController extends Controller
     {
         $model = $this->findModel($id);
 
-        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
-
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'users' => $users,
         ]);
     }
 
