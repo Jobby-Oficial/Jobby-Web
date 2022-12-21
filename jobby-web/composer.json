@@ -22,8 +22,7 @@
         "hail812/yii2-adminlte-widgets": "~1.0",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-timepicker": "dev-master",
-        "edofre/yii2-fullcalendar": "V1.0.11",
-        "yiisoft/yii2-swiftmailer": "^2.1"
+        "edofre/yii2-fullcalendar": "V1.0.11"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

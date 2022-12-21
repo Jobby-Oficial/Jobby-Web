@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 
+$this->registerCssFile('@web/css/submit.css');
+$this->registerJsFile('@web/js/submit.js');
+
 ?>
 
 <section class="contact align-items-center d-flex h-100 justify-content-center" id="contact">
@@ -47,7 +50,7 @@ use yii\helpers\Html;
                     <div class="info">
                         <i class="fas fa-map-marker-alt"></i>
                         <h4 class="d-inline-block">Morada:<br>
-                            <span>Rua Serpa Pinto 7A, 2560-661 Torres Vedras</span></h4>
+                            <span>Campus 2 - Morro do Lena, Alto do Vieiro, <br>Apt 4163, Edifício D, 2411-901 Leiria</span></h4>
                     </div>
                 </div>
             </div>
@@ -63,7 +66,8 @@ use yii\helpers\Html;
                 <?= Html::textarea('mensagem', null, ['class' => 'form-control', 'placeholder' => 'Mensagem', 'rows' => 6]) ?>
 
                 <section class="form-group">
-                    <?= Html::submitButton('Enviar!', ['class' => 'btn btn-block', 'name' => 'contact-button']); ?>
+                    <button class="bubbly-button" name="contact-button" type="submit">Enviar!</button>
+                    <?php //<?= Html::submitButton('Enviar!', ['class' => 'btn btn-block', 'name' => 'contact-button']); ?>
                 </section>
 
                 <?= Html::endForm(); ?>

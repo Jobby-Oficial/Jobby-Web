@@ -15,7 +15,7 @@
 main {
   margin-top: 60px;
   //min-height: 100vh;
-  height: calc(100% - 120px);
+  min-height: calc(100% - 120px);
 }
 
 main > .container, main > .container-fluid
@@ -36,10 +36,6 @@ body {
   font-size: .9em;
   height: 60px;
   font-weight: bold;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 .footer > .container, .footer > .container-fluid {
