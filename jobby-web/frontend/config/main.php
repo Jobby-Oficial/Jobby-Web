@@ -62,6 +62,7 @@ return [
                 '/support' => 'site/support',
                 '/favorite' => 'site/create-favorite',
                 '/favorite/<id:\d+>' => 'site/delete-favorite',
+                '/plan' => 'plan/index',
             ],
         ],
     ],
