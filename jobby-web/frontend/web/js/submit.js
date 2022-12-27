@@ -1,3 +1,8 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
 var animateButton = function(e) {
 
     e.preventDefault;

@@ -3,6 +3,13 @@
  *   All rights reserved.
  */
 
+:root{
+    --base-font-family: "Buenos Aires","Pulp","OpenSans","Open Sans",sans-serif;
+}
+body {
+    //font-family: var(--base-font-family);
+}
+
 .btns-list {
     box-sizing: border-box;
     appearance: none;
