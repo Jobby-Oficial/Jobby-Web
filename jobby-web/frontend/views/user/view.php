@@ -18,9 +18,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
 $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 ?>
 <!--<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>-->
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <section>
     <div class="profile-banner align-items-center d-flex h-100 justify-content-center">
@@ -77,7 +75,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 
 
 
-<section class="container">
+<!--<section class="container">
     <div class="row">
         <div class="col-sm-12 col-12">
             <div class="profile-body-section p-2 mt-3">
@@ -85,25 +83,67 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="pill" href="#about">Sobre</a>
                     </li>
-                    <?php if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile') || \Yii::$app->user->identity->id != $model->id){ ?>
+                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile') || \Yii::$app->user->identity->id != $model->id){ */?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="pill" href="#services">Serviços</a>
                         </li>
-                    <?php } ?>
-                    <?php if($user->id == \Yii::$app->user->identity->id){ ?>
+                    <?php /*} */?>
+                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="pill" href="#favorites">Favoritos</a>
+                        </li>
+                    <?php /*} */?>
+                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile')){
+                        if($user->id == \Yii::$app->user->identity->id){ */?>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#jobs">Trabalhos</a>
+                            </li>
+                        <?php /*}} */?>
+                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#schedules">Agendamentos</a>
+                        </li>
+                    <?php /*} */?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+
+
+
+
+
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-sm-12 col-12">
+            <div class="profile-body-section p-2 mt-3">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about" type="button" role="tab" aria-controls="pills-about" aria-selected="true">Sobre</button>
+                    </li>
+                    <?php if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile') || \Yii::$app->user->identity->id != $model->id){ ?>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-services-tab" data-bs-toggle="pill" data-bs-target="#pills-services" type="button" role="tab" aria-controls="pills-services" aria-selected="false">Serviços</button>
+                        </li>
+                    <?php } ?>
+                    <?php if($user->id == \Yii::$app->user->identity->id){ ?>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-favorites-tab" data-bs-toggle="pill" data-bs-target="#pills-favorites" type="button" role="tab" aria-controls="pills-favorites" aria-selected="false">Favoritos</button>
                         </li>
                     <?php } ?>
                     <?php if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile')){
                         if($user->id == \Yii::$app->user->identity->id){ ?>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#jobs">Trabalhos</a>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-jobs-tab" data-bs-toggle="pill" data-bs-target="#pills-jobs" type="button" role="tab" aria-controls="pills-jobs" aria-selected="false">Trabalhos</button>
                             </li>
                         <?php }} ?>
                     <?php if($user->id == \Yii::$app->user->identity->id){ ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#schedules">Agendamentos</a>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-schedules-tab" data-bs-toggle="pill" data-bs-target="#pills-schedules" type="button" role="tab" aria-controls="pills-schedules" aria-selected="false">Agendamentos</button>
                         </li>
                     <?php } ?>
                 </ul>
@@ -127,8 +167,8 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
     <div class="profile-body-section shadow-sm mt-2">
         <div class="row">
             <div class="col-sm-12 col-12">
-                <div class="tab-content">
-                    <div id="about" class="container tab-pane active text-break"><br>
+                <div class="tab-content" id="pills-tabContent">
+                    <div id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab" class="container tab-pane fade show active"><br>
                         <div>
                             <h4>Email:</h4>
                             <div><?= HTML::encode($user->email); ?></div>
@@ -166,7 +206,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                         </div>
                         <br>
                     </div>
-                    <div id="services" class="container tab-pane fade"><br>
+                    <div id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" class="container tab-pane fade"><br>
                         <?php if($user->id == \Yii::$app->user->identity->id){ ?>
                             <div class="mb-3">
                                 <a href="<?=Url::to(['service/create']);?>" class="btn btn-success">Criar Serviço</a>
@@ -255,7 +295,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                         <?php } ?>
                         <?php Pjax::end(); ?>
                     </div>
-                    <div id="favorites" class="container tab-pane fade">
+                    <div id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab" class="container tab-pane fade">
                         <?php Pjax::begin(['id' => 'favorite-profile-id-wrap']); ?>
                         <?php if($favorites != null){ ?>
                             <?php foreach($favorites as $favorite){ ?>
@@ -297,7 +337,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                         <?php } ?>
                         <?php Pjax::end(); ?>
                     </div>
-                    <div id="jobs" class="container tab-pane fade"><br>
+                    <div id="pills-jobs" role="tabpanel" aria-labelledby="pills-jobs-tab" class="container tab-pane fade"><br>
                         <?php if($jobs != null){ ?>
                             <?php foreach($jobs as $job){ ?>
                                 <section class="home-services-body-wrap row pb-3 mt-3">
@@ -358,7 +398,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                             </div>
                         <?php } ?>
                     </div>
-                    <div id="schedules" class="container tab-pane fade"><br>
+                    <div id="pills-schedules" role="tabpanel" aria-labelledby="pills-schedules-tab" class="container tab-pane fade"><br>
                         <?php if($schedules != null){ ?>
                             <?php foreach($schedules as $schedule){ ?>
                                 <section class="home-services-body-wrap row pb-3 mt-3">

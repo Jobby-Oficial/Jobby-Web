@@ -11,8 +11,27 @@ body{
 }
 
 /* ---- ---- ---- ---- ---- ---- */
+/* ---- ---- Nav Pills ---- ---- */
+/* ---- ---- ---- ---- ---- ---- */
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    background-color: #006266 !important;
+}
+
+.nav-link:hover{
+    color: #006266 !important;
+}
+
+.nav-link:focus{
+    color: ghostwhite !important;
+}
+
+/* ----   End of Section   ---- */
+
+/* ---- ---- ---- ---- ---- ---- */
 /* ----  Header of profile  ---- */
 /* ---- ---- ---- ---- ---- ---- */
+
 .profile-banner {
     width: 100%;
     background-color: #f6f6f6;
@@ -92,9 +111,12 @@ body{
     text-decoration: none;
 }
 
+/* ----   End of Section   ---- */
+
 /* ---- ---- ---- ---- ---- ---- */
 /* ----   Body of profile   ---- */
 /* ---- ---- ---- ---- ---- ---- */
+
 .profile-contact{
     padding-top: 30px;
 }
