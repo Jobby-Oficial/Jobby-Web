@@ -3,9 +3,11 @@
  *   All rights reserved.
  */
 
+//Doker: url: "http://localhost:20080/favorite",
+
 function createFavorite(serviceId, userId){
   $.ajax({
-    url: "http://localhost:20080/favorite",
+    url: "favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -20,7 +22,7 @@ function createFavorite(serviceId, userId){
 
 function deleteFavorite(id){
   $.ajax({
-    url: "http://localhost:20080/favorite/" + id,
+    url: "favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {
@@ -35,7 +37,7 @@ function deleteFavorite(id){
 
 function createFavoriteServiceView(serviceId, userId){
   $.ajax({
-    url: "http://localhost:20080/favorite",
+    url: "favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -50,7 +52,7 @@ function createFavoriteServiceView(serviceId, userId){
 
 function deleteFavoriteServiceView(id){
   $.ajax({
-    url: "http://localhost:20080/favorite/" + id,
+    url: "favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {
@@ -65,7 +67,7 @@ function deleteFavoriteServiceView(id){
 
 function createFavoriteProfileView(serviceId, userId){
   $.ajax({
-    url: "http://localhost:20080/favorite",
+    url: "favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -80,7 +82,7 @@ function createFavoriteProfileView(serviceId, userId){
 
 function deleteFavoriteProfileView(id){
   $.ajax({
-    url: "http://localhost:20080/favorite/" + id,
+    url: "http://localhost/jobby-web/frontend/web/favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {
@@ -95,7 +97,7 @@ function deleteFavoriteProfileView(id){
 
 function createFavoriteProfileViewMyService(serviceId, userId){
   $.ajax({
-    url: "http://localhost:20080/favorite",
+    url: "favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -110,7 +112,7 @@ function createFavoriteProfileViewMyService(serviceId, userId){
 
 function deleteFavoriteProfileViewMyService(id){
   $.ajax({
-    url: "http://localhost:20080/favorite/" + id,
+    url: "favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {

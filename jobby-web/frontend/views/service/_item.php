@@ -9,6 +9,7 @@ use yii\helpers\Url;
 $this->registerCssFile('@web/css/serviceList.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 ?>
+<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>
 
 <div class="eventWrapper">
     <div class="event">
@@ -35,7 +36,23 @@ $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]
                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
             </div>
             <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $service->user->phone ?><span class="phone"></span></p>
-            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a></p>
+            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
+                <?php if(!\Yii::$app->user->isGuest){ ?>
+                    <?php if(\Yii::$app->user->identity->id != $service->user->id){  ?>
+                        <?php if($service->favorites != null){ ?>
+                            <?php foreach($service->favorites as $favorite){ ?>
+                                <?php if($favorite->service_id == $service->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
+                                    <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavorite(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                                <?php }else{ ?>
+                                    <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavorite(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                                <?php } ?>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavorite(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            </p>
         </div>
     </div>
 </div>
@@ -93,5 +110,3 @@ $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]
         </section>
     </section>
 </section>-->
-
-<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>

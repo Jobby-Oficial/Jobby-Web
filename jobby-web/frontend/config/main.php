@@ -8,10 +8,42 @@ $params = array_merge(
 
 return [
     'id' => 'jobby-frontend',
+    'name' => 'Jobby',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute' => 'site/index',
+    'modules' => [
+        'imagemanager' => [
+            'class' => 'noam148\imagemanager\Module',
+            //set accces rules ()
+            'canUploadImage' => true,
+            'canRemoveImage' => function(){
+                return true;
+            },
+            //add css files (to use in media manage selector iframe)
+            'cssFiles' => [
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css',
+            ],
+        ],
+    ],
     'components' => [
+        'stripe' => [
+            'class' => 'ruskid\stripe\Stripe',
+            'publicKey' => "pk_test_51MEWfnFthQJvgqebbhoYd6WVBaTVKHajb8ybomDEuPXUwMusCaS7FBZWYBowZTfYsX5c3KctzQyI3ZiFKGlXHnZL001ErGWk1O",
+            'privateKey' => "sk_test_51MEWfnFthQJvgqeb8M25raRvAwOZMln5zwSbOPjQyRy729EBN3palSsC0caDkqKNIJH3Q5wau9H52pKmFnKcE6Ig00uzxlpdzf",
+        ],
+        'imagemanager' => [
+            'class' => 'noam148\imagemanager\components\ImageManagerGetPath',
+            //set media path (outside the web folder is possible)
+            'mediaPath' => 'assets/img/media/imagemanager',
+            //path relative web folder to store the cache images
+            'cachePath' => 'assets/images',
+            //use filename (seo friendly) for resized images else use a hash
+            'useFilename' => true,
+            //show full url (for example in case of a API)
+            'absoluteUrl' => false,
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
