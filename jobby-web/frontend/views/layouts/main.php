@@ -24,6 +24,7 @@ $this->title = "Jobby - Home";
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>

@@ -9,7 +9,7 @@ use yii\helpers\Url;
 $this->registerCssFile('@web/css/serviceList.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 ?>
-<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>
+<!--<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>-->
 
 <div class="eventWrapper">
     <div class="event">
