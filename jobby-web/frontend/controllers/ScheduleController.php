@@ -103,13 +103,15 @@ class ScheduleController extends \yii\web\Controller
             'model' => $this->findModel($id),
             'status' => \yii\helpers\ArrayHelper::map($data, 'id', 'name')
         ]);
-    }/**
- * Updates an existing Service model.
- * If update is successful, the browser will be redirected to the 'view' page.
- * @param int $id ID
- * @return mixed
- * @throws NotFoundHttpException if the model cannot be found
- */
+    }
+
+    /**
+     * Updates an existing Service model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param int $id ID
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);

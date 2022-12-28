@@ -9,7 +9,7 @@ $this->registerJsFile('@web/js/403.js');
 
 ?>
 
-<section class="forbidden-page-wrap">
+<section class="forbidden-page-wrap align-items-center d-flex h-100 justify-content-center">
     <svg xmlns="http://www.w3.org/2000/svg" id="robot-error" viewBox="0 0 260 118.9">
         <defs>
             <clipPath id="white-clip">

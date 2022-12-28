@@ -57,6 +57,131 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 '/login' => 'site/login',
+
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/guests',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST register' => 'register',
+                        'POST login' => 'login',
+                        'GET services' => 'get-services',
+                        'GET services-gallery' => 'get-services-gallery'
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/users',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST login' => 'login',
+                        'PUT {id}/update-user' => 'update-user'
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/services',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST detail' => 'get-service-from-user-id',
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/favorites',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST detail' => 'get-favorite-from-user-id',
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/jobs-status',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    /* 'extraPatterns' => [
+                        'POST detail' => 'get-favorite-from-user-id',
+                    ], */
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/schedules',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST client' => 'get-schedules-from-client-id',
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/services-gallery',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    /* 'extraPatterns' => [
+                        'POST detail' => 'get-favorite-from-user-id',
+                    ], */
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/plans',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    /*'extraPatterns' => [
+                        'GET users' => 'users',
+                    ],*/
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/avaliations',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'POST client' => 'get-avaliations-from-user-id',
+                    ],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/reports',
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    /*'extraPatterns' => [
+                        'GET users' => 'users',
+                    ],*/
+
+                ],
             ],
         ],
     ],

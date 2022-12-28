@@ -9,7 +9,7 @@ $this->registerJsFile('@web/js/404.js');
 
 ?>
 
-<section class="error-page-wrap">
+<section class="error-page-wrap align-items-center d-flex h-100 justify-content-center">
     <div class="container">
         <div class="row">
             <div class="col-md-6 align-self-center">

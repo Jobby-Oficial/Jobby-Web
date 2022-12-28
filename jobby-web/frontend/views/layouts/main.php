@@ -24,6 +24,7 @@ $this->title = "Jobby - Home";
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
@@ -53,8 +54,8 @@ $this->title = "Jobby - Home";
     } else {
         $menuItemsRight[] = ['label' => \Yii::$app->user->identity->username, 'options' => ['class' => 'navbar-item-jobby'], 'items' => [
             ['label' => 'Perfil', 'url' => ['/profile' . '/' . \Yii::$app->user->identity->id]],
-            ['label' => 'Planos', 'url' => '/plan'],
-            ['label' => 'Logout', 'url' => 'site/logout', 'linkOptions' => ['data-method' => 'post']]
+            ['label' => 'Planos', 'url' => 'plan'],
+            ['label' => 'Logout', 'url' => 'logout', 'linkOptions' => ['data-method' => 'post']]
         ]
         ];
     }
@@ -71,7 +72,7 @@ $this->title = "Jobby - Home";
 </header>
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
+    <div class="container h-100">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -92,15 +93,15 @@ $this->title = "Jobby - Home";
                         <ul>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/terms']);?>">Termos de Uso</a>
+                                <a href="<?=Url::to(['/terms']);?>">Termos de Uso</a>
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/privacy']);?>">Política de Privacidade</a>
+                                <a href="<?=Url::to(['/privacy']);?>">Política de Privacidade</a>
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['site/support']);?>">Suporte</a>
+                                <a href="<?=Url::to(['/support']);?>">Suporte</a>
                             </li>
                         </ul>
                     </div>

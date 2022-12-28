@@ -85,6 +85,7 @@
 
 .home-services-favorite-heart-svg, .home-services-favorite-heart-favorite-svg{
   width: 20px;
+  margin-left: 15px;
 }
 
 .home-services-favorite-heart-svg:hover, .home-services-favorite-heart-favorite-svg:hover{

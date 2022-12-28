@@ -1,7 +1,12 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <section class="container mt-5">
-    <br><br>
     <h2 style="box-sizing: border-box; margin: 0px; line-height: 1.2; font-size: 20px; letter-spacing: -0.05em; color: #576d96; padding-bottom: 20px; font-family: Montserrat, sans-serif; background-color: #ffffff;">Pol&iacute;tica de Privacidade</h2>
-    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; color: #576d96; font-family: Montserrat, sans-serif; background-color: #ffffff;">A sua privacidade &eacute; importante para n&oacute;s. &Eacute; pol&iacute;tica do Jobby respeitar a sua privacidade em rela&ccedil;&atilde;o a qualquer informa&ccedil;&atilde;o sua que possamos coletar no site <a href="index">Jobby</a>, e outros sites que possu&iacute;mos e operamos.</p>
+    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; color: #576d96; font-family: Montserrat, sans-serif; background-color: #ffffff;">A sua privacidade &eacute; importante para n&oacute;s. &Eacute; pol&iacute;tica do Jobby respeitar a sua privacidade em rela&ccedil;&atilde;o a qualquer informa&ccedil;&atilde;o sua que possamos coletar no site <a href="<?=Url::toRoute(['/']);?>">Jobby</a>, e outros sites que possu&iacute;mos e operamos.</p>
     <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; color: #576d96; font-family: Montserrat, sans-serif; background-color: #ffffff;">Solicitamos informa&ccedil;&otilde;es pessoais apenas quando realmente precisamos delas para lhe fornecer um servi&ccedil;o. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Tamb&eacute;m informamos por que estamos coletando e como ser&aacute; usado.</p>
     <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; color: #576d96; font-family: Montserrat, sans-serif; background-color: #ffffff;">Apenas retemos as informa&ccedil;&otilde;es coletadas pelo tempo necess&aacute;rio para fornecer o servi&ccedil;o solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceit&aacute;veis ​​para evitar perdas e roubos, bem como acesso, divulga&ccedil;&atilde;o, c&oacute;pia, uso ou modifica&ccedil;&atilde;o n&atilde;o autorizados.</p>
     <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-size: 16px; color: #576d96; font-family: Montserrat, sans-serif; background-color: #ffffff;">N&atilde;o compartilhamos informa&ccedil;&otilde;es de identifica&ccedil;&atilde;o pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p>

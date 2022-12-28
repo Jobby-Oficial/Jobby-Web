@@ -3,7 +3,80 @@
  *   All rights reserved.
  */
 
-/*.service-info a, .service-professional-username{
+:root{
+    --base-font-family: "Buenos Aires","Pulp","OpenSans","Open Sans",sans-serif;
+}
+body {
+    //font-family: var(--base-font-family);
+}
+
+.btns-list {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 9px 30px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-top: 7px;
+}
+.btns-list:hover, .btns-list:focus {
+    color: #fff;
+    outline: 0;
+}
+
+.reset {
+    border-color: #002A32;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #002A32 inset, 0 0 0 0 #002A32;
+    transition: all 150ms ease-in-out;
+    margin-left: 12px;
+}
+.reset:hover {
+    color: #002A32;
+    //box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px 0 #3c6382 inset, 0 0 10px 4px #3c6382;
+}
+
+.search {
+     border-color: #006266;
+     color: #fff;
+     box-shadow: 0 0 40px 40px #006266 inset, 0 0 0 0 #006266;
+     transition: all 150ms ease-in-out;
+ }
+.search:hover {
+    color: #002A32;
+    //box-shadow: #c7c7c7 0 20px 40px;
+    box-shadow: 0 0 10px 0 #006266 inset, 0 0 10px 4px #006266;
+    //box-shadow: 0 0 10px 0 #22a6b3 inset, 0 0 10px 4px #22a6b3;
+    //box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+
+.create {
+    display: unset;
+    border-color: #006266;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #006266 inset, 0 0 0 0 #006266;
+    transition: all 150ms ease-in-out;
+}
+
+.create:hover {
+    color: #002A32;
+    box-shadow: 0 0 10px 0 #006266 inset, 0 0 10px 4px #006266;
+}
+
+.service-info a, .service-professional-username{
   color: black;
 }
 
@@ -81,7 +154,7 @@
   .professional-service-page-item{
       margin-bottom: 10px;
   }
-}*/
+}
 
 
 
