@@ -18,11 +18,11 @@ body{
     background-color: #006266 !important;
 }
 
-.nav-link:hover{
+.nav-pills .nav-link:hover{
     color: #006266 !important;
 }
 
-.nav-link:focus{
+.nav-pills .nav-link:focus{
     color: ghostwhite !important;
 }
 

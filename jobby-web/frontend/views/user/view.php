@@ -209,96 +209,12 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                     <div id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" class="container tab-pane fade"><br>
                         <?php if($user->id == \Yii::$app->user->identity->id){ ?>
                             <div class="mb-3">
-                                <a href="<?=Url::to(['service/create']);?>" class="btn btn-success">Criar Serviço</a>
+                                <a href="<?=Url::to(['service/create']);?>" class="btns-list create">Criar Serviço</a>
                             </div>
                         <?php } ?>
                         <?php Pjax::begin(['id' => 'favorite-profile-my-service-id-wrap']); ?>
                         <?php if($services != null){ ?>
                             <?php foreach($services as $service){ ?>
-                                <section class="home-services-body-wrap row mt-4 pb-3">
-                                    <section class="col-lg-2 d-flex align-items-center">
-                                        <section class="w-100">
-                                            <div class="d-flex justify-content-center">
-                                                <h3>4.1</h3>
-                                                <div class="ml-2"><img class="home-services-star-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/star.svg' ?>" alt="Star Icon"></div>
-                                            </div>
-                                            <div class="mt-n3 text-center">
-                                                <small class="home-service-avaliation">126 Avaliações</small>
-                                            </div>
-                                        </section>
-                                    </section>
-                                    <section class="col-lg-10">
-                                        <section>
-                                            <section class="home-services-paid-wrap float-right">
-                                                <div class="home-services-paid text-right pl-4 pr-4">Anúncio</div>
-                                            </section>
-                                            <section class="d-flex w-100">
-                                                <section class="service-info-wrap w-100 d-flex">
-                                                    <div class="mt-3">
-                                                        <strong><?= Html::encode($service->name) ?></strong> | <strong>Profissional: </strong><span class="service-info"><?= Html::a(Html::encode($service->user->username), ['/user/view', 'id' => $service->user_id]); ?></span> | <strong>Categoria: </strong><?= Html::encode($service->category) ?>
-                                                    </div>
-                                                </section>
-                                            </section>
-                                            <div class="home-services-description mt-3 text-justify overflow-hidden text-ellipsis"><?= Html::encode($service->description) ?></div>
-                                            <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
-                                                <div class="d-flex justify-content-end mt-3">
-                                                    <?php if(!\Yii::$app->user->isGuest){ ?>
-                                                        <?php if($service->favorites != null){ ?>
-                                                            <?php foreach($service->favorites as $favorite){ ?>
-                                                                <?php if($favorite->service_id == $service->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
-                                                                    <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileViewMyService(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
-                                                                <?php }else{ ?>
-                                                                    <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
-                                                                <?php } ?>
-                                                            <?php } ?>
-                                                        <?php }else{ ?>
-                                                            <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </div>
-                                            <?php }else{ ?>
-                                                <div class="float-right">
-                                                    <a href="<?=Url::to(['service/update', 'id' => $service->id]);?>"><img class="home-services-favorite-heart-svg align-text-top ml-1 mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon"></a>
-                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top ml-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-toggle="modal" data-target="#deleteService" data-id="<?= $service->id ?>">
-                                                </div>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Serviço</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Deseja realmente eliminar o Serviço?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                <?= Html::a('Apagar', ['#'], [
-                                                                    'class' => 'profile-service-data btn btn-danger',
-                                                                    'data-method' => 'post',
-                                                                ]) ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
-                                        </section>
-                                    </section>
-                                </section>
-                            <?php }}else{ ?>
-                            <div class="alert alert-secondary" role="alert">
-                                Não existem serviços para mostrar.
-                            </div>
-                        <?php } ?>
-                        <?php Pjax::end(); ?>
-                    </div>
-                    <div id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab" class="container tab-pane fade">
-                        <?php Pjax::begin(['id' => 'favorite-profile-id-wrap']); ?>
-                        <?php if($favorites != null){ ?>
-                            <?php foreach($favorites as $favorite){ ?>
                                 <div class="eventWrapper">
                                     <div class="event">
                                         <div class="event--img">
@@ -325,12 +241,96 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                             </div>
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $service->user->phone ?><span class="phone"></span></p>
                                             <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
+                                                <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <?php if(!\Yii::$app->user->isGuest){ ?>
+                                                    <?php if($service->favorites != null){ ?>
+                                                        <?php foreach($service->favorites as $favorite){ ?>
+                                                            <?php if($favorite->service_id == $service->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
+                                                                <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileViewMyService(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                                                            <?php }else{ ?>
+                                                                <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php }else{ ?>
+                                                        <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
+                                            <?php }else{ ?>
+                                                    <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
+                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-toggle="modal" data-target="#deleteService" data-id="<?= $service->id ?>">
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Serviço</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Deseja realmente eliminar o Serviço?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                <?= Html::a('Apagar', ['#'], [
+                                                                    'class' => 'profile-service-data btn btn-danger',
+                                                                    'data-method' => 'post',
+                                                                ]) ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?><br><?php } else { ?>
+                            <div class="alert alert-secondary" role="alert">
+                                Não existem serviços para mostrar.
+                            </div>
+                        <?php } ?>
+                        <?php Pjax::end(); ?>
+                    </div>
+                    <div id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab" class="container tab-pane fade">
+                        <?php Pjax::begin(['id' => 'favorite-profile-id-wrap']); ?>
+                        <?php if($favorites != null){ ?>
+                            <?php foreach($favorites as $favorite){ ?>
+                                <div class="eventWrapper">
+                                    <div class="event">
+                                        <div class="event--img">
+                                            <a href="" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
+                                                <img src="https://explicacoesdobairro.pt/wp-content/uploads/2019/07/logo-EB.png" title="" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="event--date">
+                                            <span>Classificação</span>
+                                            <span>4.9</span>
+                                            <span><img src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Star Icon"></span>
+                                            <span>126 Avaliações</span>
+                                        </div>
+                                        <div class="event--content">
+                                            <h2 class="h2-list"><a class="a-list" href="<?=Url::toRoute(['service/view/', 'id' => $favorite->service->id]);?>"><?= Html::encode($favorite->service->name) ?></a></h2>
+                                            <p class="event--content-hall">
+                                                <span class=""><strong>Profissional: </strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view', 'id' => $favorite->service->user_id]); ?>"><?= $favorite->service->user->name ?></a></span>
+                                            </p>
+                                            <div class="event--content-info">
+                                                <!--<div><time>20:00 - 22:00</time></div>-->
+                                                <div><span class=""><strong>Localidade: </strong><span class="localidade"></span>Portugal</span></div>
+                                                <div class="event--content-price"><strong>Preço: </strong>12<span class="preco"></span></div>
+                                                <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
+                                            </div>
+                                            <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $favorite->service->user->phone ?><span class="phone"></span></p>
+                                            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($favorite->service->category) ?></span></a>
                                                 <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileView(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?><br><?php }else{ ?><br>
+                            <?php } ?><br><?php } else { ?><br>
                             <div class="alert alert-secondary" role="alert">
                                 Não existem Favoritos para mostrar.
                             </div>
