@@ -3,9 +3,9 @@
  *   All rights reserved.
  */
 
-.background-service-create {
+.background-service-update {
     background: #f6f5f7;
-    display: flex;
+    //display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -15,6 +15,7 @@
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -27,7 +28,7 @@
     }
 }
 
-.service-create-box {
+.service-update-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,18 +41,18 @@
     border-radius: 10px;
 }
 
-.service-create-box h2 {
+.service-update-box h2 {
     margin: 0;
     padding: 0;
     color: #fff;
     text-align: center;
 }
 
-.service-create-box .user-box {
+.service-update-box .user-box {
     position: relative;
 }
 
-.service-create-box .user-box input {
+.service-update-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -62,7 +63,7 @@
     outline: none;
     background: transparent;
 }
-.service-create-box .user-box label {
+.service-update-box .user-box label {
     position: absolute;
     top:0;
     left: 0;
@@ -73,21 +74,21 @@
     transition: .5s;
 }
 
-.service-create-box .user-box input:focus ~ label,
-.service-create-box .user-box input:valid ~ label {
+.service-update-box .user-box input:focus ~ label,
+.service-update-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
     font-size: 12px;
 }
 
-.service-create-btn {
+.service-update-btn {
     width: 100%;
     text-align: center;
     margin-top: 40px;
 }
 
-.service-create-label {
+.service-update-label {
     left: 0;
     color: #03e9f4;
     font-size: 15px;
@@ -95,4 +96,16 @@
 
 .fuller-button {
     margin: 0em !important;
+}
+
+.profile-body-section {
+    background-color: white;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    height: auto;
+    width: 14.5%;
+}
+
+.gallery-lateral-space {
+    margin: 0px 10px;
 }

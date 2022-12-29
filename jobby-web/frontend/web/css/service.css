@@ -123,12 +123,13 @@ body {
 
 .service-gallery-images{
   width: 150px;
-  margin-right: 10px;
+  //margin-right: 10px;
 }
 
 #service-gallery-id-wrap{
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #service-gallery-form-id{
