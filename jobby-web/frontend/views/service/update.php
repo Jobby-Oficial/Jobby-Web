@@ -16,12 +16,12 @@ $this->registerJsFile('@web/js/deleteGallery.js', ['depends' => [JqueryAsset::cl
     <div class="row">
         <div class="col-sm-12 col-12">
             <div class="profile-body-section p-2 mt-3">
-                <ul class="nav nav-pills ml-2" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#service">Serviço</a>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-service-tab" data-bs-toggle="pill" data-bs-target="#pills-service" type="button" role="tab" aria-controls="pills-service" aria-selected="true">Serviço</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#gallery">Galeria</a>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-gallery-tab" data-bs-toggle="pill" data-bs-target="#pills-gallery" type="button" role="tab" aria-controls="pills-gallery" aria-selected="false">Galeria</button>
                     </li>
                 </ul>
             </div>
@@ -33,8 +33,8 @@ $this->registerJsFile('@web/js/deleteGallery.js', ['depends' => [JqueryAsset::cl
     <section class="mt-2">
         <div class="row">
             <div class="col-sm-12 col-12">
-                <div class="tab-content">
-                    <div class="site-signup tab-pane active" id="service">
+                <div class="tab-content" id="pills-tabContent">
+                    <div id="pills-service" role="tabpanel" aria-labelledby="pills-service-tab" class="site-signup tab-pane show active">
                         <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-5">
@@ -65,7 +65,7 @@ $this->registerJsFile('@web/js/deleteGallery.js', ['depends' => [JqueryAsset::cl
                             </div>
                         </div>
                     </div>
-                    <div id="gallery" class="tab-pane fade">
+                    <div id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab" class="tab-pane fade">
                         <?php if(isset($warning)){ ?>
                             <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
                                 <strong><?= $warning ?></strong>

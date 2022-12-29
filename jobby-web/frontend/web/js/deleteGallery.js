@@ -5,7 +5,7 @@
 
 function deleteServiceGallery(id, galleryId){
   $.ajax({
-    url: "http://localhost:20080/service/delete-gallery?id=" + id,
+    url: "http://localhost/jobby-web/frontend/web/service/delete-gallery?id=" + id,
     data: {"galleryId": galleryId},
     type: 'DELETE',
     success: function(result) {

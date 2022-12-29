@@ -10,7 +10,7 @@ function responseScheduleProfessional(id, response){
     price = price.slice(price.indexOf('€') + 1);
   }
   $.ajax({
-    url: "http://localhost:20080/schedule/update?id=" + id,
+    url: "http://localhost/jobby-web/frontend/web/schedule/update?id=" + id,
     type: 'POST',
     data: {'response': response, 'reason': reason, 'price': price},
     success: function(result) {
@@ -33,7 +33,7 @@ function responseScheduleClient(id, response){
     price = price.slice(price.indexOf('€') + 1);
   }
   $.ajax({
-    url: "http://localhost:20080/schedule/update?id=" + id,
+    url: "http://localhost/jobby-web/frontend/web/schedule/update?id=" + id,
     type: 'POST',
     data: {'response': response, 'reason': reason, 'price': price},
     success: function(result) {

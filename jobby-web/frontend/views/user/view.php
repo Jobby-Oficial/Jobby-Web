@@ -12,10 +12,10 @@ use yii\widgets\DetailView;
 
 $this->registerCssFile('@web/css/profile.css');
 $this->registerCssFile('@web/css/serviceList.css');
+$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/deleteService.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]);
-$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 ?>
 <!--<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -257,7 +257,31 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                                 <?php } ?>
                                             <?php }else{ ?>
                                                     <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
-                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-toggle="modal" data-target="#deleteService" data-id="<?= $service->id ?>">
+                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-bs-toggle="modal" data-bs-target="#deleteService" data-id="<?= $service->id ?>">
+                                                <!-- Modal -->
+                                            <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Serviço</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Deseja realmente eliminar o Serviço?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                            <?= Html::a('Apagar', ['#'], [
+                                                                'class' => 'profile-service-data btn btn-danger',
+                                                                'data-method' => 'post',
+                                                            ]) ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">

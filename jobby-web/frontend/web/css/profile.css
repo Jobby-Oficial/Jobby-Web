@@ -11,24 +11,6 @@ body{
 }
 
 /* ---- ---- ---- ---- ---- ---- */
-/* ---- ---- Nav Pills ---- ---- */
-/* ---- ---- ---- ---- ---- ---- */
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-    background-color: #006266 !important;
-}
-
-.nav-pills .nav-link:hover{
-    color: #006266 !important;
-}
-
-.nav-pills .nav-link:focus{
-    color: ghostwhite !important;
-}
-
-/* ----   End of Section   ---- */
-
-/* ---- ---- ---- ---- ---- ---- */
 /* ----  Header of profile  ---- */
 /* ---- ---- ---- ---- ---- ---- */
 
