@@ -25,7 +25,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
         </div>
     <?php } ?>
     <section>
-        <h1 class="text-center mt-5 mb-3">Detalhe do Serviço</h1>
+        <h1 class="text-center mt-5 mb-5">Detalhe do Serviço</h1>
     </section>
     <section class="row">
         <section class="professional-service-carousel-wrap col-xl-12">

@@ -146,7 +146,8 @@ class ServiceController extends Controller
         $modelServiceGallery = new ServiceGallery();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            //dd($this->request->post());
+            if ($model->load($this->request->post()) && $model->save(false)) {
                 $images = UploadedFile::getInstances($modelServiceGallery, 'image');
 
                 foreach($images as $img){

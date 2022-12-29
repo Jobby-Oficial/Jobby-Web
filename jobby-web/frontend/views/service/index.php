@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Services');
 ?>
-    <section class="service-index container">
+    <section class="service-index container mb-5">
 
     <div class="text-center mt-5">
         <h1>Serviços</h1>
