@@ -42,7 +42,6 @@ $this->title = "Jobby - Home";
     ]);
     $menuItemsLeft = [
         ['label' => 'Explorar Serviços', 'url' => ['/service/index'], 'options' => ['class' => 'navbar-item-jobby']],
-        ['label' => 'Favoritos', 'url' => ['/favorite/index'], 'options' => ['class' => 'navbar-item-jobby']],
         /* ['label' => 'Dropdown','items' => [
                 ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
             ]

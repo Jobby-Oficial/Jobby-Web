@@ -37,7 +37,7 @@ function deleteFavorite(id){
 
 function createFavoriteServiceView(serviceId, userId){
   $.ajax({
-    url: "favorite",
+    url: "http://localhost/jobby-web/frontend/web/favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -52,7 +52,7 @@ function createFavoriteServiceView(serviceId, userId){
 
 function deleteFavoriteServiceView(id){
   $.ajax({
-    url: "favorite/" + id,
+    url: "http://localhost/jobby-web/frontend/web/favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {
@@ -97,7 +97,7 @@ function deleteFavoriteProfileView(id){
 
 function createFavoriteProfileViewMyService(serviceId, userId){
   $.ajax({
-    url: "favorite",
+    url: "http://localhost/jobby-web/frontend/web/favorite",
     data: {"service_id": serviceId, "user_id": userId},
     type: 'POST',
     success: function(result) {
@@ -112,7 +112,7 @@ function createFavoriteProfileViewMyService(serviceId, userId){
 
 function deleteFavoriteProfileViewMyService(id){
   $.ajax({
-    url: "favorite/" + id,
+    url: "http://localhost/jobby-web/frontend/web/favorite/" + id,
     data: {"id": id},
     type: 'DELETE',
     success: function(result) {

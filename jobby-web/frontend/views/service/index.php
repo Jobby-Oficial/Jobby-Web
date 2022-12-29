@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'Services');
 ?>
     <section class="service-index container">
 
-    <div class="text-center mt-3">
+    <div class="text-center mt-5">
         <h1>Serviços</h1>
     </div>
 

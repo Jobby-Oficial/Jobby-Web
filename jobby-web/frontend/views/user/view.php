@@ -242,7 +242,6 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $service->user->phone ?><span class="phone"></span></p>
                                             <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
                                                 <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
-                                            <div class="d-flex justify-content-end mt-3">
                                                 <?php if(!\Yii::$app->user->isGuest){ ?>
                                                     <?php if($service->favorites != null){ ?>
                                                         <?php foreach($service->favorites as $favorite){ ?>
@@ -256,7 +255,6 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                                         <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                                                     <?php } ?>
                                                 <?php } ?>
-                                            </div>
                                             <?php }else{ ?>
                                                     <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
                                                     <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-toggle="modal" data-target="#deleteService" data-id="<?= $service->id ?>">

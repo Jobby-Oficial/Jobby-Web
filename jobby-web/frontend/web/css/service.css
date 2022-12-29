@@ -92,7 +92,13 @@ body {
 }
 
 .service-rating-star img{
-  width: 15px;
+    //width: 15px;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
 }
 
 .professional-service-order-box{

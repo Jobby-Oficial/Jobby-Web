@@ -10,6 +10,7 @@ use kartik\time\TimePicker;
 use yii\bootstrap5\ActiveForm;
 use yii\widgets\Pjax;
 
+$this->registerCssFile('@web/css/serviceDetail.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
 ?>
@@ -24,7 +25,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
         </div>
     <?php } ?>
     <section>
-        <h1 class="text-center mt-3 mb-3">Detalhe do Serviço</h1>
+        <h1 class="text-center mt-5 mb-3">Detalhe do Serviço</h1>
     </section>
     <section class="row">
         <section class="professional-service-carousel-wrap col-xl-12">
@@ -56,49 +57,67 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
     </section>
     <section class="row">
         <section class="col-xl-8">
-            <div class="mt-5">
+            <div class="mt-5 mb-5">
                 <h2><?= $model->name ?></h2>
             </div>
-            <div class="mt-2">
-                <div class="professional-service-page-wrap d-flex">
-                    <div class="professional-img-profile-service-page-wrap professional-service-page-item d-flex">
+            <div class="mt-2 d-flex align-items-center justify-content-center">
+                <div class="d-flex justify-content-between w-100 professional-service-page-wrap">
+                    <div class="teste mini-box professional-img-profile-service-page-wrap professional-service-page-item d-flex">
                         <!-- <img class="professional-img-profile-service-page" src="<?= $model->user->image ?>" alt="Professional User Image"> -->
-                        <a href="<?=Url::toRoute(['user/view/', 'id' => $model->user->id]);?>" class="service-professional-username ml-1"><?= $model->user->name ?></a><span class="professional-divisor-service-page ml-2 mr-2">|</span>
+                        <!--<strong>Profissional: </strong>
+                        <a href="<?/*=Url::toRoute(['user/view/', 'id' => $model->user->id]);*/?>" class="service-professional-username ml-1"><?/*= $model->user->name */?></a><span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
+                        <span class=""><strong>Profissional:&nbsp;</strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $model->user_id]); ?>"><?= $model->user->name ?></a></span>
                     </div>
-                    <div class=" professional-service-page-item"><strong>Categoria: </strong><?= $model->category ?></div><span class="professional-divisor-service-page ml-2 mr-2">|</span>
-                    <div class="service-rating-star professional-service-page-item d-flex align-items-center">
-                        <img class="mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/star.svg' ?>" alt="Service Rating Star"> 5
-                    </div><span class="professional-divisor-service-page ml-2 mr-2">|</span>
-                    <?php Pjax::begin(['id' => 'favorite-service-view-id-wrap']); ?>
+                    <div class="teste mini-box professional-service-page-item"><strong>Categoria:&nbsp;</strong><?= $model->category ?></div><!--<span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
+                    <div class="teste mini-box service-rating-star professional-service-page-item d-flex align-items-center">
+                        <div class="professional-service-page-item">
+                            <strong>Classificação:&nbsp;</strong>4.9
+                            <img class="mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Service Rating Star">
+                        </div>
+                        <!--<img class="mr-1" src="<?php /*echo Yii::getAlias('@web') . '/assets/img/star.svg' */?>" alt="Service Rating Star"> 5-->
+                    </div><!--<span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
                     <?php if(!\Yii::$app->user->isGuest){ ?>
                         <?php if(\Yii::$app->user->identity->id != $model->user->id){ ?>
+                            <?php Pjax::begin(['id' => 'favorite-service-view-id-wrap']); ?>
+                    <div class="teste mini-box professional-service-page-item">
+                        <strong>Favorito:&nbsp;</strong>
                             <?php if($model->favorites != null){ ?>
                                 <?php foreach($model->favorites as $favorite){ ?>
                                     <?php if($favorite->service_id == $model->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
-                                        <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteServiceView(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
-                                    <?php }else{ ?>
-                                        <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteServiceView(<?= HTML::encode($model->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                                        <img class="home-services-favorite-heart-favorite-svg align-text-top" onclick="deleteFavoriteServiceView(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                                    <?php } else{ ?>
+                                        <img class="home-services-favorite-heart-svg align-text-top" onclick="createFavoriteServiceView(<?= HTML::encode($model->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                                     <?php } ?>
                                 <?php } ?>
-                            <?php }else{ ?>
-                                <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteServiceView(<?= HTML::encode($model->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                            <?php } else{ ?>
+                                <img class="home-services-favorite-heart-svg align-text-top" onclick="createFavoriteServiceView(<?= HTML::encode($model->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                             <?php } ?>
+                    </div>
+                            <?php Pjax::end(); ?>
                         <?php } ?>
                     <?php } ?>
-                    <?php Pjax::end(); ?>
+
                 </div>
             </div>
-            <div class="mt-3">
+            <!--<div class="mt-3 box">
                 <div><strong>Descrição:</strong></div>
                 <div class="mt-2 text-break">
-                    <?= $model->description ?>
+                    <?/*= $model->description */?>
+                </div>
+            </div>-->
+
+            <div class="mt-3 chip">
+                <div><strong>Descrição:</strong></div>
+                <div class="mt-2 text-break">
+                    <p><?= $model->description ?></p>
                 </div>
             </div>
+
         </section>
         <section class="col-xl-4">
             <div class="professional-service-order-box mt-5">
                 <div class="d-flex">
-                    <div><strong>Preço:</strong></div>
+                    <div><strong>Preço:&nbsp;</strong></div>
                     <div class="w-100 text-right"><?= $model->price ?>€</div>
                 </div>
                 <div class="professional-service-order-box-warning mt-1">*Preço Base, pode haver alterações ao preço.</div>
@@ -145,7 +164,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
     </section>
     <br>
     <br>
-    <section class="row">
+    <section class="mt-5 mb-5 row">
         <section class="col-xl-12">
             <?= edofre\fullcalendar\Fullcalendar::widget(['events' => $schedules, 'options' => [
                 'id'       => 'calendar',
@@ -157,5 +176,5 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                 ],
             ]); ?>
         </section>
-    </section>
+    </section><br>
 </section>
