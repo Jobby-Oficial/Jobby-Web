@@ -72,51 +72,6 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
     </div>
 </section>
 
-
-
-
-<!--<section class="container">
-    <div class="row">
-        <div class="col-sm-12 col-12">
-            <div class="profile-body-section p-2 mt-3">
-                <ul class="nav nav-pills ml-2" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#about">Sobre</a>
-                    </li>
-                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile') || \Yii::$app->user->identity->id != $model->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#services">Serviços</a>
-                        </li>
-                    <?php /*} */?>
-                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#favorites">Favoritos</a>
-                        </li>
-                    <?php /*} */?>
-                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile')){
-                        if($user->id == \Yii::$app->user->identity->id){ */?>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#jobs">Trabalhos</a>
-                            </li>
-                        <?php /*}} */?>
-                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#schedules">Agendamentos</a>
-                        </li>
-                    <?php /*} */?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>-->
-
-
-
-
-
-
-
-
 <section class="container">
     <div class="row">
         <div class="col-sm-12 col-12">
@@ -151,9 +106,6 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
         </div>
     </div>
 </section>
-
-
-
 
 <section class="container section-three">
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
@@ -258,29 +210,6 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                             <?php }else{ ?>
                                                     <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
                                                     <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-bs-toggle="modal" data-bs-target="#deleteService" data-id="<?= $service->id ?>">
-                                                <!-- Modal -->
-                                            <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Serviço</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Deseja realmente eliminar o Serviço?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                            <?= Html::a('Apagar', ['#'], [
-                                                                'class' => 'profile-service-data btn btn-danger',
-                                                                'data-method' => 'post',
-                                                            ]) ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
 
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -305,6 +234,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             <?php } ?>
                                             </p>
                                         </div>

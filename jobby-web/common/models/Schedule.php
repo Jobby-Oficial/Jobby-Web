@@ -15,18 +15,15 @@ use yii\behaviors\TimestampBehavior;
  * @property int $payment
  * @property int|null $schedule_status
  * @property string|null $schedule_status_note
- * @property float|null $price
  * @property int $job_status_id
  * @property int $service_id
- * @property int $professional_id
- * @property int $client_id
+ * @property int $user_id
  * @property int $created_at
  * @property int $updated_at
  *
- * @property User $client
  * @property JobStatus $jobStatus
- * @property User $professional
  * @property Service $service
+ * @property User $user
  */
 class Schedule extends \yii\db\ActiveRecord
 {
@@ -114,16 +111,6 @@ class Schedule extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Client]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getClient()
-    {
-        return $this->hasOne(User::class, ['id' => 'client_id']);
-    }
-
-    /**
      * Gets query for [[JobStatus]].
      *
      * @return \yii\db\ActiveQuery
@@ -151,5 +138,15 @@ class Schedule extends \yii\db\ActiveRecord
     public function getService()
     {
         return $this->hasOne(Service::class, ['id' => 'service_id']);
+    }
+
+    /**
+     * Gets query for [[Client]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClient()
+    {
+        return $this->hasOne(User::class, ['id' => 'client_id']);
     }
 }

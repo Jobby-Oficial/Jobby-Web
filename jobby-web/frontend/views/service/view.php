@@ -28,7 +28,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
         <h1 class="text-center mt-5 mb-5">Detalhe do Serviço</h1>
     </section>
     <section class="row">
-        <section class="professional-service-carousel-wrap col-xl-12">
+        <section class="professional-service-carousel-wrap col-xl-8">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php if($model->serviceGalleries != null){
@@ -47,34 +47,45 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                     <span class="visually-hidden">Próximo</span>
                 </button>
             </div>
-        </section>
-    </section>
-    <section class="row">
-        <section class="col-xl-8">
-            <div class="mt-5 mb-5">
+
+            <div class="mt-5 mb-4">
                 <h2><?= $model->name ?></h2>
             </div>
-            <div class="mt-2 d-flex align-items-center justify-content-center">
-                <div class="d-flex justify-content-between w-100 professional-service-page-wrap">
-                    <div class="teste mini-box professional-img-profile-service-page-wrap professional-service-page-item d-flex">
-                        <!-- <img class="professional-img-profile-service-page" src="<?= $model->user->image ?>" alt="Professional User Image"> -->
-                        <!--<strong>Profissional: </strong>
-                        <a href="<?/*=Url::toRoute(['user/view/', 'id' => $model->user->id]);*/?>" class="service-professional-username ml-1"><?/*= $model->user->name */?></a><span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
-                        <span class=""><strong>Profissional:&nbsp;</strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $model->user_id]); ?>"><?= $model->user->name ?></a></span>
-                    </div>
-                    <div class="teste mini-box professional-service-page-item"><strong>Categoria:&nbsp;</strong><?= $model->category ?></div><!--<span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
-                    <div class="teste mini-box service-rating-star professional-service-page-item d-flex align-items-center">
-                        <div class="professional-service-page-item">
-                            <strong>Classificação:&nbsp;</strong>4.9
-                            <img class="mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Service Rating Star">
-                        </div>
-                        <!--<img class="mr-1" src="<?php /*echo Yii::getAlias('@web') . '/assets/img/star.svg' */?>" alt="Service Rating Star"> 5-->
-                    </div><!--<span class="professional-divisor-service-page ml-2 mr-2">|</span>-->
-                    <?php if(!\Yii::$app->user->isGuest){ ?>
-                        <?php if(\Yii::$app->user->identity->id != $model->user->id){ ?>
-                            <?php Pjax::begin(['id' => 'favorite-service-view-id-wrap']); ?>
-                    <div class="teste mini-box professional-service-page-item">
-                        <strong>Favorito:&nbsp;</strong>
+
+            <div class="chip">
+                <div><strong>Descrição:</strong></div>
+                <div class="mt-2 text-break">
+                    <p><?= $model->description ?></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="col-xl-4">
+            <div class="professional-service-order-box">
+                <div class="schedule-box">
+                    <strong>Profissional:&nbsp;</strong><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $model->user_id]); ?>"><?= $model->user->name ?></a>
+                </div>
+                <div class="mt-1 schedule-box">
+                    <strong>Categoria:&nbsp;</strong><?= $model->category ?>
+                </div>
+                <div class="mt-1 schedule-box service-rating-star">
+                    <strong>Classificação:&nbsp;</strong>4.9
+                    <img class="mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Service Rating Star">
+                </div>
+                <div class="mt-1 schedule-box">
+                    <strong>Avaliação:&nbsp;</strong>1024
+                </div>
+                <div class="mt-1 schedule-box">
+                    <strong>Localização:&nbsp;</strong><?= $model->user->city ?>,&nbsp;<?= $model->user->country ?>
+                </div>
+                <div class="mt-1 schedule-box">
+                    <strong>Número de Telemóvel: </strong><?= $model->user->phone ?>
+                </div>
+                <?php if(!\Yii::$app->user->isGuest){ ?>
+                    <?php if(\Yii::$app->user->identity->id != $model->user->id){ ?>
+                        <?php Pjax::begin(['id' => 'favorite-service-view-id-wrap']); ?>
+                        <div class="mt-1 schedule-box">
+                            <strong>Favorito:&nbsp;</strong>
                             <?php if($model->favorites != null){ ?>
                                 <?php foreach($model->favorites as $favorite){ ?>
                                     <?php if($favorite->service_id == $model->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
@@ -86,30 +97,11 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                             <?php } else{ ?>
                                 <img class="home-services-favorite-heart-svg align-text-top" onclick="createFavoriteServiceView(<?= HTML::encode($model->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                             <?php } ?>
-                    </div>
-                            <?php Pjax::end(); ?>
-                        <?php } ?>
+                        </div>
+                        <?php Pjax::end(); ?>
                     <?php } ?>
-
-                </div>
-            </div>
-            <!--<div class="mt-3 box">
-                <div><strong>Descrição:</strong></div>
-                <div class="mt-2 text-break">
-                    <?/*= $model->description */?>
-                </div>
-            </div>-->
-
-            <div class="mt-3 chip">
-                <div><strong>Descrição:</strong></div>
-                <div class="mt-2 text-break">
-                    <p><?= $model->description ?></p>
-                </div>
-            </div>
-
-        </section>
-        <section class="col-xl-4">
-            <div class="professional-service-order-box mt-5">
+                <?php } ?>
+                <hr class="mt-5">
                 <div class="d-flex">
                     <div><strong>Preço:&nbsp;</strong></div>
                     <div class="w-100 text-right"><?= $model->price ?>€</div>
@@ -119,7 +111,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                     <?php if(!\Yii::$app->user->isGuest){ ?>
                         <?php Modal::begin([
                             'title' => 'Realizar Pedido',
-                            'toggleButton' => ['label' => 'Realizar Pedido', 'class' => 'btn btn-primary'],
+                            'toggleButton' => ['label' => 'Realizar Pedido', 'class' => 'btns-list schedule'],
                         ]) ?>
 
                         <?php $form = ActiveForm::begin(['action' => ['schedule/create']]); ?>
@@ -145,7 +137,7 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                             ]]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Agendar Serviço', ['class' => 'btn btn-primary w-100']) ?>
+                            <?= Html::submitButton('Agendar Serviço', ['class' => 'btns-list schedule w-100']) ?>
                         </div>
 
                         <?php ActiveForm::end(); ?>

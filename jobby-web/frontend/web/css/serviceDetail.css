@@ -91,14 +91,10 @@
     transition: all 0.2s ease-in-out;
 }
 
-.teste {
-    box-sizing: border-box;
-    appearance: none;
-    display: flex;
-    align-self: center;
-    text-decoration: none;
-    text-align: center;
-    justify-content: space-between;
+.schedule-box a {
+    color: inherit;
 }
 
-
+.schedule-box a:hover {
+    color: var(--dark-green-clr);
+}

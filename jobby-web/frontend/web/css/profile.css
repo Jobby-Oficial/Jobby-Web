@@ -124,6 +124,23 @@ body{
     padding-bottom: 40px;
 }
 
+/* ----   End of Section   ---- */
+
+/* ---- ---- ---- ---- ---- ---- */
+/* ----   Body of profile   ---- */
+/* ---- ---- ---- ---- ---- ---- */
+
+.box {
+    background: ghostwhite;
+    padding: 40px;
+    border-radius: 10px;
+    min-height: 200px;
+//font-size: 0.5em;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 /* ---- ---- ---- ---- ---- ---- */
 
 @media (max-width: 1199px){
