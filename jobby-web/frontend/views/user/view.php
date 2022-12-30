@@ -292,15 +292,15 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                     <div id="pills-jobs" role="tabpanel" aria-labelledby="pills-jobs-tab" class="container tab-pane fade"><br>
                         <?php if($jobs != null){ ?>
                             <?php foreach($jobs as $job){ ?>
-                                <section class="home-services-body-wrap row pb-3 mt-3">
+                                <section class="chip schedule-box home-services-body-wrap row pb-3 mt-3">
                                     <section class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-12">
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Nome do Serviço:</strong></div>
+                                            <div class="mr-1"><strong>Nome do Serviço:&nbsp;</strong></div>
                                             <div><a href="<?=Url::to(['service/view/', 'id' => $job->service->id]);?>"><?= $job->service->name ?></a></div>
                                         </section>
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Cliente: </strong></div>
-                                            <div><a href="<?=Url::to(['user/view/', 'id' => $job->client->id]);?>"><?= $job->client->username ?></a></div>
+                                            <div class="mr-1"><strong>Cliente:&nbsp;</strong></div>
+                                            <div><a href="<?=Url::to(['user/view/', 'id' => $job->client->id]);?>"><?= $job->client->name ?></a></div>
                                         </section>
                                         <section class="mb-3">
                                             <div class="mr-1"><strong>Nota:</strong></div>
@@ -309,8 +309,8 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                     </section>
                                     <section class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="d-flex justify-content-end">
-                                            <div class="mr-1"><strong>Data:</strong></div>
-                                            <div><?= $job->service_date ?></div>
+                                            <div class="mr-1"><strong>Data:&nbsp;</strong></div>
+                                            <div><?= $job->service_date ?>&nbsp;</div>
                                             <div class="ml-1"><?= $job->service_time ?></div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-2">
@@ -341,7 +341,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                         </div>
                                     </section>
                                     <section class="col-xl-12 d-flex justify-content-end mb-3 mt-3">
-                                        <a href="<?=Url::to(['schedule/view', 'id' => $job->id]);?>" class="btn btn-info mr-2">Detalhe</a>
+                                        <a href="<?=Url::to(['schedule/view', 'id' => $job->id]);?>" class="btns-list schedule mr-2">Detalhe</a>
                                     </section>
                                 </section>
                             <?php }}else{ ?>
@@ -353,15 +353,15 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                     <div id="pills-schedules" role="tabpanel" aria-labelledby="pills-schedules-tab" class="container tab-pane fade"><br>
                         <?php if($schedules != null){ ?>
                             <?php foreach($schedules as $schedule){ ?>
-                                <section class="home-services-body-wrap row pb-3 mt-3">
+                                <section class="chip schedule-box home-services-body-wrap row pb-3">
                                     <section class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-12">
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Nome do Serviço:</strong></div>
+                                            <div class="mr-1"><strong>Nome do Serviço:&nbsp;</strong></div>
                                             <div><a href="<?=Url::to(['service/view/', 'id' => $schedule->service->id]);?>"><?= $schedule->service->name ?></a></div>
                                         </section>
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Professional: </strong></div>
-                                            <div><a href="<?=Url::to(['user/view/', 'id' => $schedule->professional->id]);?>"><?= $schedule->professional->username ?></a></div>
+                                            <div class="mr-1"><strong>Professional:&nbsp;</strong></div>
+                                            <div><a href="<?=Url::to(['user/view/', 'id' => $schedule->professional->id]);?>"><?= $schedule->professional->name ?></a></div>
                                         </section>
                                         <section class="mb-3">
                                             <div class="mr-1"><strong>Nota:</strong></div>
@@ -370,8 +370,8 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                     </section>
                                     <section class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="d-flex justify-content-end">
-                                            <div class="mr-1"><strong>Data:</strong></div>
-                                            <div><?= $schedule->service_date ?></div>
+                                            <div class="mr-1"><strong>Data:&nbsp;</strong></div>
+                                            <div><?= $schedule->service_date ?>&nbsp;</div>
                                             <div class="ml-1"><?= $schedule->service_time ?></div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-2">
@@ -402,7 +402,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                         </div>
                                     </section>
                                     <section class="col-xl-12 d-flex justify-content-end mb-3 mt-3">
-                                        <a href="<?=Url::to(['schedule/view', 'id' => $schedule->id]);?>" class="btn btn-info mr-2">Detalhe</a>
+                                        <a href="<?=Url::to(['schedule/view', 'id' => $schedule->id]);?>" class="btns-list schedule mr-2">Detalhe</a>
                                     </section>
                                 </section>
                             <?php }}else{ ?>

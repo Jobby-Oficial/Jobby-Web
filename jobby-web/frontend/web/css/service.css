@@ -79,13 +79,13 @@ body {
 .schedule {
     display: unset;
     border-color: #006266;
-    color: #fff;
+    color: #fff !important;
     box-shadow: 0 0 40px 40px #006266 inset, 0 0 0 0 #006266;
     transition: all 150ms ease-in-out;
 }
 
 .schedule:hover {
-    color: #002A32;
+    color: #002A32 !important;
     box-shadow: 0 0 10px 0 #006266 inset, 0 0 10px 4px #006266;
 }
 
