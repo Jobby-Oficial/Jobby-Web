@@ -3,17 +3,26 @@
  *   All rights reserved.
  */
 
- .schedule-status-badge{
-   font-size: 14px;
-   color: #444;
- }
+.schedule-status-badge {
+    font-size: 14px;
+    color: #444;
+}
 
- .job-schedule-note{
-   display: -webkit-box;
-   -webkit-line-clamp: 2;
-   -webkit-box-orient: vertical;
- }
+.schedule-status-badge-detail {
+    font-size: 14px;
+    color: ghostwhite;
+}
 
- #schedule-schedule_status-buttons-wrap{
-   display: flex;
- }
+.job-schedule-note {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.schedule-btn-recusar {
+    margin-right: 10px;
+}
+
+#schedule-schedule_status-buttons-wrap {
+    display: flex;
+}

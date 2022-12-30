@@ -1,0 +1,130 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
+.background-schedule-view {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100%;
+    background: linear-gradient(125deg, #21CECC 0%, #29D9D5 33%, #01a3a4 66%, #038583 100%);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.schedule-view-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.schedule-view-box h2 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    //text-align: center;
+}
+
+.schedule-view-box .user-box {
+    position: relative;
+}
+
+.schedule-view-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.schedule-view-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.schedule-view-box .user-box input:focus ~ label,
+.schedule-view-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.schedule-view-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.schedule-view-label {
+    left: 0;
+    color: ghostwhite;
+    font-size: 15px;
+}
+
+.schedule-view-label strong {
+    color: #03e9f4;
+}
+
+.fuller-button {
+    margin: 0em !important;
+}
+
+.profile-body-section {
+    position: absolute;
+    top: 48%;
+    left: 55%;
+    //border: 1px solid #eeeeee;
+    //border-radius: 10px ;
+    height: auto;
+    width: 250px;
+    padding: 20px;
+    //background: rgba(0,0,0,.5);
+    //box-sizing: border-box;
+    //box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    //border-radius: 10px;
+}
+
+.result-body-section {
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    margin-right: 20px;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
