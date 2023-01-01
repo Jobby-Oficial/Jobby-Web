@@ -100,7 +100,7 @@ $this->title = "Jobby - Home";
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['/support']);?>">Suporte</a>
+                                <a id="support" href="<?=Url::to(['/support']);?>">Suporte</a>
                             </li>
                         </ul>
                     </div>
