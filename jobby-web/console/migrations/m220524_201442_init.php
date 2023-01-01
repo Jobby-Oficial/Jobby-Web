@@ -40,16 +40,16 @@ class m220524_201442_init extends Migration
         $this->addForeignKey('FK_user_plan', 'user', 'plan_id', 'plan', 'id');
 
         $this->insert('{{%user}}',array(
-            'username' => 'leonardoferreira',
-            'email' => 'leonardoferreira596@gmail.com',
-            'name' => 'Leonardo Ferreira',
+            'username' => 'guilherme',
+            'email' => 'guilherme@gmail.com',
+            'name' => 'Guilherme Cruz',
             'phone' => '927632646',
             'genre' => 'm',
-            'birth' => '2000-06-19',
+            'birth' => '2000-01-28',
             'country' => 'Portugal',
-            'city' => 'Torres Vedras',
-            'morada' => 'Estrada do campo da bola N°13,escravilheira',
-            'biography' => 'dsdsdsds',
+            'city' => 'Lourinhã',
+            'morada' => 'Rua Vale Bravo Nº1',
+            'biography' => 'Teste Teste Teste Teste Teste Teste',
             'auth_key' => '-5wg3Yy8DwgLORe0hQn-ZHW4AO8-wuB8',
             'password_hash' => '$2y$13$C/U4mLskLHm/BfgVDvs04OvcZl7enwxE2g17TJz1MR4HlpKUdDIT.',
             'plan_start_date' => date('Y-m-d'),

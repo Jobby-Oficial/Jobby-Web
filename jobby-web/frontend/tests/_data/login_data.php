@@ -1,7 +1,7 @@
 <?php
 
 return [
-    [
+    /*[
         'username' => 'erau',
         'auth_key' => 'tUu1qHcde0diwUol3xeI-18MuHkkprQI',
         // password_0
@@ -21,5 +21,5 @@ return [
         'created_at' => '1548675330',
         'updated_at' => '1548675330',
         'verification_token' => '4ch0qbfhvWwkcuWqjN8SWRq72SOw1KYT_1548675330',
-    ],
+    ],*/
 ];
