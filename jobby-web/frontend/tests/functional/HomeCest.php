@@ -26,6 +26,11 @@ class HomeCest
         $I->seeInCurrentUrl('/');
     }
 
+    public function checkAbout(FunctionalTester $I)
+    {
+        $I->see('Sobre Nós', 'h1');
+    }
+
     public function tryToPrivacidade(FunctionalTester $I)
     {
         $I->wantTo('Privacidade');
