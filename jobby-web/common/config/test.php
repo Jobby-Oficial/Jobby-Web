@@ -15,7 +15,7 @@ $config =  yii\helpers\ArrayHelper::merge(
                 'cookieValidationKey' => 'test',
             ],
             'db' => [
-                'class' => 'yii\db\Connection',
+                'class' => \yii\db\Connection::class,
                 'dsn' => 'mysql:host=localhost;dbname=jobby',
                 'username' => 'root',
                 'password' => '',
@@ -33,5 +33,21 @@ return $config;
 //            'class' => \yii\web\User::class,
 //            'identityClass' => 'common\models\User',
 //        ],
+//        'assetManager' => [
+//            'basePath' => __DIR__ . '/../web/assets',
+//        ],
+//        'urlManager' => [
+//            'showScriptName' => true,
+//        ],
+//        'request' => [
+//            'cookieValidationKey' => 'test',
+//        ],
+//        'db' => [
+//            'class' => \yii\db\Connection::class,
+//            'dsn' => 'mysql:host=localhost;dbname=jobby',
+//            'username' => 'root',
+//            'password' => '',
+//            'charset' => 'utf8',
+//        ]
 //    ],
 //];

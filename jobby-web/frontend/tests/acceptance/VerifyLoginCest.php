@@ -24,6 +24,7 @@ class VerifyLoginCest
         $I->click('login-button');
         $I->wait(2);
         $I->seeInCurrentUrl('/');
+        $I->waitForText('teste', 30);
         $I->seeElement('.nav');
         $I->see('teste', '.nav');
     }

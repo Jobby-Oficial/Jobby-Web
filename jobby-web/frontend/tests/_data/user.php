@@ -1,7 +1,7 @@
 <?php
 
 return [
-    [
+    /*[
         'username' => 'okirlin',
         'auth_key' => 'iwTNae9t34OmnK6l4vT4IeaTk-YWI2Rv',
         'password_hash' => '$2y$13$CXT0Rkle1EMJ/c1l5bylL.EylfmQ39O5JlHJVFpNn618OUS1HwaIi',
@@ -41,5 +41,5 @@ return [
         'created_at' => '1548675330',
         'updated_at' => '1548675330',
         'verification_token' => 'already_used_token_1548675330',
-    ],
+    ],*/
 ];

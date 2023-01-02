@@ -9,11 +9,31 @@ use yii\bootstrap5\Modal;
 use kartik\time\TimePicker;
 use yii\bootstrap5\ActiveForm;
 use yii\widgets\Pjax;
+use common\models\Avaliation;
 
 $this->registerCssFile('@web/css/serviceDetail.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
 ?>
+
+<?php
+
+$avaliations = Avaliation::find()->where(['service_id' => $model->id])->all();
+$avaliationsCount = Avaliation::find()->where(['service_id' => $model->id])->count();
+
+if ($avaliationsCount != 0) {
+    $aux = 0;
+    foreach ($avaliations as $avaliation) {
+        $aux += $avaliation->avaliation;
+    }
+    $avaliations = ($aux / $avaliationsCount);
+}
+else {
+    $avaliations = "0.0";
+}
+
+?>
+
 
 <section class="container professional-service-info-wrap">
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
@@ -69,11 +89,11 @@ $this->registerJsFile('https://kit.fontawesome.com/ea7160ad2a.js');
                     <strong>Categoria:&nbsp;</strong><?= $model->category ?>
                 </div>
                 <div class="mt-1 schedule-box service-rating-star">
-                    <strong>Classificação:&nbsp;</strong>4.9
+                    <strong>Classificação:&nbsp;</strong><?= $avaliations ?>
                     <img class="mr-1" src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Service Rating Star">
                 </div>
                 <div class="mt-1 schedule-box">
-                    <strong>Avaliação:&nbsp;</strong>1024
+                    <strong>Avaliações:&nbsp;</strong><?= $avaliationsCount ?>
                 </div>
                 <div class="mt-1 schedule-box">
                     <strong>Localização:&nbsp;</strong><?= $model->user->city ?>,&nbsp;<?= $model->user->country ?>

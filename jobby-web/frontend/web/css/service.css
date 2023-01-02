@@ -117,7 +117,7 @@ body {
 .professional-service-order-box{
     border: 2px solid grey;
     padding: 20px;
-    height: 68%;
+    //height: 68%;
 }
 
 .professional-service-order-box-warning{

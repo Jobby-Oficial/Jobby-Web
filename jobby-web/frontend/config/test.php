@@ -18,7 +18,7 @@ $config =  yii\helpers\ArrayHelper::merge(
                 'messageClass' => \yii\symfonymailer\Message::class
             ],
             'db' => [
-                'class' => 'yii\db\Connection',
+                'class' => \yii\db\Connection::class,
                 'dsn' => 'mysql:host=localhost;dbname=jobby',
                 'username' => 'root',
                 'password' => '',
@@ -42,6 +42,13 @@ return $config;
 //        ],
 //        'mailer' => [
 //            'messageClass' => \yii\symfonymailer\Message::class
+//        ],
+//        'db' => [
+//            'class' => \yii\db\Connection::class,
+//            'dsn' => 'mysql:host=localhost;dbname=jobby',
+//            'username' => 'root',
+//            'password' => '',
+//            'charset' => 'utf8',
 //        ]
 //    ],
 //];
