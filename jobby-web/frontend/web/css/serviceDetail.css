@@ -1,0 +1,100 @@
+/*
+ *   Copyright (c) 2022 Guilherme Cruz
+ *   All rights reserved.
+ */
+
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    --white: #fff;
+    --greyLight-1: #e4ebf5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+    --green-blue: #32a3b1;
+    --teste: #dff9fb;
+    --teste2: #ebf5fc;
+    --dark-green-clr: #006266;
+}
+
+.box {
+    background: ghostwhite;
+    padding: 40px;
+    border-radius: 10px;
+    min-height: 200px;
+    //font-size: 0.5em;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.chip {
+    background: var(--teste2);
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    padding: 25px 30px;
+    text-align: justify;
+    text-justify: inter-word;
+
+
+    justify-self: center;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+
+    justify-content: space-between;
+    align-items: center;
+}
+.chip p {
+/ / font-size: 0.9 rem;
+    color: var(--green-blue);
+    margin-bottom: 0;
+}
+
+.mini-box {
+    background: var(--teste2);
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    padding: 10px 15px;
+    text-align: justify;
+    text-justify: inter-word;
+
+
+    justify-self: center;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+
+    justify-content: space-between;
+    align-items: center;
+}
+.mini-box p {
+//font-size: 0.9rem;
+    color: var(--green-blue);
+    margin-bottom: 0;
+}
+
+.mini-box a {
+    color: inherit;
+}
+
+.mini-box a:hover {
+    color: var(--dark-green-clr);
+}
+
+.divisor {
+    margin: 0px 15px;
+}
+
+.a-list {
+    color: var(--primary-clr);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.schedule-box a {
+    color: inherit;
+}
+
+.schedule-box a:hover {
+    color: var(--dark-green-clr);
+}

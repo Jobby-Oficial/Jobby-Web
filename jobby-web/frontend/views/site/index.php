@@ -8,7 +8,7 @@ use yii\helpers\Url;
 $this->title = 'My Yii Application';
 ?>
 
-<section class="header">
+<section class="wave-section">
     <div class="inner-header flex">
         <div class="intro-text">
             <div class="intro-lead-in"><?= Html::img('@web/assets/img/jobby_oficial_white_box_v4.svg', ['alt' => 'Logo', 'class' => 'img-fit']);?></div>

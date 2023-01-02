@@ -3,7 +3,7 @@
  *   All rights reserved.
  */
 
-.background-login {
+.background-service-create {
     background: #f6f5f7;
     display: flex;
     justify-content: center;
@@ -27,7 +27,7 @@
     }
 }
 
-.login-box {
+.service-create-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,18 +40,18 @@
     border-radius: 10px;
 }
 
-.login-box h2 {
+.service-create-box h2 {
     margin: 0;
     padding: 0;
     color: #fff;
     text-align: center;
 }
 
-.login-box .user-box {
+.service-create-box .user-box {
     position: relative;
 }
 
-.login-box .user-box input {
+.service-create-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -62,7 +62,7 @@
     outline: none;
     background: transparent;
 }
-.login-box .user-box label {
+.service-create-box .user-box label {
     position: absolute;
     top:0;
     left: 0;
@@ -73,21 +73,21 @@
     transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.service-create-box .user-box input:focus ~ label,
+.service-create-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
     font-size: 12px;
 }
 
-.login-btn {
+.service-create-btn {
     width: 100%;
     text-align: center;
     margin-top: 40px;
 }
 
-.login-label {
+.service-create-label {
     left: 0;
     color: #03e9f4;
     font-size: 15px;

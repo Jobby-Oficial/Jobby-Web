@@ -42,7 +42,6 @@ $this->title = "Jobby - Home";
     ]);
     $menuItemsLeft = [
         ['label' => 'Explorar Serviços', 'url' => ['/service/index'], 'options' => ['class' => 'navbar-item-jobby']],
-        ['label' => 'Favoritos', 'url' => ['/favorite/index'], 'options' => ['class' => 'navbar-item-jobby']],
         /* ['label' => 'Dropdown','items' => [
                 ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
             ]
@@ -54,8 +53,8 @@ $this->title = "Jobby - Home";
     } else {
         $menuItemsRight[] = ['label' => \Yii::$app->user->identity->username, 'options' => ['class' => 'navbar-item-jobby'], 'items' => [
             ['label' => 'Perfil', 'url' => ['/profile' . '/' . \Yii::$app->user->identity->id]],
-            ['label' => 'Planos', 'url' => 'plan'],
-            ['label' => 'Logout', 'url' => 'logout', 'linkOptions' => ['data-method' => 'post']]
+            ['label' => 'Planos', 'url' => '../plan'],
+            ['label' => 'Logout', 'url' => '../logout', 'linkOptions' => ['data-method' => 'post']]
         ]
         ];
     }
@@ -101,7 +100,7 @@ $this->title = "Jobby - Home";
                             </li>
                             <li>
                                 <img class="footer-info-dots" src="<?php echo Yii::getAlias('@web') . '/assets/img/dot-white.svg' ?>" alt="Dot Icon">
-                                <a href="<?=Url::to(['/support']);?>">Suporte</a>
+                                <a id="support" href="<?=Url::to(['/support']);?>">Suporte</a>
                             </li>
                         </ul>
                     </div>

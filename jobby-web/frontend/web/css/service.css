@@ -76,6 +76,19 @@ body {
     box-shadow: 0 0 10px 0 #006266 inset, 0 0 10px 4px #006266;
 }
 
+.schedule {
+    display: unset;
+    border-color: #006266;
+    color: #fff !important;
+    box-shadow: 0 0 40px 40px #006266 inset, 0 0 0 0 #006266;
+    transition: all 150ms ease-in-out;
+}
+
+.schedule:hover {
+    color: #002A32 !important;
+    box-shadow: 0 0 10px 0 #006266 inset, 0 0 10px 4px #006266;
+}
+
 .service-info a, .service-professional-username{
   color: black;
 }
@@ -92,12 +105,19 @@ body {
 }
 
 .service-rating-star img{
-  width: 15px;
+    //width: 15px;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
 }
 
 .professional-service-order-box{
-  border: 2px solid grey;
-  padding: 20px;
+    border: 2px solid grey;
+    padding: 20px;
+    //height: 68%;
 }
 
 .professional-service-order-box-warning{
@@ -117,12 +137,13 @@ body {
 
 .service-gallery-images{
   width: 150px;
-  margin-right: 10px;
+  //margin-right: 10px;
 }
 
 #service-gallery-id-wrap{
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #service-gallery-form-id{

@@ -17,17 +17,11 @@ use yii\helpers\Json;
  * @property string $category
  * @property string $name
  * @property string $description
- * @property float $price
- * @property float|null $rating_average
+ * @property int $price
+ * @property float $rating_average
  * @property int $user_id
  * @property int $created_at
  * @property int $updated_at
- *
- * @property Avaliation[] $avaliations
- * @property Favorite[] $favorites
- * @property Schedule[] $schedules
- * @property ServiceGallery[] $serviceGalleries
- * @property User $user
  */
 class Service extends \yii\db\ActiveRecord
 {
@@ -55,12 +49,11 @@ class Service extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category', 'name', 'description', 'price', 'user_id', 'created_at', 'updated_at'], 'required'],
+            [['category', 'name', 'description', 'price', 'user_id'], 'required'],
             [['description'], 'string'],
-            //[['price', 'rating_average'], 'number'],
             [['user_id', 'created_at', 'updated_at'], 'integer'],
+            [['rating_average', 'price'], 'number'],
             [['category', 'name'], 'string', 'max' => 255],
-            //[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 

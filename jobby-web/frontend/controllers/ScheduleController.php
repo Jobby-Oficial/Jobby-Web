@@ -49,6 +49,7 @@ class ScheduleController extends \yii\web\Controller
     {
         $model = new Schedule();
         $modelService = Service::find()->where(['id' => $this->request->post()['Schedule']['service_id']])->one();
+        //dd($modelService);
 
         $model->service_date = $this->request->post()['Schedule']['service_date'];
         $model->service_time = $this->request->post()['Schedule']['service_time'];
@@ -63,7 +64,7 @@ class ScheduleController extends \yii\web\Controller
             ->setFrom([$model->client->email])
             ->setTo([$model->professional->email])
             ->setSubject($model->service->name)
-            ->setHtmlBody('Olá Sr/Sra. ' . $model->professional->name . '!<br><br>Você tem um agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . '.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/profile/' . $model->professional->id . '">link</a>')
+            ->setHtmlBody('Olá Sr/Sra. ' . $model->professional->name . '!<br><br>Você tem um agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . '.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/profile/' . $model->professional->id . '">link</a>')
             ->send();
 
         return $this->redirect(['view', 'id' => $model->id]);
@@ -91,7 +92,7 @@ class ScheduleController extends \yii\web\Controller
                         ->setFrom([$model->professional->email])
                         ->setTo([$model->client->email])
                         ->setSubject($model->service->name)
-                        ->setHtmlBody('Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu pagamento fou Concluído para o Serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . '.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/schedule/view?id=' . $model->id . '">link</a>')
+                        ->setHtmlBody('Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu pagamento fou Concluído para o Serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . '.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/schedule/view?id=' . $model->id . '">link</a>')
                         ->send();
                 }
 
@@ -135,18 +136,18 @@ class ScheduleController extends \yii\web\Controller
                 if($this->request->post('response') == 1){
                     $from = $model->professional->email;
                     $to = $model->client->email;
-                    $message = 'Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi aprovado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/schedule/view?id=' . $model->id. '">link</a>';
+                    $message = 'Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi aprovado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/schedule/view?id=' . $model->id. '">link</a>';
                 }
                 else{
                     if($model->professional->id == \Yii::$app->user->identity->id){
                         $from = $model->professional->email;
                         $to = $model->client->email;
-                        $message = 'Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi cancelado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/schedule/view?id=' . $model->id . '">link</a>';
+                        $message = 'Olá Sr/Sra. ' . $model->client->name . '!<br><br>O seu agendamento para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi cancelado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/schedule/view?id=' . $model->id . '">link</a>';
                     }
                     else{
                         $from = $model->client->email;
                         $to = $model->professional->email;
-                        $message = 'Olá Sr/Sra. ' . $model->professional->name . '!<br><br>O seu Trabalho para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi cancelado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/schedule/view?id=' . $model->id . '">link</a>';
+                        $message = 'Olá Sr/Sra. ' . $model->professional->name . '!<br><br>O seu Trabalho para o serviço ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi cancelado.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/schedule/view?id=' . $model->id . '">link</a>';
                     }
                 }
 
@@ -166,7 +167,7 @@ class ScheduleController extends \yii\web\Controller
                         ->setFrom([$model->professional->email])
                         ->setTo([$model->client->email])
                         ->setSubject($model->service->name)
-                        ->setHtmlBody('Olá Sr/Sra. ' . $model->client->name . '!<br><br>O serviço requisitado por si ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi Concluído.<br>É necessário efetuar o pagamento do serviço.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost:20080/schedule/view?id=' . $model->id . '">link</a>')
+                        ->setHtmlBody('Olá Sr/Sra. ' . $model->client->name . '!<br><br>O serviço requisitado por si ' . $model->service->name . ' para o dia ' . $model->service_date . ' às ' . $model->service_time . ' foi Concluído.<br>É necessário efetuar o pagamento do serviço.<br><br>Para mais informações, acesse o seguinte <a href="http://localhost/jobby-web/frontend/web/schedule/view?id=' . $model->id . '">link</a>')
                         ->send();
                 }
 

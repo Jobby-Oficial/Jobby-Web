@@ -12,10 +12,10 @@ use yii\widgets\DetailView;
 
 $this->registerCssFile('@web/css/profile.css');
 $this->registerCssFile('@web/css/serviceList.css');
+$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/deleteService.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]);
-$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
 ?>
 <!--<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -72,51 +72,6 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
     </div>
 </section>
 
-
-
-
-<!--<section class="container">
-    <div class="row">
-        <div class="col-sm-12 col-12">
-            <div class="profile-body-section p-2 mt-3">
-                <ul class="nav nav-pills ml-2" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#about">Sobre</a>
-                    </li>
-                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile') || \Yii::$app->user->identity->id != $model->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#services">Serviços</a>
-                        </li>
-                    <?php /*} */?>
-                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#favorites">Favoritos</a>
-                        </li>
-                    <?php /*} */?>
-                    <?php /*if(\Yii::$app->authManager->checkAccess(\Yii::$app->user->getId(), 'jobProfile')){
-                        if($user->id == \Yii::$app->user->identity->id){ */?>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#jobs">Trabalhos</a>
-                            </li>
-                        <?php /*}} */?>
-                    <?php /*if($user->id == \Yii::$app->user->identity->id){ */?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#schedules">Agendamentos</a>
-                        </li>
-                    <?php /*} */?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>-->
-
-
-
-
-
-
-
-
 <section class="container">
     <div class="row">
         <div class="col-sm-12 col-12">
@@ -151,9 +106,6 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
         </div>
     </div>
 </section>
-
-
-
 
 <section class="container section-three">
     <?php if (\Yii::$app->session->hasFlash('success')){ ?>
@@ -242,7 +194,6 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $service->user->phone ?><span class="phone"></span></p>
                                             <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
                                                 <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
-                                            <div class="d-flex justify-content-end mt-3">
                                                 <?php if(!\Yii::$app->user->isGuest){ ?>
                                                     <?php if($service->favorites != null){ ?>
                                                         <?php foreach($service->favorites as $favorite){ ?>
@@ -256,10 +207,10 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                                         <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                                                     <?php } ?>
                                                 <?php } ?>
-                                            </div>
                                             <?php }else{ ?>
                                                     <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
-                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-toggle="modal" data-target="#deleteService" data-id="<?= $service->id ?>">
+                                                    <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-bs-toggle="modal" data-bs-target="#deleteService" data-id="<?= $service->id ?>">
+
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="deleteService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -283,6 +234,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             <?php } ?>
                                             </p>
                                         </div>
@@ -340,15 +292,15 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                     <div id="pills-jobs" role="tabpanel" aria-labelledby="pills-jobs-tab" class="container tab-pane fade"><br>
                         <?php if($jobs != null){ ?>
                             <?php foreach($jobs as $job){ ?>
-                                <section class="home-services-body-wrap row pb-3 mt-3">
+                                <section class="chip schedule-box home-services-body-wrap row pb-3 mt-3">
                                     <section class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-12">
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Nome do Serviço:</strong></div>
+                                            <div class="mr-1"><strong>Nome do Serviço:&nbsp;</strong></div>
                                             <div><a href="<?=Url::to(['service/view/', 'id' => $job->service->id]);?>"><?= $job->service->name ?></a></div>
                                         </section>
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Cliente: </strong></div>
-                                            <div><a href="<?=Url::to(['user/view/', 'id' => $job->client->id]);?>"><?= $job->client->username ?></a></div>
+                                            <div class="mr-1"><strong>Cliente:&nbsp;</strong></div>
+                                            <div><a href="<?=Url::to(['user/view/', 'id' => $job->client->id]);?>"><?= $job->client->name ?></a></div>
                                         </section>
                                         <section class="mb-3">
                                             <div class="mr-1"><strong>Nota:</strong></div>
@@ -357,8 +309,8 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                     </section>
                                     <section class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="d-flex justify-content-end">
-                                            <div class="mr-1"><strong>Data:</strong></div>
-                                            <div><?= $job->service_date ?></div>
+                                            <div class="mr-1"><strong>Data:&nbsp;</strong></div>
+                                            <div><?= $job->service_date ?>&nbsp;</div>
                                             <div class="ml-1"><?= $job->service_time ?></div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-2">
@@ -389,7 +341,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                         </div>
                                     </section>
                                     <section class="col-xl-12 d-flex justify-content-end mb-3 mt-3">
-                                        <a href="<?=Url::to(['schedule/view', 'id' => $job->id]);?>" class="btn btn-info mr-2">Detalhe</a>
+                                        <a href="<?=Url::to(['schedule/view', 'id' => $job->id]);?>" class="btns-list schedule mr-2">Detalhe</a>
                                     </section>
                                 </section>
                             <?php }}else{ ?>
@@ -401,15 +353,15 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                     <div id="pills-schedules" role="tabpanel" aria-labelledby="pills-schedules-tab" class="container tab-pane fade"><br>
                         <?php if($schedules != null){ ?>
                             <?php foreach($schedules as $schedule){ ?>
-                                <section class="home-services-body-wrap row pb-3 mt-3">
+                                <section class="chip schedule-box home-services-body-wrap row pb-3">
                                     <section class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-12">
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Nome do Serviço:</strong></div>
+                                            <div class="mr-1"><strong>Nome do Serviço:&nbsp;</strong></div>
                                             <div><a href="<?=Url::to(['service/view/', 'id' => $schedule->service->id]);?>"><?= $schedule->service->name ?></a></div>
                                         </section>
                                         <section class="d-flex mb-2">
-                                            <div class="mr-1"><strong>Professional: </strong></div>
-                                            <div><a href="<?=Url::to(['user/view/', 'id' => $schedule->professional->id]);?>"><?= $schedule->professional->username ?></a></div>
+                                            <div class="mr-1"><strong>Professional:&nbsp;</strong></div>
+                                            <div><a href="<?=Url::to(['user/view/', 'id' => $schedule->professional->id]);?>"><?= $schedule->professional->name ?></a></div>
                                         </section>
                                         <section class="mb-3">
                                             <div class="mr-1"><strong>Nota:</strong></div>
@@ -418,8 +370,8 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                     </section>
                                     <section class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="d-flex justify-content-end">
-                                            <div class="mr-1"><strong>Data:</strong></div>
-                                            <div><?= $schedule->service_date ?></div>
+                                            <div class="mr-1"><strong>Data:&nbsp;</strong></div>
+                                            <div><?= $schedule->service_date ?>&nbsp;</div>
                                             <div class="ml-1"><?= $schedule->service_time ?></div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-2">
@@ -450,7 +402,7 @@ $this->registerJsFile('https://code.jquery.com/jquery-3.6.0.slim.js');
                                         </div>
                                     </section>
                                     <section class="col-xl-12 d-flex justify-content-end mb-3 mt-3">
-                                        <a href="<?=Url::to(['schedule/view', 'id' => $schedule->id]);?>" class="btn btn-info mr-2">Detalhe</a>
+                                        <a href="<?=Url::to(['schedule/view', 'id' => $schedule->id]);?>" class="btns-list schedule mr-2">Detalhe</a>
                                     </section>
                                 </section>
                             <?php }}else{ ?>

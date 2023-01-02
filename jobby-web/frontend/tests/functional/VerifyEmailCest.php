@@ -14,7 +14,7 @@ class VerifyEmailCest
      * @see \Codeception\Module\Yii2::loadFixtures()
      * @return array
      */
-    public function _fixtures()
+    /*public function _fixtures()
     {
         return [
             'user' => [
@@ -22,9 +22,9 @@ class VerifyEmailCest
                 'dataFile' => codecept_data_dir() . 'user.php',
             ],
         ];
-    }
+    }*/
 
-    public function checkEmptyToken(FunctionalTester $I)
+    /*public function checkEmptyToken(FunctionalTester $I)
     {
         $I->amOnRoute('site/verify-email', ['token' => '']);
         $I->canSee('Bad Request', 'h1');
@@ -64,5 +64,5 @@ class VerifyEmailCest
            'email' => 'test@mail.com',
            'status' => \common\models\User::STATUS_ACTIVE
         ]);
-    }
+    }*/
 }

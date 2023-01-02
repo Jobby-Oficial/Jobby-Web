@@ -11,24 +11,6 @@ body{
 }
 
 /* ---- ---- ---- ---- ---- ---- */
-/* ---- ---- Nav Pills ---- ---- */
-/* ---- ---- ---- ---- ---- ---- */
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-    background-color: #006266 !important;
-}
-
-.nav-pills .nav-link:hover{
-    color: #006266 !important;
-}
-
-.nav-pills .nav-link:focus{
-    color: ghostwhite !important;
-}
-
-/* ----   End of Section   ---- */
-
-/* ---- ---- ---- ---- ---- ---- */
 /* ----  Header of profile  ---- */
 /* ---- ---- ---- ---- ---- ---- */
 
@@ -140,6 +122,58 @@ body{
 
 .section-three {
     padding-bottom: 40px;
+}
+
+/* ----   End of Section   ---- */
+
+/* ---- ---- ---- ---- ---- ---- */
+/* ----   Body of profile   ---- */
+/* ---- ---- ---- ---- ---- ---- */
+
+.box {
+    //background: ghostwhite;
+    padding: 40px;
+    border-radius: 10px;
+    min-height: 200px;
+//font-size: 0.5em;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.chip {
+    background: #ebf5fc;
+    //background: #e4ebf5;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    padding: 25px 30px;
+    text-align: justify;
+    text-justify: inter-word;
+
+
+    justify-self: center;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.schedule-box a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.schedule-box a:hover {
+    color: var(--dark-green-clr);
+}
+
+.a-list {
+    color: var(--primary-clr);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
 
 /* ---- ---- ---- ---- ---- ---- */

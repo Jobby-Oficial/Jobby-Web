@@ -24,6 +24,24 @@ class m211229_003928_create_job_status extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->insert('{{%job_status}}',array(
+            'name' => 'Esperando Aprovação',
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
+
+        $this->insert('{{%job_status}}',array(
+            'name' => 'Não Começou',
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
+
+        $this->insert('{{%job_status}}',array(
+            'name' => 'Concluído',
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
     }
 
     /**

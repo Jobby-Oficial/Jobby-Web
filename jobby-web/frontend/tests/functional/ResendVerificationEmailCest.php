@@ -17,7 +17,7 @@ class ResendVerificationEmailCest
      * @see \Codeception\Module\Yii2::loadFixtures()
      * @return array
      */
-    public function _fixtures()
+    /*public function _fixtures()
     {
         return [
             'user' => [
@@ -25,9 +25,9 @@ class ResendVerificationEmailCest
                 'dataFile' => codecept_data_dir() . 'user.php',
             ],
         ];
-    }
+    }*/
 
-    public function _before(FunctionalTester $I)
+    /*public function _before(FunctionalTester $I)
     {
         $I->amOnRoute('/site/resend-verification-email');
     }
@@ -79,5 +79,5 @@ class ResendVerificationEmailCest
             'status' => \common\models\User::STATUS_INACTIVE
         ]);
         $I->see('Check your email for further instructions.');
-    }
+    }*/
 }

@@ -146,6 +146,7 @@ class ServiceController extends Controller
         $modelServiceGallery = new ServiceGallery();
 
         if ($this->request->isPost) {
+            //dd($this->request->post());
             if ($model->load($this->request->post()) && $model->save()) {
                 $images = UploadedFile::getInstances($modelServiceGallery, 'image');
 
@@ -250,7 +251,7 @@ class ServiceController extends Controller
     public function actionDelete($id)
     {
         $avaliations = Avaliation::find()->where(['service_id' => $id])->all();
-        $reports = Report::find()->where(['service_id' => $id])->all();
+        //$reports = Report::find()->where(['service_id' => $id])->all();
         $serviceGalleries = ServiceGallery::find()->where(['service_id' => $id])->all();
         $schedules = Schedule::find()->where(['service_id' => $id])->all();
 
@@ -258,9 +259,9 @@ class ServiceController extends Controller
             $avaliation->delete();
         }
 
-        foreach($reports as $report){
+        /*foreach($reports as $report){
             $report->delete();
-        }
+        }*/
 
         foreach($serviceGalleries as $serviceGallery){
             $serviceGallery->delete();

@@ -3,9 +3,14 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://localhost:20080/
+            url: http://localhost/jobby-web/frontend/web/
             browser: chrome
         - Yii2:
             part: [orm, fixtures]
             cleanup: false
             entryScript: index-test.php
+
+
+
+
+#url: http://localhost:20080/

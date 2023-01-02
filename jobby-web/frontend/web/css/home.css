@@ -73,6 +73,7 @@
 
 .home-services-body-wrap{
   border-bottom: 1px solid gray;
+  margin: 0px 10px 20px 10px;
 }
 
 .home-services-star-svg{
@@ -85,7 +86,7 @@
 
 .home-services-favorite-heart-svg, .home-services-favorite-heart-favorite-svg{
   width: 20px;
-  margin-left: 15px;
+  //margin-left: 15px;
 }
 
 .home-services-favorite-heart-svg:hover, .home-services-favorite-heart-favorite-svg:hover{

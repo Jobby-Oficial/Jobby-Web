@@ -57,8 +57,8 @@ class UserController extends Controller
         $services = Service::find()->where(['user_id' => $id])->all();
         $favorites = Favorite::find()->where(['user_id' => $id])->all();
         $favoritesServices = Favorite::find()->where(['user_id' => \Yii::$app->user->identity->id])->all();
-        $jobs = Schedule::find()->where(['professional_id' => $id])->all();
-        $schedules = Schedule::find()->where(['client_id' => $id])->all();
+        $jobs = Schedule::find()->where(['professional_id' => $id])->orderBy('service_date ASC')->all();
+        $schedules = Schedule::find()->where(['client_id' => $id])->orderBy('service_date ASC')->all();
         $modelReport = new Report();
 
         // $arrFav = array();
