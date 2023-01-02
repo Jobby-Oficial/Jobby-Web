@@ -20,6 +20,9 @@ class VerifySupportCest
         $I->fillField('email', 'teste@email.com');
         $I->selectOption('assunto','Sugestões');
         $I->fillField('mensagem', 'Mensagem Teste');
+        $I->seeInField('email', 'teste@email.com');
+        $I->seeInField('assunto','Sugestões');
+        $I->seeInField('mensagem', 'Mensagem Teste');
         $I->see('Enviar Menssagem!', '.bubbly-button');
         $I->click('Enviar Menssagem!');
         $I->waitForElement('#w4-success-0', 30);
