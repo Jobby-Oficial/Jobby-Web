@@ -61,7 +61,7 @@ $this->registerJsFile('@web/js/scheduleView.js', ['depends' => [JqueryAsset::cla
                 </section>
         </div>
         <div class="profile-body-section">
-                <section class="col-xl-12 mb-3 d-flex justify-content-center">
+                <section class="col-xl-12 d-flex justify-content-center">
                     <?php Pjax::begin(['id' => 'schedule-status_job-wrap']); ?>
                     <div>
                         <?php if($model->professional_id == \Yii::$app->user->identity->id && $model->jobStatus->name != 'Concluído' && $model->job_status_id != 1 && $model->schedule_status != '0'){ ?>

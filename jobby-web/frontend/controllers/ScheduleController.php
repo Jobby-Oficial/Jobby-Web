@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Schedule;
 use common\models\JobStatus;
+use common\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -79,7 +80,17 @@ class ScheduleController extends \yii\web\Controller
      */
     public function actionView($id)
     {
-        $data = JobStatus::find()->all();
+        $auth = \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->identity->id);
+        //dd($auth['developer']->name);
+        //dd($auth);
+        foreach ($auth as $keyType=>$type){
+            if ($auth[$keyType]->name == 'consumer')
+                $data = JobStatus::find()->all();
+            else{
+                $data = JobStatus::find()->where("name != 'Esperando Aprovação'")->all();
+            }
+        }
+
 
         if($this->request->isPost){
             if($this->request->post('stripeToken')){

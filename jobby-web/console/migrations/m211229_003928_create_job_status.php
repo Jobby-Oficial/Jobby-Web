@@ -38,6 +38,12 @@ class m211229_003928_create_job_status extends Migration
         ));
 
         $this->insert('{{%job_status}}',array(
+            'name' => 'Começou',
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
+
+        $this->insert('{{%job_status}}',array(
             'name' => 'Concluído',
             'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
             'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
