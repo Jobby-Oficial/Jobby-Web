@@ -9,6 +9,7 @@ use kartik\date\DatePicker;
 /** @var common\models\User $model */
 /** @var yii\widgets\ActiveForm $form */
 
+//$this->registerJsFile('@web/js/passwordForm.js', ['depends' => [JqueryAsset::class]]);
 $this->registerJsFile('@web/js/registerForm.js', ['depends' => [JqueryAsset::class]]);
 
 ?>
@@ -43,7 +44,7 @@ $this->registerJsFile('@web/js/registerForm.js', ['depends' => [JqueryAsset::cla
 
     <?= $form->field($model, 'morada')->textInput() ?>
 
-    <?= $form->field($model, 'typeUser')->dropdownList(['admin' => 'Admin', 'developer' => 'Developer', 'marketeer' => 'Marketeer'])->label('Tipo de Utilizador') ?>
+    <?= $form->field($model, 'typeUser')->dropdownList(['admin' => 'Admin', 'developer' => 'Developer'/*, 'marketeer' => 'Marketeer'*/])->label('Tipo de Utilizador') ?>
 
     <?= $form->field($model, 'status')->textInput(['type' => 'number', 'min' => 0]) ?>
 
@@ -53,16 +54,16 @@ $this->registerJsFile('@web/js/registerForm.js', ['depends' => [JqueryAsset::cla
 
     <?php /*if ($model->password_hash != null){ */?><!--
 
-        <?/*= $form->field($model, 'password')->checkbox([],false)->label('Atualizar Password') */?>
+        <strong>Atualizar Password&nbsp;&nbsp;</strong><input type="checkbox" name="checkboxPassword" value="false" class="cbPassword">
 
     --><?php /*} */?>
 
-    <?= $form->field($model, 'password')->passwordInput()->label('Palavra-passe') ?>
+    <?= $form->field($model, 'password', ['options' =>  ['class' => 'password mt-3']])->passwordInput()->label('Palavra-passe') ?>
 
-    <?= $form->field($model, 'password_repeat')->passwordInput()->label('Confirmar Palavra-passe') ?>
+    <?= $form->field($model, 'password_repeat', ['options' =>  ['class' => 'password_repeat mt-3']])->passwordInput()->label('Confirmar Palavra-passe') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success mt-3']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

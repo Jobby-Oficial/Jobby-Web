@@ -69,7 +69,6 @@ class ScheduleController extends \yii\web\Controller
             ->send();
 
         return $this->redirect(['view', 'id' => $model->id]);
-
     }
 
     /**
@@ -84,14 +83,15 @@ class ScheduleController extends \yii\web\Controller
         //dd($auth['developer']->name);
         //dd($auth);
         foreach ($auth as $keyType=>$type){
-            if ($auth[$keyType]->name == 'consumer')
+
+            if ($auth[$keyType]->name == 'consumer'){
                 $data = JobStatus::find()->all();
-            else{
+            }
+            else {
                 $data = JobStatus::find()->where("name != 'Esperando Aprovação'")->all();
             }
         }
-
-
+        
         if($this->request->isPost){
             if($this->request->post('stripeToken')){
                 $model = $this->findModel($id);

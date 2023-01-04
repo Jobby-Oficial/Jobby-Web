@@ -31,6 +31,17 @@ class m221116_113107_create_service extends Migration
         ], $tableOptions);
 
         $this->addForeignKey('FK_service_user', 'service', 'user_id', 'user', 'id');
+
+        $this->insert('{{%service}}',array(
+            'category' => 'Educação',
+            'name' => 'Aulas de explicações de Matemática',
+            'description' => 'Aulas visam a compreensão dos temas tratados com os alunos. Objectivo de melhorar as capacidades individuais dos estudantes para que possam atingir uma boa classificação durante a escolaridade em que diversos temas serão trabalhados. Será realizado o apoio nas diversas matérias e a elaboração da motivação do aluno e posteriormente ultrapassar dificuldades. O aluno será capaz de melhorar as suas notas bem como ganhar autonomia e conseguir ultrapassar obstáculos. Serão colocados os recursos disponíveis para a aquisição dos conhecimentos do aluno.',
+            'price' => '10.00',
+            'rating_average' => null,
+            'user_id' => '5',
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
     }
 
     /**

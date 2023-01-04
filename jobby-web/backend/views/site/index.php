@@ -58,13 +58,9 @@ $this->title = 'Página Principal';
 -->
 
 
-<?= \hail812\adminlte\widgets\Alert::widget([
-    'type' => 'success',
-    'body' => '<h3>Congratulations!</h3>'
-]) ?>
 
 
-<div class="small-box bg-gradient-success">
+<!--<div class="small-box bg-gradient-success">
     <div class="inner">
         <h3>44</h3>
         <p>User Registrations</p>
@@ -75,7 +71,7 @@ $this->title = 'Página Principal';
     <a href="#" class="small-box-footer">
         More info <i class="fas fa-arrow-circle-right"></i>
     </a>
-</div>
+</div>-->
 
 
 <div class="container-fluid">
@@ -88,21 +84,21 @@ $this->title = 'Página Principal';
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
                 'text' => 'Utilizadores',
-                //'number' => Html::encode($users),
+                'number' => Html::encode($users),
                 'icon' => 'fas fa-users',
             ]) ?>
         </div>
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
                 'text' => 'Utilizadores Ativos',
-                //'number' => Html::encode($usersActive),
+                'number' => Html::encode($usersActive),
                 'icon' => 'fas fa-users',
             ]) ?>
         </div>
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
                 'text' => 'Utilizadores Inativos',
-                //'number' => Html::encode($usersInactive),
+                'number' => Html::encode($usersInactive),
                 'icon' => 'fas fa-users',
             ]) ?>
         </div>
@@ -111,7 +107,7 @@ $this->title = 'Página Principal';
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
                 'text' => 'Serviços',
-                //'number' => Html::encode($services),
+                'number' => Html::encode($services),
                 'icon' => 'fa fa-book',
             ]) ?>
         </div>

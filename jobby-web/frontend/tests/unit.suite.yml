@@ -5,8 +5,11 @@ modules:
         - Yii2:
             part: [orm, email, fixtures]
         - Asserts
+        - PhpBrowser:
+            url: http://localhost
         - Db:
-              dsn: 'mysql:host=localhost;dbname=jobby'
-              user: 'root'
-              password: ''
+            dsn: "mysql:host=localhost;dbname=jobby"
+            user: 'root'
+            password: ''
+        - Filesystem
     step_decorators: ~

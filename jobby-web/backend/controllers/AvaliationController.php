@@ -2,8 +2,12 @@
 
 namespace backend\controllers;
 
+use common\models\Service;
+use common\models\User;
 use common\models\Avaliation;
 use common\models\AvaliationSearch;
+use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,6 +25,46 @@ class AvaliationController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'rules' => [
+                        /*[
+                            'actions' => ['create', 'update', 'delete'],
+                            'allow' => true,
+                            'roles' => ['developer'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['index', 'view'],
+                            'roles' => ['@'],
+                        ],*/
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['indexAvaliationBackoffice'],
+                        ],
+                        [
+                            'actions' => ['view'],
+                            'allow' => true,
+                            'roles' => ['viewAvaliationBackoffice'],
+                        ],
+                        [
+                            'actions' => ['create'],
+                            'allow' => true,
+                            'roles' => ['createAvaliationBackoffice'],
+                        ],
+                        [
+                            'actions' => ['update'],
+                            'allow' => true,
+                            'roles' => ['updateAvaliationBackoffice'],
+                        ],
+                        [
+                            'actions' => ['delete'],
+                            'allow' => true,
+                            'roles' => ['deleteAvaliationBackoffice'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -69,8 +113,12 @@ class AvaliationController extends Controller
     {
         $model = new Avaliation();
 
+        $services = ArrayHelper::map(Service::find()->all(), 'id', 'name');
+        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                \Yii::$app->session->setFlash('success', 'A Avaliação foi Criada com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -79,6 +127,8 @@ class AvaliationController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'services' => $services,
+            'users' => $users
         ]);
     }
 
@@ -93,12 +143,18 @@ class AvaliationController extends Controller
     {
         $model = $this->findModel($id);
 
+        $services = ArrayHelper::map(Service::find()->all(), 'id', 'name');
+        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'A Avaliação foi Atualizada com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'services' => $services,
+            'users' => $users
         ]);
     }
 
@@ -112,6 +168,8 @@ class AvaliationController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        \Yii::$app->session->setFlash('success', 'A Avaliação foi Eliminada com Sucesso!');
 
         return $this->redirect(['index']);
     }

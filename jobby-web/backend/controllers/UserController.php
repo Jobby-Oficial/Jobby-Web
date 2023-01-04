@@ -26,16 +26,10 @@ class UserController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
                 'access' => [
-                    'class' => AccessControl::class,
+                    'class' => AccessControl::className(),
                     'rules' => [
-                        [
+                        /*[
                             'allow' => true,
                             'actions' => ['index', 'view', 'update'],
                             'roles' => ['@'],
@@ -44,9 +38,40 @@ class UserController extends Controller
                             'allow' => true,
                             'actions' => ['create', 'delete'],
                             'roles' => ['admin', 'developer'],
+                        ],*/
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['indexUserBackoffice'],
+                        ],
+                        [
+                            'actions' => ['view'],
+                            'allow' => true,
+                            'roles' => ['viewUserBackoffice'],
+                        ],
+                        [
+                            'actions' => ['create'],
+                            'allow' => true,
+                            'roles' => ['createUserBackoffice'],
+                        ],
+                        [
+                            'actions' => ['update'],
+                            'allow' => true,
+                            'roles' => ['updateUserBackoffice'],
+                        ],
+                        [
+                            'actions' => ['delete'],
+                            'allow' => true,
+                            'roles' => ['deleteUserBackoffice'],
                         ],
                     ],
-                ]
+                ],
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
             ]
         );
     }
