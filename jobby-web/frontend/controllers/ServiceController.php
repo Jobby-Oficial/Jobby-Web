@@ -85,6 +85,7 @@ class ServiceController extends Controller
     {
         $model = $this->findModel($id);
         $modelSchedule = new Schedule();
+        $avaliationsCount = Avaliation::find()->where(['service_id' => $model->id])->count();
         $schedules = Schedule::find()->where(['service_id' => $id, 'schedule_status' => 1])->all();
 
         $events[] = [];
@@ -105,6 +106,7 @@ class ServiceController extends Controller
         return $this->render('view', [
             'model' => $model,
             'modelSchedule' => $modelSchedule,
+            'avaliationsCount' => $avaliationsCount,
             'schedules' => $events
         ]);
     }

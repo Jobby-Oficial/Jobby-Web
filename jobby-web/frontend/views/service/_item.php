@@ -13,7 +13,7 @@ $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]
 <!--<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>-->
 
 <?php
-
+/*
 $avaliations = Avaliation::find()->where(['service_id' => $service->id])->all();
 $avaliationsCount = Avaliation::find()->where(['service_id' => $service->id])->count();
 
@@ -28,7 +28,9 @@ else {
     $avaliations = "0.0";
 }
 
-?>
+*/?>
+
+<?php $avaliationsCount = Avaliation::find()->where(['service_id' => $service->id])->count(); ?>
 
 <div class="eventWrapper">
     <div class="event">
@@ -39,23 +41,23 @@ else {
         </div>
         <div class="event--date">
             <span>Classificação</span>
-            <span><?= Html::encode($avaliations) ?></span>
+            <span><?= Html::encode($service->rating_average) ?></span>
             <span><img src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Star Icon"></span>
-            <span><?= $avaliationsCount ?> Avaliações</span>
+            <span><?= $avaliationsCount ?>&nbsp;Avaliações</span>
         </div>
         <div class="event--content">
             <h2 class="h2-list"><a class="a-list" href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>"><?= Html::encode($service->name) ?></a></h2>
             <p class="event--content-hall">
-                <span class=""><strong>Profissional: </strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span>
+                <span class=""><strong>Profissional:&nbsp;</strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span>
             </p>
             <div class="event--content-info">
                 <!--<div><time>20:00 - 22:00</time></div>-->
-                <div><span class=""><strong>Localidade: </strong><span class="localidade"></span><?= Html::encode($service->user->country) ?></span></div>
-                <div class="event--content-price"><strong>Preço: </strong><?= Html::encode($service->price) ?><span class="preco"></span></div>
+                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span><?= Html::encode($service->user->country) ?></span></div>
+                <div class="event--content-price"><strong>Preço:&nbsp;</strong><?= Html::encode($service->price) ?><span class="preco"></span></div>
                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
             </div>
-            <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= Html::encode($service->user->phone) ?><span class="phone"></span></p>
-            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
+            <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= Html::encode($service->user->phone) ?><span class="phone"></span></p>
+            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria:&nbsp;</strong><span class=""><?= Html::encode($service->category) ?></span></a>&nbsp;&nbsp;
                 <?php if(!\Yii::$app->user->isGuest){ ?>
                     <?php if(\Yii::$app->user->identity->id != $service->user->id){  ?>
                         <?php if($service->favorites != null){ ?>

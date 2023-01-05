@@ -37,6 +37,8 @@ $this->registerJsFile('@web/js/getCategory.js', ['depends' => [JqueryAsset::clas
 
         <?= $form->field($model, 'user_id')->hiddenInput(['value' => \Yii::$app->user->identity->id])->label(false) ?>
 
+        <?= $form->field($model, 'rating_average')->hiddenInput(['value' => 0.0])->label(false) ?>
+
         <div class="flex-grid-center service-create-btn">
             <?= Html::submitButton('Criar Serviço', ['class' => 'fuller-button white service-create-btn']) ?>
         </div>

@@ -91,7 +91,7 @@ class ScheduleController extends \yii\web\Controller
                 $data = JobStatus::find()->where("name != 'Esperando Aprovação'")->all();
             }
         }
-        
+
         if($this->request->isPost){
             if($this->request->post('stripeToken')){
                 $model = $this->findModel($id);

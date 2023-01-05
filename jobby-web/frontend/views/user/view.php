@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\bootstrap5\Modal;
 use yii\bootstrap5\ActiveForm;
 use kartik\money\MaskMoney;
+use common\models\Avaliation;
 
 use yii\widgets\DetailView;
 
@@ -167,6 +168,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                         <?php Pjax::begin(['id' => 'favorite-profile-my-service-id-wrap']); ?>
                         <?php if($services != null){ ?>
                             <?php foreach($services as $service){ ?>
+                                <?php $avaliationsCount = Avaliation::find()->where(['service_id' => $service->id])->count(); ?>
                                 <div class="eventWrapper">
                                     <div class="event">
                                         <div class="event--img">
@@ -176,23 +178,23 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                         </div>
                                         <div class="event--date">
                                             <span>Classificação</span>
-                                            <span>4.9</span>
+                                            <span><?= Html::encode($service->rating_average) ?></span>
                                             <span><img src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Star Icon"></span>
-                                            <span>126 Avaliações</span>
+                                            <span><?= Html::encode($avaliationsCount) ?>&nbsp;Avaliações</span>
                                         </div>
                                         <div class="event--content">
                                             <h2 class="h2-list"><a class="a-list" href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>"><?= Html::encode($service->name) ?></a></h2>
                                             <p class="event--content-hall">
-                                                <span class=""><strong>Profissional: </strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span>
+                                                <span class=""><strong>Profissional:&nbsp;</strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view/', 'id' => $service->user_id]); ?>"><?= $service->user->name ?></a></span>
                                             </p>
                                             <div class="event--content-info">
                                                 <!--<div><time>20:00 - 22:00</time></div>-->
-                                                <div><span class=""><strong>Localidade: </strong><span class="localidade"></span>Portugal</span></div>
-                                                <div class="event--content-price"><strong>Preço: </strong>12<span class="preco"></span></div>
+                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span>Portugal</span></div>
+                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong>12<span class="preco"></span></div>
                                                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
                                             </div>
-                                            <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $service->user->phone ?><span class="phone"></span></p>
-                                            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($service->category) ?></span></a>
+                                            <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= $service->user->phone ?><span class="phone"></span></p>
+                                            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria:&nbsp;</strong><span class=""><?= Html::encode($service->category) ?></span></a>&nbsp;&nbsp;
                                                 <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
                                                 <?php if(!\Yii::$app->user->isGuest){ ?>
                                                     <?php if($service->favorites != null){ ?>
@@ -208,7 +210,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                                     <?php } ?>
                                                 <?php } ?>
                                             <?php }else{ ?>
-                                                    <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">
+                                                    <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">&nbsp;&nbsp;
                                                     <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-bs-toggle="modal" data-bs-target="#deleteService" data-id="<?= $service->id ?>">
 
                                                 <!-- Modal -->
@@ -251,6 +253,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                         <?php Pjax::begin(['id' => 'favorite-profile-id-wrap']); ?>
                         <?php if($favorites != null){ ?>
                             <?php foreach($favorites as $favorite){ ?>
+                                <?php $avaliationsCount = Avaliation::find()->where(['service_id' => $favorite->service->id])->count(); ?>
                                 <div class="eventWrapper">
                                     <div class="event">
                                         <div class="event--img">
@@ -260,23 +263,23 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                         </div>
                                         <div class="event--date">
                                             <span>Classificação</span>
-                                            <span>4.9</span>
+                                            <span><?= Html::encode($favorite->service->rating_average) ?></span>
                                             <span><img src="<?php echo Yii::getAlias('@web') . '/assets/img/star-list.svg' ?>" alt="Star Icon"></span>
-                                            <span>126 Avaliações</span>
+                                            <span><?= Html::encode($avaliationsCount) ?>&nbsp;Avaliações</span>
                                         </div>
                                         <div class="event--content">
                                             <h2 class="h2-list"><a class="a-list" href="<?=Url::toRoute(['service/view/', 'id' => $favorite->service->id]);?>"><?= Html::encode($favorite->service->name) ?></a></h2>
                                             <p class="event--content-hall">
-                                                <span class=""><strong>Profissional: </strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view', 'id' => $favorite->service->user_id]); ?>"><?= $favorite->service->user->name ?></a></span>
+                                                <span class=""><strong>Profissional:&nbsp;</strong><span class="profissional"></span><a class="a-list" href="<?= Url::to(['user/view', 'id' => $favorite->service->user_id]); ?>"><?= $favorite->service->user->name ?></a></span>
                                             </p>
                                             <div class="event--content-info">
                                                 <!--<div><time>20:00 - 22:00</time></div>-->
-                                                <div><span class=""><strong>Localidade: </strong><span class="localidade"></span>Portugal</span></div>
-                                                <div class="event--content-price"><strong>Preço: </strong>12<span class="preco"></span></div>
+                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span>Portugal</span></div>
+                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong>12<span class="preco"></span></div>
                                                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
                                             </div>
-                                            <p class="event--content-ensemble"><strong>Número de Telemóvel: </strong><?= $favorite->service->user->phone ?><span class="phone"></span></p>
-                                            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria: </strong><span class=""><?= Html::encode($favorite->service->category) ?></span></a>
+                                            <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= $favorite->service->user->phone ?><span class="phone"></span></p>
+                                            <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria:&nbsp;</strong><span class=""><?= Html::encode($favorite->service->category) ?></span></a>&nbsp;&nbsp;
                                                 <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileView(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
                                             </p>
                                         </div>
