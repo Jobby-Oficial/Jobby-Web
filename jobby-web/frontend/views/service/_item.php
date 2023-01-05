@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\web\JqueryAsset;
 use yii\helpers\Url;
 use common\models\Avaliation;
+use common\models\ServiceGallery;
 
 /* @var $service common\models\Service */
 
@@ -35,8 +36,12 @@ else {
 <div class="eventWrapper">
     <div class="event">
         <div class="event--img">
-            <a href="" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
-                <img src="https://explicacoesdobairro.pt/wp-content/uploads/2019/07/logo-EB.png" title="" alt="">
+            <a href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
+                <?php if($service->serviceGalleries != null){
+                    foreach($service->serviceGalleries as $keyGallery => $gallery){ ?>
+                        <?php if ($keyGallery == 0){ ?>
+                            <img src="<?= $gallery->image ?>" title="" alt="">
+                        <?php }}} ?>
             </a>
         </div>
         <div class="event--date">

@@ -94,7 +94,7 @@ return [
                 '/support' => 'site/support',
                 '/favorite' => 'site/create-favorite',
                 '/favorite/<id:\d+>' => 'site/delete-favorite',
-                '/avaliation' => 'site/create-avaliation',
+                '/avaliation' => 'site/create-avalization',
                 'PUT /avaliation/<id:\d+>' => 'site/update-avaliation',
                 'DELETE /avaliation/<id:\d+>' => 'site/delete-avaliation',
                 '/plan' => 'plan/index',

@@ -45,7 +45,7 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                 <a id="dropdownMenuLink" class="dropdown-toggle text-white"role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
                                     <?php if($user->id != \Yii::$app->user->identity->id){ ?>
-                                        <a href="<?=Url::to(['report/create']);?>" class="profile-dropdown-menu-item">Reportar</a>
+                                        <a href="<?=Url::to(['report/create', 'user_id' => $user->id]);?>" class="profile-dropdown-menu-item">Reportar</a>
                                         <br>
                                     <?php } ?>
                                     <?php if($user->id == \Yii::$app->user->identity->id){ ?>

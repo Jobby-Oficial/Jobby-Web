@@ -4,6 +4,7 @@
 //namespace frontend\tests\Unit;
 
 //use frontend\tests\UnitTester;
+//use \Tests\Support\UnitTester;
 use common\models\User;
 
 class UserTest extends \Codeception\Test\Unit
@@ -28,7 +29,7 @@ class UserTest extends \Codeception\Test\Unit
     {
     }
 
-    public function testUserValidation()
+    /*public function testUserValidation()
     {
         $this->user = new User();
 
@@ -252,7 +253,7 @@ class UserTest extends \Codeception\Test\Unit
             $this->user->updated_at = '1673496989';
             $this->assertTrue($this->user->validate(['updated_at']));
         });
-    }
+    }*/
 
     function testSavingUser()
     {

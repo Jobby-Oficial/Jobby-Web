@@ -43,8 +43,8 @@ class ReportController extends \yii\web\Controller
     public function actionCreate()
     {
         $model = new Report();
-
-        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
+        $user = $this->request->get('user_id');
+        //$users = ArrayHelper::map(User::find()->all(), 'id', 'username');
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -59,7 +59,7 @@ class ReportController extends \yii\web\Controller
 
         return $this->render('create', [
             'model' => $model,
-            'users' => $users
+            'user' => $user
         ]);
     }
 }
