@@ -31,17 +31,18 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                 <!-- <div class="col-md-3 col-sm-12 col-12 profile-div-img">
                     <img class="profile-img rounded-circle p-1 shadow bg-white" src="<?= HTML::encode($user->image); ?>">
                 </div> -->
-                <div class="col-md-9 col-sm-12 col-12">
+                <div class="col-md-12 col-sm-12 col-12">
                     <div class="row">
                         <div class="col-md-11 col-sm-12 col-12 profile-div-infos">
                             <h1 class="profile-name m-0"><?= HTML::encode($user->name); ?></h1>
                             <h2 class="profile-username m-0">@<?= HTML::encode($user->username); ?> (<?= HTML::encode($user->plan->name); ?>)</h2>
                         </div>
-                        <div class="col-md-1 col-sm-12 col-12 profile-div-report p-3">
-                            <div class="dropdown dropleft shadow-sm">
-                                <a id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="col-md-1 col-sm-12 col-12 profile-div-report p-3 d-flex justify-content-end">
+                            <div class="dropdown dropleft shadow-sm btn-dropdown">
+                                <!--<a id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ...
-                                </a>
+                                </a>-->
+                                <a id="dropdownMenuLink" class="dropdown-toggle text-white"role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
                                     <?php if($user->id != \Yii::$app->user->identity->id){ ?>
                                         <a href="<?=Url::to(['report/create']);?>" class="profile-dropdown-menu-item">Reportar</a>
