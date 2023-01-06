@@ -173,8 +173,12 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                 <div class="eventWrapper">
                                     <div class="event">
                                         <div class="event--img">
-                                            <a href="" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
-                                                <img src="https://explicacoesdobairro.pt/wp-content/uploads/2019/07/logo-EB.png" title="" alt="">
+                                            <a href="<?=Url::toRoute(['service/view/', 'id' => $service->id]);?>" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
+                                                <?php if($service->serviceGalleries != null){
+                                                    foreach($service->serviceGalleries as $keyGallery => $gallery){ ?>
+                                                        <?php if ($keyGallery == 0){ ?>
+                                                            <img src="<?= $gallery->image ?>" title="" alt="">
+                                                        <?php }}} ?>
                                             </a>
                                         </div>
                                         <div class="event--date">
@@ -190,8 +194,8 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                             </p>
                                             <div class="event--content-info">
                                                 <!--<div><time>20:00 - 22:00</time></div>-->
-                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span>Portugal</span></div>
-                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong>12<span class="preco"></span></div>
+                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span><?= Html::encode($service->user->country) ?></span></div>
+                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong><?= Html::encode($service->price) ?><span class="preco"></span></div>
                                                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
                                             </div>
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= $service->user->phone ?><span class="phone"></span></p>
@@ -258,8 +262,12 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                 <div class="eventWrapper">
                                     <div class="event">
                                         <div class="event--img">
-                                            <a href="" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
-                                                <img src="https://explicacoesdobairro.pt/wp-content/uploads/2019/07/logo-EB.png" title="" alt="">
+                                            <a href="<?=Url::toRoute(['service/view/', 'id' => $favorite->service->id]);?>" onclick="if (!lightboxLoaded) return false" class="a-list w-fancybox">
+                                                <?php if($favorite->service->serviceGalleries != null){
+                                                    foreach($favorite->service->serviceGalleries as $keyGallery => $gallery){ ?>
+                                                        <?php if ($keyGallery == 0){ ?>
+                                                            <img src="<?= $gallery->image ?>" title="" alt="">
+                                                        <?php }}} ?>
                                             </a>
                                         </div>
                                         <div class="event--date">
@@ -275,8 +283,8 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                             </p>
                                             <div class="event--content-info">
                                                 <!--<div><time>20:00 - 22:00</time></div>-->
-                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span>Portugal</span></div>
-                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong>12<span class="preco"></span></div>
+                                                <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span><?= Html::encode($favorite->service->user->country) ?></span></div>
+                                                <div class="event--content-price"><strong>Preço:&nbsp;</strong><?= Html::encode($favorite->service->price) ?><span class="preco"></span></div>
                                                 <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
                                             </div>
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= $favorite->service->user->phone ?><span class="phone"></span></p>

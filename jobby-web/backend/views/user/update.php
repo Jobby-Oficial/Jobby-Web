@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Atualizar');
 ?>
 <div class="user-update">
 
+    <!--<h1><?/*= Html::encode($this->title) */?></h1>-->
+
     <?= $this->render('_form', [
         'model' => $model,
         'plans' => $plans

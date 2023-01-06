@@ -3,6 +3,13 @@
 
 use yii\bootstrap4\Breadcrumbs;
 ?>
+
+<style>
+    .content-header h1 {
+        font-size: 2.5rem;
+    }
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
