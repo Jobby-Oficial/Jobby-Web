@@ -66,11 +66,29 @@ class ServiceController extends Controller
     {
         $searchModel = new ServiceSearch();
         $searchModelUser = new UserSearch();
+        $modelSchedule = new Schedule();
+        $arrFav = null;
+        if (isset(\Yii::$app->user->identity->id)) {
+            $modelFavorite = Favorite::find()->where(['user_id' => \Yii::$app->user->identity->id])->all();
+            $modelService = Service::find()->all();
+
+            foreach($modelService as $service){
+                $arrFav[$service->id] = 0;
+                foreach($modelFavorite as $favorite){
+                    if($favorite->service_id == $service->id){
+                        $arrFav[$service->id] = $favorite->id;
+                    }
+                }
+            }
+        }
         $dataProvider = $searchModel->searchService($this->request->queryParams);
+        //dd($arrFav);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'searchModelUser' => $searchModelUser,
+            'modelSchedule' => $modelSchedule,
+            'modelFavorite' => $arrFav,
             'dataProvider' => $dataProvider
         ]);
     }
@@ -87,6 +105,10 @@ class ServiceController extends Controller
         $modelSchedule = new Schedule();
         $avaliationsCount = Avaliation::find()->where(['service_id' => $model->id])->count();
         $schedules = Schedule::find()->where(['service_id' => $id, 'schedule_status' => 1])->all();
+        $modelFavorite = null;
+        if (isset(\Yii::$app->user->identity->id)) {
+            $modelFavorite = Favorite::find()->where(['service_id' => $model->id, 'user_id' => \Yii::$app->user->identity->id])->all();
+        }
 
         $events[] = [];
 
@@ -107,7 +129,8 @@ class ServiceController extends Controller
             'model' => $model,
             'modelSchedule' => $modelSchedule,
             'avaliationsCount' => $avaliationsCount,
-            'schedules' => $events
+            'schedules' => $events,
+            'modelFavorite' => $modelFavorite
         ]);
     }
 

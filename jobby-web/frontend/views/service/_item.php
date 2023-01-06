@@ -4,32 +4,19 @@ use yii\helpers\Html;
 use yii\web\JqueryAsset;
 use yii\helpers\Url;
 use common\models\Avaliation;
-use common\models\ServiceGallery;
+use yii\bootstrap5\Modal;
+use yii\bootstrap5\ActiveForm;
+use kartik\date\DatePicker;
+use kartik\time\TimePicker;
+use yii\widgets\Pjax;
 
 /* @var $service common\models\Service */
 
+$this->registerJsFile('@web/js/scheduleMultiples.js');
 $this->registerCssFile('@web/css/serviceList.css');
 $this->registerJsFile('@web/js/favorite.js', ['depends' => [JqueryAsset::class]]);
 ?>
 <!--<script src="https://kit.fontawesome.com/c7267aa8a6.js"></script>-->
-
-<?php
-/*
-$avaliations = Avaliation::find()->where(['service_id' => $service->id])->all();
-$avaliationsCount = Avaliation::find()->where(['service_id' => $service->id])->count();
-
-if ($avaliationsCount != 0) {
-    $aux = 0;
-    foreach ($avaliations as $avaliation) {
-        $aux += $avaliation->avaliation;
-    }
-    $avaliations = ($aux / $avaliationsCount);
-}
-else {
-    $avaliations = "0.0";
-}
-
-*/?>
 
 <?php $avaliationsCount = Avaliation::find()->where(['service_id' => $service->id])->count(); ?>
 
@@ -59,19 +46,22 @@ else {
                 <!--<div><time>20:00 - 22:00</time></div>-->
                 <div><span class=""><strong>Localidade:&nbsp;</strong><span class="localidade"></span><?= Html::encode($service->user->country) ?></span></div>
                 <div class="event--content-price"><strong>Preço:&nbsp;</strong><?= Html::encode($service->price) ?><span class="preco"></span></div>
-                <div class="event--content-tickets"><a class="a-list" href="#" target="" title="">Agendar</a></div>
+                <div class="event--content-tickets">
+                    <?php if(!\Yii::$app->user->isGuest){ ?>
+                        <button type="button" class="a-list tickets-button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="<?= $service->id ?>" data-bs-price="<?= $service->price ?>">Agendar</button>
+                    <?php } ?>
+
+                </div>
             </div>
             <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= Html::encode($service->user->phone) ?><span class="phone"></span></p>
             <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria:&nbsp;</strong><span class=""><?= Html::encode($service->category) ?></span></a>&nbsp;&nbsp;
                 <?php if(!\Yii::$app->user->isGuest){ ?>
                     <?php if(\Yii::$app->user->identity->id != $service->user->id){  ?>
-                        <?php if($service->favorites != null){ ?>
-                            <?php foreach($service->favorites as $favorite){ ?>
-                                <?php if($favorite->service_id == $service->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
-                                    <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavorite(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
-                                <?php }else{ ?>
-                                    <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavorite(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
-                                <?php } ?>
+                        <?php if($modelFavorite != null){ ?>
+                            <?php if($modelFavorite[$service->id] != 0){ ?>
+                                <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavorite(<?= HTML::encode($modelFavorite[$service->id]); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                            <?php } else { ?>
+                                <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavorite(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                             <?php } ?>
                         <?php }else{ ?>
                             <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavorite(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
