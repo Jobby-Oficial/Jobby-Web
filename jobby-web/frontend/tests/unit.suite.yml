@@ -8,7 +8,7 @@ modules:
         - PhpBrowser:
             url: http://localhost
         - Db:
-            dsn: "mysql:host=localhost;dbname=jobby"
+            dsn: "mysql:host=localhost;dbname=jobby_tester"
             user: 'root'
             password: ''
         - Filesystem
