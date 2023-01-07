@@ -64,6 +64,11 @@ class ServiceController extends Controller
      */
     public function actionIndex()
     {
+        $modelFavorite = Favorite::find()->all();
+        $modelFavoriteCount = Favorite::find()->count();
+        $radom = rand(0,$modelFavoriteCount - 1);
+        dd($modelFavorite[$radom]->service_id);
+
         $searchModel = new ServiceSearch();
         $searchModelUser = new UserSearch();
         $modelSchedule = new Schedule();
