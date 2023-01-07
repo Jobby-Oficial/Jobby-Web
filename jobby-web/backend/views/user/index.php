@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php } ?>
 
+    <!--<h1><?/*= Html::encode($this->title) */?></h1>-->
+
     <p>
         <?= Html::a(Yii::t('app', 'Criar Utilizador'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>

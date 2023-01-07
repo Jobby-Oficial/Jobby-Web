@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use common\models\Service;
-use common\models\ServiceSearch;
 use common\models\User;
+use common\models\ServiceSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -27,7 +27,7 @@ class ServiceController extends Controller
                 'access' => [
                     'class' => AccessControl::className(),
                     'rules' => [
-                        [
+                        /*[
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
                             'roles' => ['createServiceBackoffice', 'updateServiceBackoffice', 'deleteServiceBackoffice'],
@@ -36,6 +36,31 @@ class ServiceController extends Controller
                             'allow' => true,
                             'actions' => ['index', 'view'],
                             'roles' => ['@'],
+                        ],*/
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['indexServiceBackoffice'],
+                        ],
+                        [
+                            'actions' => ['view'],
+                            'allow' => true,
+                            'roles' => ['viewServiceBackoffice'],
+                        ],
+                        [
+                            'actions' => ['create'],
+                            'allow' => true,
+                            'roles' => ['createServiceBackoffice'],
+                        ],
+                        [
+                            'actions' => ['update'],
+                            'allow' => true,
+                            'roles' => ['updateServiceBackoffice'],
+                        ],
+                        [
+                            'actions' => ['delete'],
+                            'allow' => true,
+                            'roles' => ['deleteServiceBackoffice'],
                         ],
                     ],
                 ],

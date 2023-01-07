@@ -25,15 +25,40 @@ class PlanController extends Controller
                 'access' => [
                     'class' => AccessControl::className(),
                     'rules' => [
-                        [
+                        /*[
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
-                            'roles' => ['admin', 'marketeer', 'developer'],
+                            'roles' => ['marketeer', 'developer'],
                         ],
                         [
                             'actions' => ['index', 'view'],
                             'allow' => true,
                             'roles' => ['@'],
+                        ],*/
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['indexPlanBackoffice'],
+                        ],
+                        [
+                            'actions' => ['view'],
+                            'allow' => true,
+                            'roles' => ['viewPlanBackoffice'],
+                        ],
+                        [
+                            'actions' => ['create'],
+                            'allow' => true,
+                            'roles' => ['createPlanBackoffice'],
+                        ],
+                        [
+                            'actions' => ['update'],
+                            'allow' => true,
+                            'roles' => ['updatePlanBackoffice'],
+                        ],
+                        [
+                            'actions' => ['delete'],
+                            'allow' => true,
+                            'roles' => ['deletePlanBackoffice'],
                         ],
                     ],
                 ],

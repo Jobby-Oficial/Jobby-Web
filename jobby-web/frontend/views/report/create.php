@@ -7,28 +7,29 @@ use kartik\money\MaskMoney;
 
 $this->title = 'Criar Denúncia';
 
+$this->registerCssFile('@web/css/reportCreate.css');
 ?>
 
-<section class="container mt-5">
-    <div class="site-signup">
-        <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+<section class="background-report-create">
 
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-5">
-                <?php $form = ActiveForm::begin(); ?>
+    <div class="report-create-box">
 
-                <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        <h2><?= Html::encode($this->title) ?></h2><br>
 
-                <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+        <?php $form = ActiveForm::begin(); ?>
 
-                <?= $form->field($model, 'user_id')->dropDownList($users, []) ?>
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Nome', ['class' => 'report-create-label']) ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Criar Denúncia', ['class' => 'btn btn-primary w-100']) ?>
-                </div>
+        <?= $form->field($model, 'description')->textarea(['rows' => 6])->label('Descrição', ['class' => 'report-create-label']) ?>
 
-                <?php ActiveForm::end(); ?>
-            </div>
+        <?= $form->field($model, 'user_id')->hiddenInput(['value' => $user])->label(false) ?>
+
+        <div class="flex-grid-center report-create-btn">
+            <?= Html::submitButton('Criar Denúncia', ['class' => 'fuller-button white report-create-btn']) ?>
         </div>
+
+        <?php ActiveForm::end(); ?>
+
     </div>
+
 </section>

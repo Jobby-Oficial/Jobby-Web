@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\Avaliation;
+use common\models\Service;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -345,5 +347,70 @@ class SiteController extends Controller
     {
         $model = Favorite::find()->where(['id' => $id])->one();
         $model->delete();
+    }
+
+    /**
+     * Displays Avaliation.
+     *
+     * @return mixed
+     */
+    public function actionCreateAvaliation()
+    {
+        $model = new Avaliation();
+
+        $model->avaliation = $this->request->post()['avaliation'];
+        $model->service_id = $this->request->post()['service_id'];
+        $model->user_id = $this->request->post()['user_id'];
+        $model->validate();
+        $model->save();
+        $this->actionRatingAvaliation($model->service_id);
+    }
+
+    /**
+     * Displays Avaliation.
+     *
+     * @return mixed
+     */
+    public function actionUpdateAvaliation($id)
+    {
+        $model = Avaliation::find()->where(['id' => $id])->one();
+
+        $model->avaliation = $this->request->post()['avaliation'];
+        $model->validate();
+        $model->save();
+        $this->actionRatingAvaliation($this->request->post()['service_id']);
+    }
+
+    /**
+     * Displays Avaliation.
+     *
+     * @return mixed
+     */
+    public function actionDeleteAvaliation($id)
+    {
+        $model = Avaliation::find()->where(['id' => $id])->one();
+        $model->delete();
+        $this->actionRatingAvaliation($this->request->post()['service_id']);
+    }
+
+    public function actionRatingAvaliation($id){
+        $services = Service::find()->where(['id' => $id])->one();
+        $avaliations = Avaliation::find()->where(['service_id' => $id])->all();
+        $avaliationsCount = Avaliation::find()->where(['service_id' => $id])->count();
+
+        if ($avaliationsCount != 0) {
+            $aux = 0;
+            foreach ($avaliations as $avaliation) {
+                $aux += $avaliation->avaliation;
+            }
+            $avaliations = ($aux / $avaliationsCount);
+        }
+        else {
+            $avaliations = "0.0";
+        }
+
+        $services->rating_average = $avaliations;
+        $services->validate();
+        $services->save();
     }
 }

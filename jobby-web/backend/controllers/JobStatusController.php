@@ -25,7 +25,7 @@ class JobStatusController extends Controller
                 'access' => [
                     'class' => AccessControl::className(),
                     'rules' => [
-                        [
+                        /*[
                             'actions' => ['create', 'update', 'delete'],
                             'allow' => true,
                             'roles' => ['admin', 'developer'],
@@ -34,6 +34,31 @@ class JobStatusController extends Controller
                             'actions' => ['index', 'view'],
                             'allow' => true,
                             'roles' => ['@'],
+                        ],*/
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['indexJobStatusBackoffice'],
+                        ],
+                        [
+                            'actions' => ['view'],
+                            'allow' => true,
+                            'roles' => ['viewJobStatusBackoffice'],
+                        ],
+                        [
+                            'actions' => ['create'],
+                            'allow' => true,
+                            'roles' => ['createJobStatusBackoffice'],
+                        ],
+                        [
+                            'actions' => ['update'],
+                            'allow' => true,
+                            'roles' => ['updateJobStatusBackoffice'],
+                        ],
+                        [
+                            'actions' => ['delete'],
+                            'allow' => true,
+                            'roles' => ['deleteJobStatusBackoffice'],
                         ],
                     ],
                 ],

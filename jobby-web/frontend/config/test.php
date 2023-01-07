@@ -19,7 +19,7 @@ $config =  yii\helpers\ArrayHelper::merge(
             ],
             'db' => [
                 'class' => \yii\db\Connection::class,
-                'dsn' => 'mysql:host=localhost;dbname=jobby',
+                'dsn' => 'mysql:host=localhost;dbname=jobby_tester',
                 'username' => 'root',
                 'password' => '',
                 'charset' => 'utf8',

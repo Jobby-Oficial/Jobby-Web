@@ -5,10 +5,11 @@ namespace frontend\controllers;
 use common\models\Report;
 use common\models\User;
 use yii\helpers\ArrayHelper;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class ReportController extends \yii\web\Controller
+class ReportController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -43,8 +44,8 @@ class ReportController extends \yii\web\Controller
     public function actionCreate()
     {
         $model = new Report();
-
-        $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
+        $user = $this->request->get('user_id');
+        //$users = ArrayHelper::map(User::find()->all(), 'id', 'username');
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -59,7 +60,7 @@ class ReportController extends \yii\web\Controller
 
         return $this->render('create', [
             'model' => $model,
-            'users' => $users
+            'user' => $user
         ]);
     }
 }

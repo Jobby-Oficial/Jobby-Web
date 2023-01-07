@@ -120,8 +120,8 @@ class Service extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getAvaliations()
+    public function getAvaliations()
     {
         return $this->hasMany(Avaliation::class, ['service_id' => 'id']);
-    }*/
+    }
 }

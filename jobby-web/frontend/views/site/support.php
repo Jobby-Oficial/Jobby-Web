@@ -59,11 +59,11 @@ $this->registerJsFile('@web/js/submit.js');
 
                 <?= Html::beginForm(['site/support'], 'POST'); ?>
 
-                <?= Html::input('Email', 'email', null, ['class' => 'form-control', 'placeholder' => 'Email']) ?>
+                <?= Html::input('Email', 'email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'required'=>true]) ?>
 
-                <?= Html::dropDownList('assunto', 'Pedido de Informação', ['Pedido de Informação' => 'Pedido de Informação', 'Bugs' => 'Bugs', 'Sugestões' => 'Sugestões', 'Outro' => 'Outro'], ['class' => 'form-select']) ?>
+                <?= Html::dropDownList('assunto', 'Pedido de Informação', ['Pedido de Informação' => 'Pedido de Informação', 'Bugs' => 'Bugs', 'Sugestões' => 'Sugestões', 'Outro' => 'Outro'], ['class' => 'form-select', 'required'=>true]) ?>
 
-                <?= Html::textarea('mensagem', null, ['class' => 'form-control', 'placeholder' => 'Mensagem', 'rows' => 6]) ?>
+                <?= Html::textarea('mensagem', null, ['class' => 'form-control', 'placeholder' => 'Mensagem', 'rows' => 6, 'required'=>true]) ?>
 
                 <section class="form-group">
                     <button class="bubbly-button" name="contact-button" type="submit">Enviar Menssagem!</button>

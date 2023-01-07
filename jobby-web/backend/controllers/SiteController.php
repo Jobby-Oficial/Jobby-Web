@@ -3,11 +3,14 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\User as UserModel;
+use common\models\Service;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\User;
 
 /**
  * Site controller
@@ -21,7 +24,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -35,7 +38,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::class,
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -62,7 +65,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $users = UserModel::find()->count();
+        $usersActive = UserModel::find()->where(['status' => UserModel::STATUS_ACTIVE])->count();
+        $usersInactive= UserModel::find()->where(['status' => UserModel::STATUS_INACTIVE])->count();
+        $services = Service::find()->count();
+
+        return $this->render('index', ['users' => $users, 'usersActive' => $usersActive, 'usersInactive' => $usersInactive, 'services' => $services]);
     }
 
     /**
@@ -78,9 +86,16 @@ class SiteController extends Controller
 
         $this->layout = 'blank';
 
+        $auth = Yii::$app->authManager;
+
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if($auth->checkAccess(Yii::$app->user->getId(), "backoffice")) {
+                return $this->goBack();
+            }
+            else{
+                Yii::$app->user->logout();
+            }
         }
 
         $model->password = '';

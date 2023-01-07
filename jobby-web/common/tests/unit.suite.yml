@@ -3,5 +3,11 @@ actor: UnitTester
 bootstrap: false
 modules:
     enabled:
+        - Asserts
         - Yii2:
-            part: fixtures
+              part: [ orm, email, fixtures ]
+        - Db:
+              dsn: 'mysql:host=localhost;dbname=jobby'
+              user: 'root'
+              password: ''
+        step_decorators: ~

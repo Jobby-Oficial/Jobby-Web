@@ -77,7 +77,7 @@ class m220524_201442_init extends Migration
             'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
         ));
 
-        $this->insert('{{%user}}',array(
+        /*$this->insert('{{%user}}',array(
             'username' => 'marketeer',
             'email' => 'marketeer@marketeer.pt',
             'name' => 'Marketeer',
@@ -94,7 +94,7 @@ class m220524_201442_init extends Migration
             'plan_id' => 1,
             'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
             'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
-        ));
+        ));*/
 
         $this->insert('{{%user}}',array(
             'username' => 'professional',
