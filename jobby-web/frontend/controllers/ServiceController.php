@@ -103,6 +103,7 @@ class ServiceController extends Controller
     {
         $model = $this->findModel($id);
         $modelSchedule = new Schedule();
+        $avaliations = Avaliation::find()->where(['service_id' => $model->id, 'user_id' => \Yii::$app->user->identity->id])->all();
         $avaliationsCount = Avaliation::find()->where(['service_id' => $model->id])->count();
         $schedules = Schedule::find()->where(['service_id' => $id, 'schedule_status' => 1])->all();
         $modelFavorite = null;
@@ -128,6 +129,7 @@ class ServiceController extends Controller
         return $this->render('view', [
             'model' => $model,
             'modelSchedule' => $modelSchedule,
+            'avaliations' => $avaliations,
             'avaliationsCount' => $avaliationsCount,
             'schedules' => $events,
             'modelFavorite' => $modelFavorite

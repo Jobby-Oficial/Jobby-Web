@@ -142,7 +142,7 @@ class SignupTest extends \Codeception\Test\Unit
         /* ***** End of Section ***** */
 
         /* ╔═══════════════════════════════════╗ */
-        /* ║     Verify Create Signup Test     ║ */
+        /* ║     Assert Create Signup Test     ║ */
         /* ╚═══════════════════════════════════╝ */
 
         $this->assertNotEmpty($signup);
@@ -176,6 +176,41 @@ class SignupTest extends \Codeception\Test\Unit
 
         /* ***** End of Section ***** */
 
+        /* ╔═══════════════════════════════════╗ */
+        /* ║     Verify Create Signup Test     ║ */
+        /* ╚═══════════════════════════════════╝ */
+
+        verify($signup)->notEmpty();
+        verify($signup->username)->notEmpty();
+        verify($signup->email)->notEmpty();
+        //verify($signup->name)->notEmpty();
+        verify($signup->phone)->notEmpty();
+        verify($signup->genre)->notEmpty();
+        verify($signup->birth)->notEmpty();
+        verify($signup->country)->notEmpty();
+        verify($signup->city)->notEmpty();
+        verify($signup->morada)->notEmpty();
+        verify($signup->biography)->notEmpty();
+        verify($signup->password_hash)->notEmpty();
+        verify($signup->password_repeat)->notEmpty();
+        verify($signup->typeUser)->notEmpty();
+
+        verify($signup->username)->equals('teste1000');
+        verify($signup->email)->equals('teste1000@teste.pt');
+        //verify($signup->name)->equals('Teste1000');
+        verify($signup->phone)->equals('911111111');
+        verify($signup->genre)->equals('m');
+        verify($signup->birth)->equals('2000-01-28');
+        verify($signup->country)->equals('Portugal');
+        verify($signup->city)->equals('Lisboa');
+        verify($signup->morada)->equals('Morada Teste1000');
+        verify($signup->biography)->equals('Biografia Teste1000');
+        verify($signup->password_hash)->equals('teste1234');
+        verify($signup->password_repeat)->equals('teste1234');
+        verify($signup->typeUser)->equals('1');
+
+        /* ***** End of Section ***** */
+
         /* ╔════════════════════════════╗ */
         /* ║     Update Signup Test     ║ */
         /* ╚════════════════════════════╝ */
@@ -196,9 +231,9 @@ class SignupTest extends \Codeception\Test\Unit
 
         /* ***** End of Section ***** */
 
-        /* ╔═════════════════════════════════╗ */
-        /* ║     Verify Update User Test     ║ */
-        /* ╚═════════════════════════════════╝ */
+        /* ╔═══════════════════════════════════╗ */
+        /* ║     Assert Update Signup Test     ║ */
+        /* ╚═══════════════════════════════════╝ */
 
         $this->assertNotEmpty($signup);
         $this->assertNotEmpty($signup->username);
@@ -224,15 +259,44 @@ class SignupTest extends \Codeception\Test\Unit
         $this->assertEquals('Biografia Teste2000', $signup->biography);
 
         /* ***** End of Section ***** */
+
+        /* ╔═══════════════════════════════════╗ */
+        /* ║     Verify Update Signup Test     ║ */
+        /* ╚═══════════════════════════════════╝ */
+
+        verify($signup)->notEmpty();
+        verify($signup->username)->notEmpty();
+        verify($signup->email)->notEmpty();
+        //verify($signup->name)->notEmpty();
+        verify($signup->phone)->notEmpty();
+        verify($signup->genre)->notEmpty();
+        verify($signup->birth)->notEmpty();
+        verify($signup->country)->notEmpty();
+        verify($signup->city)->notEmpty();
+        verify($signup->morada)->notEmpty();
+        verify($signup->biography)->notEmpty();
+
+        verify($signup->username)->equals('teste2000');
+        verify($signup->email)->equals('teste2000@teste.pt');
+        //verify($signup->name)->equals('Teste2000');
+        verify($signup->phone)->equals('922222222');
+        verify($signup->genre)->equals('f');
+        verify($signup->birth)->equals('2000-01-27');
+        verify($signup->country)->equals('Germany');
+        verify($signup->city)->equals('Berlin');
+        verify($signup->morada)->equals('Morada Teste2000');
+        verify($signup->biography)->equals('Biografia Teste2000');
+
+        /* ***** End of Section ***** */
     }
 
-    function testVerifyIntegrationSignupValidation()
-    {
+    //function testVerifyIntegrationSignupValidation()
+    //{
         /* ╔════════════════════════════╗ */
         /* ║     Create Signup Test     ║ */
         /* ╚════════════════════════════╝ */
 
-        $signup = new SignupForm();
+        /*$signup = new SignupForm();
 
         $signup->attributes = [
             'username' => 'teste3000',
@@ -248,7 +312,7 @@ class SignupTest extends \Codeception\Test\Unit
             'password_hash' => 'teste1234',
             'password_repeat' => 'teste1234',
             'typeUser' => 1,
-        ];
+        ];*/
 
         /* ***** End of Section ***** */
 
@@ -256,7 +320,7 @@ class SignupTest extends \Codeception\Test\Unit
         /* ║     Verify Create Signup Test     ║ */
         /* ╚═══════════════════════════════════╝ */
 
-        verify($signup)->notEmpty();
+        /*verify($signup)->notEmpty();
         verify($signup->username)->notEmpty();
         verify($signup->email)->notEmpty();
         //verify($signup->name)->notEmpty();
@@ -277,7 +341,7 @@ class SignupTest extends \Codeception\Test\Unit
         verify($signup->country)->equals('Portugal');
         verify($signup->city)->equals('Lisboa');
         verify($signup->morada)->equals('Morada Teste3000');
-        verify($signup->biography)->equals('Biografia Teste3000');
+        verify($signup->biography)->equals('Biografia Teste3000');*/
 
         /* ***** End of Section ***** */
 
@@ -285,7 +349,7 @@ class SignupTest extends \Codeception\Test\Unit
         /* ║     Update Signup Test     ║ */
         /* ╚════════════════════════════╝ */
 
-        $signup->attributes = [
+        /*$signup->attributes = [
             'username' => 'teste4000',
             'email' => 'teste4000@teste.pt',
             //'name' => 'Teste4000',
@@ -296,7 +360,7 @@ class SignupTest extends \Codeception\Test\Unit
             'city' => 'Berlin',
             'morada' => 'Morada Teste4000',
             'biography' => 'Biografia Teste4000',
-        ];
+        ];*/
 
         /* ***** End of Section ***** */
 
@@ -304,7 +368,7 @@ class SignupTest extends \Codeception\Test\Unit
         /* ║     Verify Update Signup Test     ║ */
         /* ╚═══════════════════════════════════╝ */
 
-        verify($signup)->notEmpty();
+        /*verify($signup)->notEmpty();
         verify($signup->username)->notEmpty();
         verify($signup->email)->notEmpty();
         //verify($signup->name)->notEmpty();
@@ -325,8 +389,8 @@ class SignupTest extends \Codeception\Test\Unit
         verify($signup->country)->equals('Germany');
         verify($signup->city)->equals('Berlin');
         verify($signup->morada)->equals('Morada Teste4000');
-        verify($signup->biography)->equals('Biografia Teste4000');
+        verify($signup->biography)->equals('Biografia Teste4000');*/
 
         /* ***** End of Section ***** */
-    }
+    //}
 }

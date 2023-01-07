@@ -5,10 +5,11 @@ namespace frontend\controllers;
 use common\models\Report;
 use common\models\User;
 use yii\helpers\ArrayHelper;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class ReportController extends \yii\web\Controller
+class ReportController extends Controller
 {
     /**
      * {@inheritdoc}

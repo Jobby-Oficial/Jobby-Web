@@ -61,66 +61,25 @@ class FavoriteTest extends \Codeception\Test\Unit
         /* ╚══════════════════════════════╝ */
 
         $favorite = new Favorite();
-        $favorite->service_id = 1000;
-        $favorite->user_id = 1;
+        $favorite->id = 1000;
+        $favorite->service_id = 1001;
+        $favorite->user_id = 1002;
         $favorite->save();
-        $this->assertEquals(1000, $favorite->service_id);
-        verify($favorite->service_id)->equals(1000);
+        $this->assertEquals(1001, $favorite->service_id);
+        verify($favorite->service_id)->equals(1001);
 
         /* ***** End of Section ***** */
 
         /* ╔═════════════════════════════════════╗ */
-        /* ║     Verify Create Favorite Test     ║ */
+        /* ║     Assert Create Favorite Test     ║ */
         /* ╚═════════════════════════════════════╝ */
 
         $this->assertNotEmpty($favorite);
         $this->assertNotEmpty($favorite->service_id);
         $this->assertNotEmpty($favorite->user_id);
 
-        $this->assertEquals('1000', $favorite->service_id);
-        $this->assertEquals('1', $favorite->user_id);
-
-        /* ***** End of Section ***** */
-
-        /* ╔══════════════════════════════╗ */
-        /* ║     Update Favorite Test     ║ */
-        /* ╚══════════════════════════════╝ */
-
-        $favorite = new Favorite();
-        $favorite->service_id = 2000;
-        $favorite->user_id = 2;
-        $favorite->save();
-        $this->assertEquals(2000, $favorite->service_id);
-        verify($favorite->service_id)->equals(2000);
-
-        /* ***** End of Section ***** */
-
-        /* ╔═════════════════════════════════════╗ */
-        /* ║     Verify Update Favorite Test     ║ */
-        /* ╚═════════════════════════════════════╝ */
-
-        $this->assertNotEmpty($favorite);
-        $this->assertNotEmpty($favorite->service_id);
-        $this->assertNotEmpty($favorite->user_id);
-
-        $this->assertEquals('2000', $favorite->service_id);
-        $this->assertEquals('2', $favorite->user_id);
-
-        /* ***** End of Section ***** */
-    }
-
-    function testVerifyIntegrationUserValidation()
-    {
-        /* ╔══════════════════════════════╗ */
-        /* ║     Create Favorite Test     ║ */
-        /* ╚══════════════════════════════╝ */
-
-        $favorite = new Favorite();
-
-        $favorite->attributes = [
-            'service_id' => '3000',
-            'user_id' => '3',
-        ];
+        $this->assertEquals('1001', $favorite->service_id);
+        $this->assertEquals('1002', $favorite->user_id);
 
         /* ***** End of Section ***** */
 
@@ -132,8 +91,8 @@ class FavoriteTest extends \Codeception\Test\Unit
         verify($favorite->service_id)->notEmpty();
         verify($favorite->user_id)->notEmpty();
 
-        verify($favorite->service_id)->equals('3000');
-        verify($favorite->user_id)->equals('3');
+        verify($favorite->service_id)->equals('1001');
+        verify($favorite->user_id)->equals('1002');
 
         /* ***** End of Section ***** */
 
@@ -141,10 +100,24 @@ class FavoriteTest extends \Codeception\Test\Unit
         /* ║     Update Favorite Test     ║ */
         /* ╚══════════════════════════════╝ */
 
-        $favorite->attributes = [
-            'service_id' => '4000',
-            'user_id' => '4',
-        ];
+        $favorite->service_id = 2001;
+        $favorite->user_id = 2002;
+        $favorite->save();
+        $this->assertEquals(2001, $favorite->service_id);
+        verify($favorite->service_id)->equals(2001);
+
+        /* ***** End of Section ***** */
+
+        /* ╔═════════════════════════════════════╗ */
+        /* ║     Assert Update Favorite Test     ║ */
+        /* ╚═════════════════════════════════════╝ */
+
+        $this->assertNotEmpty($favorite);
+        $this->assertNotEmpty($favorite->service_id);
+        $this->assertNotEmpty($favorite->user_id);
+
+        $this->assertEquals('2001', $favorite->service_id);
+        $this->assertEquals('2002', $favorite->user_id);
 
         /* ***** End of Section ***** */
 
@@ -156,8 +129,26 @@ class FavoriteTest extends \Codeception\Test\Unit
         verify($favorite->service_id)->notEmpty();
         verify($favorite->user_id)->notEmpty();
 
-        verify($favorite->service_id)->equals('4000');
-        verify($favorite->user_id)->equals('4');
+        verify($favorite->service_id)->equals('2001');
+        verify($favorite->user_id)->equals('2002');
+
+        /* ***** End of Section ***** */
+
+        /* ╔══════════════════════════════╗ */
+        /* ║     Delete Favorite Test     ║ */
+        /* ╚══════════════════════════════╝ */
+
+        $favorite->delete();
+
+        /* ***** End of Section ***** */
+
+        /* ╔════════════════════════════════════════════════╗ */
+        /* ║     Assert and Verify Delete Favorite Test     ║ */
+        /* ╚════════════════════════════════════════════════╝ */
+
+        $findFavorite = Favorite::find()->where(['id' => $favorite->id])->count();
+        $this->assertEquals(0, $findFavorite);
+        verify($findFavorite)->equals(0);
 
         /* ***** End of Section ***** */
     }
@@ -176,4 +167,57 @@ class FavoriteTest extends \Codeception\Test\Unit
             $this->tester->updateInDatabase('favorite', array('service_id' => $service_id), array('service_id' => $service_id));
         }
     }
+
+    //function testVerifyIntegrationUserValidation()
+    //{
+    /* ╔══════════════════════════════╗ */
+    /* ║     Create Favorite Test     ║ */
+    /* ╚══════════════════════════════╝ */
+
+    /*$favorite = new Favorite();
+
+    $favorite->attributes = [
+        'service_id' => '3000',
+        'user_id' => '3',
+    ];*/
+
+    /* ***** End of Section ***** */
+
+    /* ╔═════════════════════════════════════╗ */
+    /* ║     Verify Create Favorite Test     ║ */
+    /* ╚═════════════════════════════════════╝ */
+
+    /*verify($favorite)->notEmpty();
+    verify($favorite->service_id)->notEmpty();
+    verify($favorite->user_id)->notEmpty();
+
+    verify($favorite->service_id)->equals('3000');
+    verify($favorite->user_id)->equals('3');*/
+
+    /* ***** End of Section ***** */
+
+    /* ╔══════════════════════════════╗ */
+    /* ║     Update Favorite Test     ║ */
+    /* ╚══════════════════════════════╝ */
+
+    /*$favorite->attributes = [
+        'service_id' => '4000',
+        'user_id' => '4',
+    ];*/
+
+    /* ***** End of Section ***** */
+
+    /* ╔═════════════════════════════════════╗ */
+    /* ║     Verify Update Favorite Test     ║ */
+    /* ╚═════════════════════════════════════╝ */
+
+    /*verify($favorite)->notEmpty();
+    verify($favorite->service_id)->notEmpty();
+    verify($favorite->user_id)->notEmpty();
+
+    verify($favorite->service_id)->equals('4000');
+    verify($favorite->user_id)->equals('4');*/
+
+    /* ***** End of Section ***** */
+    //}
 }

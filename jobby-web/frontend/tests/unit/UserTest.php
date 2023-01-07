@@ -201,7 +201,7 @@ class UserTest extends \Codeception\Test\Unit
         /* ***** End of Section ***** */
 
         /* ╔═════════════════════════════════╗ */
-        /* ║     Verify Create User Test     ║ */
+        /* ║     Assert Create User Test     ║ */
         /* ╚═════════════════════════════════╝ */
 
         $this->assertNotEmpty($user);
@@ -244,6 +244,50 @@ class UserTest extends \Codeception\Test\Unit
 
         /* ***** End of Section ***** */
 
+        /* ╔═════════════════════════════════╗ */
+        /* ║     Verify Create User Test     ║ */
+        /* ╚═════════════════════════════════╝ */
+
+        verify($user)->notEmpty();
+        verify($user->username)->notEmpty();
+        verify($user->email)->notEmpty();
+        verify($user->name)->notEmpty();
+        verify($user->phone)->notEmpty();
+        verify($user->genre)->notEmpty();
+        verify($user->birth)->notEmpty();
+        verify($user->country)->notEmpty();
+        verify($user->city)->notEmpty();
+        verify($user->morada)->notEmpty();
+        verify($user->biography)->notEmpty();
+        verify($user->status)->notEmpty();
+        verify($user->auth_key)->notEmpty();
+        verify($user->password_hash)->notEmpty();
+        verify($user->password)->notEmpty();
+        verify($user->password_repeat)->notEmpty();
+        verify($user->plan_start_date)->notEmpty();
+        verify($user->plan_id)->notEmpty();
+        verify($user->typeUser)->notEmpty();
+
+        verify($user->username)->equals('teste1000');
+        verify($user->email)->equals('teste1000@teste.pt');
+        verify($user->name)->equals('Teste1000');
+        verify($user->phone)->equals('911111111');
+        verify($user->genre)->equals('m');
+        verify($user->birth)->equals('2000-01-28');
+        verify($user->country)->equals('Portugal');
+        verify($user->city)->equals('Lisboa');
+        verify($user->morada)->equals('Morada Teste1000');
+        verify($user->biography)->equals('Biografia Teste1000');
+        verify($user->status)->equals('10');
+        verify($user->password_hash)->equals('teste1234');
+        verify($user->password)->equals('teste1234');
+        verify($user->password_repeat)->equals('teste1234');
+        verify($user->plan_start_date)->equals(date('Y-m-d'), $user->plan_start_date);
+        verify($user->plan_id)->equals('1');
+        verify($user->typeUser)->equals('1');
+
+        /* ***** End of Section ***** */
+
         /* ╔══════════════════════════╗ */
         /* ║     Update User Test     ║ */
         /* ╚══════════════════════════╝ */
@@ -254,8 +298,8 @@ class UserTest extends \Codeception\Test\Unit
         $user->phone = 922222222;
         $user->genre = 'f';
         $user->birth = '2000-01-27';
-        $user->country = 'Italy';
-        $user->city = 'Acquaro';
+        $user->country = 'Germany';
+        $user->city = 'Berlin';
         $user->morada = 'Morada Teste2000';
         $user->biography = 'Biografia Teste2000';
         $user->save();
@@ -265,7 +309,7 @@ class UserTest extends \Codeception\Test\Unit
         /* ***** End of Section ***** */
 
         /* ╔═════════════════════════════════╗ */
-        /* ║     Verify Update User Test     ║ */
+        /* ║     Assert Update User Test     ║ */
         /* ╚═════════════════════════════════╝ */
 
         $this->assertNotEmpty($user);
@@ -286,92 +330,10 @@ class UserTest extends \Codeception\Test\Unit
         $this->assertEquals('922222222', $user->phone);
         $this->assertEquals('f', $user->genre);
         $this->assertEquals('2000-01-27', $user->birth);
-        $this->assertEquals('Italy', $user->country);
-        $this->assertEquals('Acquaro', $user->city);
+        $this->assertEquals('Germany', $user->country);
+        $this->assertEquals('Berlin', $user->city);
         $this->assertEquals('Morada Teste2000', $user->morada);
         $this->assertEquals('Biografia Teste2000', $user->biography);
-
-        /* ***** End of Section ***** */
-    }
-
-    public function testVerifyIntegrationUserValidation()
-    {
-        /* ╔══════════════════════════╗ */
-        /* ║     Create User Test     ║ */
-        /* ╚══════════════════════════╝ */
-
-        $user = new User();
-
-        $user->attributes = [
-            'username' => 'teste3000',
-            'email' => 'teste3000@teste.pt',
-            'name' => 'Teste3000',
-            'phone' => '933333333',
-            'genre' => 'm',
-            'birth' => '2000-01-28',
-            'country' => 'Portugal',
-            'city' => 'Lourinhã',
-            'morada' => 'Morada Teste3000',
-            'biography' => 'Biografia Teste3000',
-            'status' => 10,
-            'auth_key' => $user->generateAuthKey(),
-            'password_hash' => 'teste1234',
-            'password' => 'teste1234',
-            'password_repeat' => 'teste1234',
-            'plan_start_date' => date('Y-m-d'),
-            'plan_id' => 1,
-            'typeUser' => 1,
-            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
-            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
-        ];
-
-        /* ***** End of Section ***** */
-
-        /* ╔═════════════════════════════════╗ */
-        /* ║     Verify Create User Test     ║ */
-        /* ╚═════════════════════════════════╝ */
-
-        verify($user)->notEmpty();
-        verify($user->username)->notEmpty();
-        verify($user->email)->notEmpty();
-        verify($user->name)->notEmpty();
-        verify($user->phone)->notEmpty();
-        verify($user->genre)->notEmpty();
-        verify($user->birth)->notEmpty();
-        verify($user->country)->notEmpty();
-        verify($user->city)->notEmpty();
-        verify($user->morada)->notEmpty();
-        verify($user->biography)->notEmpty();
-
-        verify($user->username)->equals('teste3000');
-        verify($user->email)->equals('teste3000@teste.pt');
-        verify($user->name)->equals('Teste3000');
-        verify($user->phone)->equals('933333333');
-        verify($user->genre)->equals('m');
-        verify($user->birth)->equals('2000-01-28');
-        verify($user->country)->equals('Portugal');
-        verify($user->city)->equals('Lourinhã');
-        verify($user->morada)->equals('Morada Teste3000');
-        verify($user->biography)->equals('Biografia Teste3000');
-
-        /* ***** End of Section ***** */
-
-        /* ╔══════════════════════════╗ */
-        /* ║     Update User Test     ║ */
-        /* ╚══════════════════════════╝ */
-
-        $user->attributes = [
-            'username' => 'teste4000',
-            'email' => 'teste4000@teste.pt',
-            'name' => 'Teste4000',
-            'phone' => '944444444',
-            'genre' => 'f',
-            'birth' => '2000-01-27',
-            'country' => 'Germany',
-            'city' => 'Berlin',
-            'morada' => 'Morada Teste4000',
-            'biography' => 'Biografia Teste4000'
-        ];
 
         /* ***** End of Section ***** */
 
@@ -391,16 +353,35 @@ class UserTest extends \Codeception\Test\Unit
         verify($user->morada)->notEmpty();
         verify($user->biography)->notEmpty();
 
-        verify($user->username)->equals('teste4000');
-        verify($user->email)->equals('teste4000@teste.pt');
-        verify($user->name)->equals('Teste4000');
-        verify($user->phone)->equals('944444444');
+        verify($user->username)->equals('teste2000');
+        verify($user->email)->equals('teste2000@teste.pt');
+        verify($user->name)->equals('Teste2000');
+        verify($user->phone)->equals('922222222');
         verify($user->genre)->equals('f');
         verify($user->birth)->equals('2000-01-27');
         verify($user->country)->equals('Germany');
         verify($user->city)->equals('Berlin');
-        verify($user->morada)->equals('Morada Teste4000');
-        verify($user->biography)->equals('Biografia Teste4000');
+        verify($user->morada)->equals('Morada Teste2000');
+        verify($user->biography)->equals('Biografia Teste2000');
+
+        /* ***** End of Section ***** */
+
+        /* ╔══════════════════════════╗ */
+        /* ║     Delete User Test     ║ */
+        /* ╚══════════════════════════╝ */
+
+        $user = User::findOne($user->id);
+        $user->delete();
+
+        /* ***** End of Section ***** */
+
+        /* ╔════════════════════════════════════════════╗ */
+        /* ║     Assert and Verify Delete User Test     ║ */
+        /* ╚════════════════════════════════════════════╝ */
+
+        $findUser = User::find()->where(['id' => $user->id])->count();
+        $this->assertEquals(0, $findUser);
+        verify($findUser)->equals(0);
 
         /* ***** End of Section ***** */
     }
@@ -412,4 +393,139 @@ class UserTest extends \Codeception\Test\Unit
         $this->tester->grabColumnFromDatabase('user', 'email', array('username' => 'teste'));
         $this->tester->updateInDatabase('user', array('email' => 'teste1000@teste.pt'), array('email' => 'teste1000@teste.pt'));
     }
+
+    //public function testVerifyIntegrationUserValidation()
+    //{
+    /* ╔══════════════════════════╗ */
+    /* ║     Create User Test     ║ */
+    /* ╚══════════════════════════╝ */
+
+    /*$user = new User();
+
+    $user = new User([
+        'username' => 'teste3000',
+        'email' => 'teste3000@teste.pt',
+        'name' => 'Teste3000',
+        'phone' => '933333333',
+        'genre' => 'm',
+        'birth' => '2000-01-28',
+        'country' => 'Portugal',
+        'city' => 'Lourinhã',
+        'morada' => 'Morada Teste3000',
+        'biography' => 'Biografia Teste3000',
+        'status' => 10,
+        'auth_key' => $user->generateAuthKey(),
+        'password_hash' => 'teste1234',
+        'password' => 'teste1234',
+        'password_repeat' => 'teste1234',
+        'plan_start_date' => date('Y-m-d'),
+        'plan_id' => 1,
+        'typeUser' => 1,
+        'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+        'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+    ]);*/
+    /*$user->save();
+    $this->assertEquals('teste3000', $user->username);
+    verify($user->username)->equals('teste3000');
+
+    /* ***** End of Section ***** */
+
+    /* ╔═════════════════════════════════╗ */
+    /* ║     Verify Create User Test     ║ */
+    /* ╚═════════════════════════════════╝ */
+
+    /*verify($user)->notEmpty();
+    verify($user->username)->notEmpty();
+    verify($user->email)->notEmpty();
+    verify($user->name)->notEmpty();
+    verify($user->phone)->notEmpty();
+    verify($user->genre)->notEmpty();
+    verify($user->birth)->notEmpty();
+    verify($user->country)->notEmpty();
+    verify($user->city)->notEmpty();
+    verify($user->morada)->notEmpty();
+    verify($user->biography)->notEmpty();
+
+    verify($user->username)->equals('teste3000');
+    verify($user->email)->equals('teste3000@teste.pt');
+    verify($user->name)->equals('Teste3000');
+    verify($user->phone)->equals('933333333');
+    verify($user->genre)->equals('m');
+    verify($user->birth)->equals('2000-01-28');
+    verify($user->country)->equals('Portugal');
+    verify($user->city)->equals('Lourinhã');
+    verify($user->morada)->equals('Morada Teste3000');
+    verify($user->biography)->equals('Biografia Teste3000');*/
+
+    /* ***** End of Section ***** */
+
+    /* ╔══════════════════════════╗ */
+    /* ║     Update User Test     ║ */
+    /* ╚══════════════════════════╝ */
+
+    /*$user = User([
+        'username' => 'teste4000',
+        'email' => 'teste4000@teste.pt',
+        'name' => 'Teste4000',
+        'phone' => '944444444',
+        'genre' => 'f',
+        'birth' => '2000-01-27',
+        'country' => 'Germany',
+        'city' => 'Berlin',
+        'morada' => 'Morada Teste4000',
+        'biography' => 'Biografia Teste4000'
+    ]);
+    $user->save();*/
+    //$this->assertEquals('teste4000', $user->username);
+    //verify($user->username)->equals('teste4000');
+
+    /* ***** End of Section ***** */
+
+    /* ╔═════════════════════════════════╗ */
+    /* ║     Verify Update User Test     ║ */
+    /* ╚═════════════════════════════════╝ */
+
+    /*verify($user)->notEmpty();
+    verify($user->username)->notEmpty();
+    verify($user->email)->notEmpty();
+    verify($user->name)->notEmpty();
+    verify($user->phone)->notEmpty();
+    verify($user->genre)->notEmpty();
+    verify($user->birth)->notEmpty();
+    verify($user->country)->notEmpty();
+    verify($user->city)->notEmpty();
+    verify($user->morada)->notEmpty();
+    verify($user->biography)->notEmpty();
+
+    verify($user->username)->equals('teste4000');
+    verify($user->email)->equals('teste4000@teste.pt');
+    verify($user->name)->equals('Teste4000');
+    verify($user->phone)->equals('944444444');
+    verify($user->genre)->equals('f');
+    verify($user->birth)->equals('2000-01-27');
+    verify($user->country)->equals('Germany');
+    verify($user->city)->equals('Berlin');
+    verify($user->morada)->equals('Morada Teste4000');
+    verify($user->biography)->equals('Biografia Teste4000');*/
+
+    /* ***** End of Section ***** */
+
+    /* ╔══════════════════════════╗ */
+    /* ║     Delete User Test     ║ */
+    /* ╚══════════════════════════╝ */
+
+    //$user = User::findOne($user->id);
+    //$user->delete();
+
+    /* ***** End of Section ***** */
+
+    /* ╔═════════════════════════════════╗ */
+    /* ║     Verify Delete User Test     ║ */
+    /* ╚═════════════════════════════════╝ */
+
+    //$findUser = User::find()->where(['id' => $user->id])->count();
+    //verify($findUser)->equals(0);
+
+    /* ***** End of Section ***** */
+    //}
 }

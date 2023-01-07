@@ -138,7 +138,7 @@ $this->registerJsFile('@web/js/scheduleView.js', ['depends' => [JqueryAsset::cla
                         'options' => [
                             'id' => 'modal-refuse-schedule',
                         ],
-                        'toggleButton' => ['label' => 'Cancelar', 'class' => 'btn btn-danger'],
+                        'toggleButton' => ['label' => 'Cancelar Pedido', 'class' => 'btn btn-danger'],
                     ]) ?>
 
                     <?php $form = ActiveForm::begin(); ?>

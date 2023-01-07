@@ -6,6 +6,7 @@ use common\models\Schedule;
 use common\models\JobStatus;
 use common\models\User;
 use yii\web\NotFoundHttpException;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
@@ -14,7 +15,7 @@ use yii\imagine\Image;
 use common\models\Service;
 use common\models\ServiceGallery;
 
-class ScheduleController extends \yii\web\Controller
+class ScheduleController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -48,10 +49,8 @@ class ScheduleController extends \yii\web\Controller
      */
     public function actionCreate()
     {
-        $model = new Schedule();
         $modelService = Service::find()->where(['id' => $this->request->post()['Schedule']['service_id']])->one();
-        //dd($modelService);
-
+        $model = new Schedule();
         $model->service_date = $this->request->post()['Schedule']['service_date'];
         $model->service_time = $this->request->post()['Schedule']['service_time'];
         $model->note = $this->request->post()['Schedule']['note'];
@@ -82,13 +81,14 @@ class ScheduleController extends \yii\web\Controller
         $auth = \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->identity->id);
         //dd($auth['developer']->name);
         //dd($auth);
+        $data = "";
         foreach ($auth as $keyType=>$type){
-
-            if ($auth[$keyType]->name == 'consumer'){
+            //dd($auth[$keyType]->name);
+            if ($keyType == 'consumer'){
                 $data = JobStatus::find()->all();
             }
             else {
-                $data = JobStatus::find()->where("name != 'Esperando Aprovação'")->all();
+                $data = JobStatus::find()->where('id!=1')->all();
             }
         }
 

@@ -1,10 +1,12 @@
 <?php
 
 namespace frontend\controllers;
+
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-class PlanController extends \yii\web\Controller
+class PlanController extends Controller
 {
     /**
      * {@inheritdoc}
