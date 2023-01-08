@@ -27,28 +27,28 @@ class JobStatusTest extends \Codeception\Test\Unit
 
     public function testJobStatusValidation()
     {
-        $this->jobsSatus = new JobStatus();
+        $this->jobSatus = new JobStatus();
 
-        $this->jobsSatus->name = null;
-        $this->assertFalse($this->jobsSatus->validate(['name']));
+        $this->jobSatus->name = null;
+        $this->assertFalse($this->jobSatus->validate(['name']));
 
-        $this->jobsSatus->name = 'Teste';
-        $this->assertTrue($this->jobsSatus->validate(['name']));
+        $this->jobSatus->name = 'Teste';
+        $this->assertTrue($this->jobSatus->validate(['name']));
 
-        $this->jobsSatus->name = 'Concluído';
-        $this->assertTrue($this->jobsSatus->validate(['name']));
+        $this->jobSatus->name = 'Concluído';
+        $this->assertTrue($this->jobSatus->validate(['name']));
 
-        $this->jobsSatus->created_at = null;
-        $this->assertTrue($this->jobsSatus->validate(['created_at']));
+        $this->jobSatus->created_at = null;
+        $this->assertTrue($this->jobSatus->validate(['created_at']));
 
-        $this->jobsSatus->created_at = '1673496989';
-        $this->assertTrue($this->jobsSatus->validate(['created_at']));
+        $this->jobSatus->created_at = '1673496989';
+        $this->assertTrue($this->jobSatus->validate(['created_at']));
 
-        $this->jobsSatus->updated_at = null;
-        $this->assertTrue($this->jobsSatus->validate(['updated_at']));
+        $this->jobSatus->updated_at = null;
+        $this->assertTrue($this->jobSatus->validate(['updated_at']));
 
-        $this->jobsSatus->updated_at = '1673496989';
-        $this->assertTrue($this->jobsSatus->validate(['updated_at']));
+        $this->jobSatus->updated_at = '1673496989';
+        $this->assertTrue($this->jobSatus->validate(['updated_at']));
     }
 
     function testIntegrationJobStatusValidation()
