@@ -201,20 +201,20 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                             <p class="event--content-ensemble"><strong>Número de Telemóvel:&nbsp;</strong><?= $service->user->phone ?><span class="phone"></span></p>
                                             <p class="event--content-program"><a class="a-list" href="" target="" title=""><strong>Categoria:&nbsp;</strong><span class=""><?= Html::encode($service->category) ?></span></a>&nbsp;&nbsp;
                                                 <?php if(\Yii::$app->user->identity->id != $user->id){ ?>
-                                                <?php if(!\Yii::$app->user->isGuest){ ?>
-                                                    <?php if($service->favorites != null){ ?>
-                                                        <?php foreach($service->favorites as $favorite){ ?>
-                                                            <?php if($favorite->service_id == $service->id && $favorite->user_id == \Yii::$app->user->identity->id){ ?>
-                                                                <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileViewMyService(<?= HTML::encode($favorite->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                                                    <?php if(!\Yii::$app->user->isGuest){ ?>
+                                                        <?php if(\Yii::$app->user->identity->id != $service->user->id){  ?>
+                                                            <?php if($favoritesServices != null){ ?>
+                                                                <?php if($favoritesServices[$service->id] != 0){ ?>
+                                                                    <img class="home-services-favorite-heart-favorite-svg align-text-top ml-1" onclick="deleteFavoriteProfileViewMyService(<?= HTML::encode($favoritesServices[$service->id]); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart-favorite.svg' ?>" alt="Heart Favorite Icon">
+                                                                <?php } else { ?>
+                                                                    <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
+                                                                <?php } ?>
                                                             <?php }else{ ?>
                                                                 <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                                                             <?php } ?>
                                                         <?php } ?>
-                                                    <?php }else{ ?>
-                                                        <img class="home-services-favorite-heart-svg align-text-top ml-1" onclick="createFavoriteProfileViewMyService(<?= HTML::encode($service->id); ?>, <?= HTML::encode(\Yii::$app->user->identity->id); ?>);" src="<?php echo Yii::getAlias('@web') . '/assets/img/heart.svg' ?>" alt="Heart Icon">
                                                     <?php } ?>
-                                                <?php } ?>
-                                            <?php }else{ ?>
+                                                <?php }else{ ?>
                                                     <img class="home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/edit.svg' ?>" alt="Edit Service Icon" onclick="window.open('<?=Url::to(['service/update', 'id' => $service->id]);?>', '_self')">&nbsp;&nbsp;
                                                     <img class="profile-delete-service home-services-favorite-heart-svg align-text-top" src="<?php echo Yii::getAlias('@web') . '/assets/img/delete.svg' ?>" alt="Delete Service Icon" data-bs-toggle="modal" data-bs-target="#deleteService" data-id="<?= $service->id ?>">
 
@@ -241,7 +241,6 @@ $this->registerJsFile('@web/js/schedule.js', ['depends' => [JqueryAsset::class]]
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             <?php } ?>
                                             </p>
                                         </div>

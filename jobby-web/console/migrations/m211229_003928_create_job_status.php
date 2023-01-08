@@ -26,7 +26,7 @@ class m211229_003928_create_job_status extends Migration
         ], $tableOptions);
 
         $this->insert('{{%job_status}}',array(
-            'name' => 'Esperando Aprovação',
+            'name' => 'À Espera de Aprovação',
             'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
             'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
         ));
