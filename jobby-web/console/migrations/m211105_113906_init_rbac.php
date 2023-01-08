@@ -88,6 +88,38 @@ class m211105_113906_init_rbac extends Migration
 
 
         /* --------------------------------------------------
+                        Avaliation no Backoffice
+        -------------------------------------------------- */
+
+        // Add "Index Avaliation no Backoffice" permission
+        $indexAvaliationBackoffice = $auth->createPermission('indexAvaliationBackoffice');
+        $indexAvaliationBackoffice->description = 'Index Avaliação no Backoffice';
+        $auth->add($indexAvaliationBackoffice);
+
+        // Add "View Avaliation no Backoffice" permission
+        $viewAvaliationBackoffice = $auth->createPermission('viewAvaliationBackoffice');
+        $viewAvaliationBackoffice->description = 'View Avaliação no Backoffice';
+        $auth->add($viewAvaliationBackoffice);
+
+        // Add "Criar Avaliation no Backoffice" permission
+        $createAvaliationBackoffice = $auth->createPermission('createAvaliationBackoffice');
+        $createAvaliationBackoffice->description = 'Criar Avaliação no Backoffice';
+        $auth->add($createAvaliationBackoffice);
+
+        // Add "Atualizar Avaliation no Backoffice" permission
+        $updateAvaliationBackoffice = $auth->createPermission('updateAvaliationBackoffice');
+        $updateAvaliationBackoffice->description = 'Atualizar Avaliação no Backoffice';
+        $auth->add($updateAvaliationBackoffice);
+
+        // Add "Apagar Avaliation no Backoffice" permission
+        $deleteAvaliationBackoffice = $auth->createPermission('deleteAvaliationBackoffice');
+        $deleteAvaliationBackoffice->description = 'Apagar Avaliação no Backoffice';
+        $auth->add($deleteAvaliationBackoffice);
+
+        /* ----------------------------------------------- */
+
+
+        /* --------------------------------------------------
                    Status do Serviço no Backoffice
         -------------------------------------------------- */
 
@@ -220,6 +252,12 @@ class m211105_113906_init_rbac extends Migration
         $auth->addChild($developer, $createServiceBackoffice);
         $auth->addChild($developer, $updateServiceBackoffice);
         $auth->addChild($developer, $deleteServiceBackoffice);
+        // Avaliation Permission
+        $auth->addChild($developer, $indexAvaliationBackoffice);
+        $auth->addChild($developer, $viewAvaliationBackoffice);
+        $auth->addChild($developer, $createAvaliationBackoffice);
+        $auth->addChild($developer, $updateAvaliationBackoffice);
+        $auth->addChild($developer, $deleteAvaliationBackoffice);
         // JobStatus Permission
         $auth->addChild($developer, $indexJobStatusBackoffice);
         $auth->addChild($developer, $viewJobStatusBackoffice);
@@ -254,6 +292,12 @@ class m211105_113906_init_rbac extends Migration
         $auth->addChild($admin, $createServiceBackoffice);
         $auth->addChild($admin, $updateServiceBackoffice);
         $auth->addChild($admin, $deleteServiceBackoffice);
+        // Avaliation Permission
+        $auth->addChild($admin, $indexAvaliationBackoffice);
+        $auth->addChild($admin, $viewAvaliationBackoffice);
+        $auth->addChild($admin, $createAvaliationBackoffice);
+        $auth->addChild($admin, $updateAvaliationBackoffice);
+        $auth->addChild($admin, $deleteAvaliationBackoffice);
         // JobStatus Permission
         $auth->addChild($admin, $indexJobStatusBackoffice);
         $auth->addChild($admin, $viewJobStatusBackoffice);

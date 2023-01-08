@@ -13,14 +13,7 @@ use kartik\money\MaskMoney;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'avaliation')->widget(MaskMoney::className(), ['name' => 'avaliation',
-        'pluginOptions' => [
-            'prefix' => '',
-            'decimal' => '.',
-            'thousands' => ',',
-            'precision' => 1,
-        ],
-    ]) ?>
+    <?= $form->field($model, 'avaliation')->radioList( [0 => '0', 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5'] ) ?>
 
     <?= $form->field($model, 'service_id')->dropDownList($services, []) ?>
 

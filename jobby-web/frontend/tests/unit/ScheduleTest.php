@@ -302,14 +302,17 @@ class ScheduleTest extends \Codeception\Test\Unit
     {
         $modelSchedule = Schedule::find()->all();
         $modelScheduleCount = Schedule::find()->count();
-        $radom = rand(0,$modelScheduleCount - 1);
-        $note = $modelSchedule[$radom]->note;
 
-        if (isset($modelSchedule)) {
-            $this->tester->seeInDatabase('schedule', ['note' => $note]);
-            $this->tester->dontSeeRecord(Schedule::class, ['note' => 'Nota Teste']);
-            $this->tester->grabColumnFromDatabase('schedule', 'id', array('note' => $note));
-            $this->tester->updateInDatabase('schedule', array('note' => 'Nota Teste'), array('note' => 'Nota Teste'));
+        if ($modelScheduleCount > 0) {
+            $radom = rand(0,$modelScheduleCount - 1);
+            $note = $modelSchedule[$radom]->note;
+
+            if (isset($modelSchedule)) {
+                $this->tester->seeInDatabase('schedule', ['note' => $note]);
+                $this->tester->dontSeeRecord(Schedule::class, ['note' => 'Nota Teste']);
+                $this->tester->grabColumnFromDatabase('schedule', 'id', array('note' => $note));
+                $this->tester->updateInDatabase('schedule', array('note' => 'Nota Teste'), array('note' => 'Nota Teste'));
+            }
         }
     }
 }

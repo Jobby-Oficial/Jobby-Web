@@ -30,6 +30,16 @@ $this->registerJsFile('@web/js/getCategory.js', ['depends' => [JqueryAsset::clas
         ],
     ]) ?>
 
+    <?php if (isset($model->rating_average)){ ?>
+
+        <?= $form->field($model, 'rating_average')->hiddenInput(['value' => $model->rating_average])->label(false) ?>
+
+    <?php } else { ?>
+
+        <?= $form->field($model, 'rating_average')->hiddenInput(['value' => 0.0])->label(false) ?>
+
+    <?php } ?>
+
     <?= $form->field($model, 'category')->dropDownList([])->label("Categoria") ?>
 
     <?= $form->field($model, 'user_id')->dropDownList($users, [])->label("Utilizador") ?>

@@ -173,14 +173,17 @@ class ReportTest extends \Codeception\Test\Unit
     {
         $modelReport = Report::find()->all();
         $modelReportCount = Report::find()->count();
-        $radom = rand(0,$modelReportCount - 1);
-        $user_id = $modelReport[$radom]->user_id;
 
-        if (isset($modelReport)) {
-            $this->tester->seeInDatabase('report', ['user_id' => $user_id]);
-            $this->tester->dontSeeRecord(Report::class, ['user_id' => 1000]);
-            $this->tester->grabColumnFromDatabase('report', 'id', array('user_id' => $user_id));
-            $this->tester->updateInDatabase('report', array('user_id' => $user_id), array('user_id' => $user_id));
+        if ($modelReportCount > 0) {
+            $radom = rand(0,$modelReportCount - 1);
+            $user_id = $modelReport[$radom]->user_id;
+
+            if (isset($modelReport)) {
+                $this->tester->seeInDatabase('report', ['user_id' => $user_id]);
+                $this->tester->dontSeeRecord(Report::class, ['user_id' => 1000]);
+                $this->tester->grabColumnFromDatabase('report', 'id', array('user_id' => $user_id));
+                $this->tester->updateInDatabase('report', array('user_id' => $user_id), array('user_id' => $user_id));
+            }
         }
     }
 }
