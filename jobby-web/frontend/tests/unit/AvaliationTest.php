@@ -157,14 +157,17 @@ class AvaliationTest extends \Codeception\Test\Unit
     {
         $modelAvaliation = Avaliation::find()->all();
         $modelAvaliationCount = Avaliation::find()->count();
-        $radom = rand(0,$modelAvaliationCount - 1);
-        $service_id = $modelAvaliation[$radom]->service_id;
 
-        if (isset($modelAvaliation)) {
-            $this->tester->seeInDatabase('avaliation', ['service_id' => $service_id]);
-            $this->tester->dontSeeRecord(Avaliation::class, ['service_id' => 1000]);
-            $this->tester->grabColumnFromDatabase('avaliation', 'id', array('service_id' => $service_id));
-            $this->tester->updateInDatabase('avaliation', array('service_id' => $service_id), array('service_id' => $service_id));
+        if ($modelAvaliationCount > 0) {
+            $radom = rand(0,$modelAvaliationCount - 1);
+            $service_id = $modelAvaliation[$radom]->service_id;
+
+            if (isset($modelAvaliation)) {
+                $this->tester->seeInDatabase('avaliation', ['service_id' => $service_id]);
+                $this->tester->dontSeeRecord(Avaliation::class, ['service_id' => 1000]);
+                $this->tester->grabColumnFromDatabase('avaliation', 'id', array('service_id' => $service_id));
+                $this->tester->updateInDatabase('avaliation', array('service_id' => $service_id), array('service_id' => $service_id));
+            }
         }
     }
 }

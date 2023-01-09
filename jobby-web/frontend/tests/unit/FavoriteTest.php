@@ -157,14 +157,17 @@ class FavoriteTest extends \Codeception\Test\Unit
     {
         $modelFavorite = Favorite::find()->all();
         $modelFavoriteCount = Favorite::find()->count();
-        $radom = rand(0,$modelFavoriteCount - 1);
-        $service_id = $modelFavorite[$radom]->service_id;
 
-        if (isset($modelFavorite)) {
-            $this->tester->seeInDatabase('favorite', ['service_id' => $service_id]);
-            $this->tester->dontSeeRecord(Favorite::class, ['service_id' => 1000]);
-            $this->tester->grabColumnFromDatabase('favorite', 'id', array('service_id' => $service_id));
-            $this->tester->updateInDatabase('favorite', array('service_id' => $service_id), array('service_id' => $service_id));
+        if ($modelFavoriteCount > 0) {
+            $radom = rand(0,$modelFavoriteCount - 1);
+            $service_id = $modelFavorite[$radom]->service_id;
+
+            if (isset($modelFavorite)) {
+                $this->tester->seeInDatabase('favorite', ['service_id' => $service_id]);
+                $this->tester->dontSeeRecord(Favorite::class, ['service_id' => 1000]);
+                $this->tester->grabColumnFromDatabase('favorite', 'id', array('service_id' => $service_id));
+                $this->tester->updateInDatabase('favorite', array('service_id' => $service_id), array('service_id' => $service_id));
+            }
         }
     }
 

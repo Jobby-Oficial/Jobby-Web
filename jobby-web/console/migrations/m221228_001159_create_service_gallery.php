@@ -27,6 +27,13 @@ class m221228_001159_create_service_gallery extends Migration
         ], $tableOptions);
 
         $this->addForeignKey('FK_service_gallery_service', 'service_gallery', 'service_id', 'service', 'id');
+
+        $this->insert('{{%service_gallery}}',array(
+            'image' => 'http://localhost/jobby-web/frontend/web/uploads/services/1/service-Professor de Matemática (Explicações)-1671653971.png',
+            'service_id' => 1,
+            'created_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s')),
+            'updated_at' => \Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+        ));
     }
 
     /**

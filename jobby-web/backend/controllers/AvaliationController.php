@@ -118,6 +118,8 @@ class AvaliationController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                $this->actionRatingAvaliation($model->service_id);
+
                 \Yii::$app->session->setFlash('success', 'A Avaliação foi Criada com Sucesso!');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -147,6 +149,8 @@ class AvaliationController extends Controller
         $users = ArrayHelper::map(User::find()->all(), 'id', 'username');
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            $this->actionRatingAvaliation($model->service_id);
+
             \Yii::$app->session->setFlash('success', 'A Avaliação foi Atualizada com Sucesso!');
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -167,11 +171,34 @@ class AvaliationController extends Controller
      */
     public function actionDelete($id)
     {
+        $avaliations = Avaliation::findOne($id);
         $this->findModel($id)->delete();
+        $this->actionRatingAvaliation($avaliations->service_id);
 
         \Yii::$app->session->setFlash('success', 'A Avaliação foi Eliminada com Sucesso!');
 
         return $this->redirect(['index']);
+    }
+
+    public function actionRatingAvaliation($id){
+        $services = Service::find()->where(['id' => $id])->one();
+        $avaliations = Avaliation::find()->where(['service_id' => $id])->all();
+        $avaliationsCount = Avaliation::find()->where(['service_id' => $id])->count();
+
+        if ($avaliationsCount != 0) {
+            $aux = 0;
+            foreach ($avaliations as $avaliation) {
+                $aux += $avaliation->avaliation;
+            }
+            $avaliations = ($aux / $avaliationsCount);
+        }
+        else {
+            $avaliations = "0.0";
+        }
+
+        $services->rating_average = $avaliations;
+        $services->validate();
+        $services->save();
     }
 
     /**

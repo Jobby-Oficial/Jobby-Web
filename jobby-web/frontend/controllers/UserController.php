@@ -56,10 +56,25 @@ class UserController extends Controller
         $user = User::find()->where(['id' => $id])->one();
         $services = Service::find()->where(['user_id' => $id])->all();
         $favorites = Favorite::find()->where(['user_id' => $id])->all();
-        $favoritesServices = Favorite::find()->where(['user_id' => \Yii::$app->user->identity->id])->all();
+        //$favoritesServices = Favorite::find()->where(['user_id' => \Yii::$app->user->identity->id])->all();
         $jobs = Schedule::find()->where(['professional_id' => $id])->orderBy('service_date ASC')->all();
         $schedules = Schedule::find()->where(['client_id' => $id])->orderBy('service_date ASC')->all();
         $modelReport = new Report();
+
+        $arrFav = null;
+        if (isset(\Yii::$app->user->identity->id)) {
+            $modelFavorite = Favorite::find()->where(['user_id' => \Yii::$app->user->identity->id])->all();
+            $modelService = Service::find()->all();
+
+            foreach($modelService as $service){
+                $arrFav[$service->id] = 0;
+                foreach($modelFavorite as $favorite){
+                    if($favorite->service_id == $service->id){
+                        $arrFav[$service->id] = $favorite->id;
+                    }
+                }
+            }
+        }
 
         // $arrFav = array();
 
@@ -103,7 +118,8 @@ class UserController extends Controller
             'jobs' => $jobs,
             'schedules' => $schedules,
             'modelReport' => $modelReport,
-            'favoritesServices' => $favoritesServices
+            'favoritesServices' => $arrFav,
+            //'favoritesServices' => $favoritesServices
         ]);
     }
 
