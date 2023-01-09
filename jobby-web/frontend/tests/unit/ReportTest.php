@@ -182,7 +182,7 @@ class ReportTest extends \Codeception\Test\Unit
                 $this->tester->seeInDatabase('report', ['user_id' => $user_id]);
                 $this->tester->dontSeeRecord(Report::class, ['user_id' => 1000]);
                 $this->tester->grabColumnFromDatabase('report', 'id', array('user_id' => $user_id));
-                $this->tester->updateInDatabase('report', array('user_id' => $user_id), array('user_id' => $user_id));
+                $this->tester->updateInDatabase('report', array('user_id' => 1000), array('user_id' => 1000));
             }
         }
     }
